@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: _Metro14/Clothing/Neck/Mantles/hansa.rsi
   - type: Clothing
-    sprite: _Metro14/Clothing/Neck/Mantles/hansa.rsi 
+    sprite: _Metro14/Clothing/Neck/Mantles/hansa.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -18,7 +18,7 @@
   - type: Sprite
     sprite: _Metro14/Clothing/Neck/Mantles/tech.rsi
   - type: Clothing
-    sprite: _Metro14/Clothing/Neck/Mantles/tech.rsi 
+    sprite: _Metro14/Clothing/Neck/Mantles/tech.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -29,7 +29,7 @@
   - type: Sprite
     sprite: _Metro14/Clothing/Neck/Mantles/redline.rsi
   - type: Clothing
-    sprite: _Metro14/Clothing/Neck/Mantles/redline.rsi 
+    sprite: _Metro14/Clothing/Neck/Mantles/redline.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -40,4 +40,15 @@
   - type: Sprite
     sprite: _Metro14/Clothing/Neck/Mantles/vdnh.rsi
   - type: Clothing
-    sprite: _Metro14/Clothing/Neck/Mantles/vdnh.rsi 
+    sprite: _Metro14/Clothing/Neck/Mantles/vdnh.rsi
+
+- type: entity
+  parent: ClothingNeckMantleHOS
+  id: ClothingNeckMantleHOSShoulder
+  name: head of security's shoulder mantle
+  description: Shootouts with nukies are just another Tuesday for this HoS. This mantle is a symbol of commitment to the station.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/hosmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/hosmantle.rsi

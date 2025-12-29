@@ -12,3 +12,19 @@
               Quantity: 30
     - type: Sprite
       sprite: _Metro14/Objects/Consumable/Drinks/kvass.rsi
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkAlexanderGlass
+  suffix: alexander
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Kvass
+          Quantity: 30
+  - type: Icon
+    sprite: _Metro14/Objects/Consumable/Drinks/alexander.rsi
+    state: icon
