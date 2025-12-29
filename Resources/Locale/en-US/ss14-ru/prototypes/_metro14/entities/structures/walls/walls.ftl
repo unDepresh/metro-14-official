@@ -1,0 +1,14 @@
+ent-M14BaseWall = базовая стена
+    .desc = Удерживает надежду внутри, а мутантов снаружи.
+ent-M14WallMetal = стальная стена
+    .desc = { ent-M14BaseWall.desc }
+ent-M14WallMetalRust = ржавая стальная стена
+    .desc = { ent-M14BaseWall.desc }
+ent-M14WallMetalReinforced = укреплённая стальная стена
+    .desc = { ent-M14BaseWall.desc }
+ent-M14WallMetalReinforcedRust = ржавая укреплённая стальная стена
+    .desc = { ent-M14BaseWall.desc }
+ent-M14WallConcrete = бетонная стена
+    .desc = { ent-M14BaseWall.desc }
+ent-M14WallWood = деревянная стена
+    .desc = { ent-M14BaseWall.desc }

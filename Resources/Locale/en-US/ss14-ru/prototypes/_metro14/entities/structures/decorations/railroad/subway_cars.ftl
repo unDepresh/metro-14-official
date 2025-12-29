@@ -1,0 +1,10 @@
+ent-M14SubwayCarCabin = кабина машиниста поезда
+    .desc = Кабина водителя состава метро. Именно отсюда вы можете управлять составом. Точнее.. могли...
+ent-M14BaseSubwayCar = вагон поезда
+    .desc = Вагон поезда, в котором раньше перевозили людей под многометровым слоем земли.
+ent-M14SubwayCar = { ent-M14BaseSubwayCar }
+    .desc = { ent-M14BaseSubwayCar.desc }
+ent-M14SubwayCar1 = { ent-M14BaseSubwayCar }
+    .desc = { ent-M14BaseSubwayCar.desc }
+ent-M14SubwayCar2 = { ent-M14BaseSubwayCar }
+    .desc = { ent-M14BaseSubwayCar.desc }

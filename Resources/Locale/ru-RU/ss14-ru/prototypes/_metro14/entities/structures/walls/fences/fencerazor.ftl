@@ -1,0 +1,12 @@
+ent-M14SharpFenceBroken = порванный забор из колючей проволоки
+    .desc = Кто-то по-настоящему разозлился на неодушевленный предмет.
+    .suffix = Порванный
+ent-M14SharpFenceStraight = забор из колючей проволоки
+    .suffix = Прямой
+    .desc = { ent-M14BarBedWire.desc }
+ent-M14SharpFenceCorner = забор из колючей проволоки
+    .suffix = Угол
+    .desc = { ent-M14BarBedWire.desc }
+ent-M14SharpFenceEnd = забор из колючей проволоки
+    .suffix = Конец
+    .desc = { ent-M14BarBedWire.desc }

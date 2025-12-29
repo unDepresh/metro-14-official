@@ -1,0 +1,11 @@
+ent-M14BarBedWire = колючая проволока
+    .desc = Пройти через это будет чрезвычайно трудно.
+ent-M14BarBedWireBroken = порваная колючая проволока
+    .desc = Кто-то по-настоящему разозлился на неодушевленный предмет.
+    .suffix = Порванная
+ent-M14BarBedWireStraight = { ent-M14BarBedWire }
+    .suffix = Прямая
+    .desc = { ent-M14BarBedWire.desc }
+ent-M14BarBedWireEnd = { ent-M14BarBedWire }
+    .suffix = Конец
+    .desc = { ent-M14BarBedWire.desc }

@@ -1,0 +1,12 @@
+ent-M14BaseRoomSpawner = { ent-MarkerBase }
+    .desc = { ent-MarkerBase.desc }
+ent-M14RoomSpawner_4x4_LAB_31 = { ent-M14BaseRoomSpawner }
+    .suffix = LAB_31
+    .desc = { ent-M14BaseRoomSpawner.desc }
+ent-M14RoomSpawner_5x5_LAB_31 = { ent-M14BaseRoomSpawner }
+    .suffix = LAB_31
+    .desc = { ent-M14BaseRoomSpawner.desc }
+ent-M14RoomSpawner_5x5_Plug = { ent-M14BaseRoomSpawner }
+    .desc = { ent-M14BaseRoomSpawner.desc }
+ent-M14RoomSpawner_4x4_Plug = { ent-M14BaseRoomSpawner }
+    .desc = { ent-M14BaseRoomSpawner.desc }

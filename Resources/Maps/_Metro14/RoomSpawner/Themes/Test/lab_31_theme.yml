@@ -1393,18 +1393,6 @@ entities:
     - type: Transform
       pos: 4.5,1.5
       parent: 1
-- proto: LootSpawnerContrabandLow
-  entities:
-  - uid: 149
-    components:
-    - type: Transform
-      pos: 0.5,6.5
-      parent: 1
-  - uid: 294
-    components:
-    - type: Transform
-      pos: 22.5,0.5
-      parent: 1
 - proto: LootSpawnerMedicalClassy
   entities:
   - uid: 280

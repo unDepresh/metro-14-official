@@ -1,0 +1,10 @@
+ent-M14BasePlatform = платформа
+    .desc = Платформа. На неё можно забраться, с неё можно упасть.
+ent-M14Platform = { ent-M14BasePlatform }
+    .desc = { ent-M14BasePlatform.desc }
+ent-M14PlatformCorner = { ent-M14BasePlatform }
+    .desc = { ent-M14BasePlatform.desc }
+ent-M14PlatformCornerSmall = { ent-M14BasePlatform }
+    .desc = { ent-M14BasePlatform.desc }
+ent-M14PlatformRound = { ent-M14BasePlatform }
+    .desc = { ent-M14BasePlatform.desc }
