@@ -1,0 +1,107 @@
+- type: entity
+  name: Рация Спарты
+  description: Смерть в нищете...
+  parent: RadioHandheld
+  id: M14RadioHandheldSparta
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14SpartaChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14SpartaChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+
+- type: entity
+  name: Рация Ганзы
+  description: Выглядит старым и потрёпанным, возможно эта рация много пережила.
+  parent: RadioHandheld
+  id: M14RadioHandheldGanza
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14GanzaChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14GanzaChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+
+- type: entity
+  name: Рация Гидры
+  description: Выглядит старым и потрёпанным, возможно эта рация много пережила.
+  parent: RadioHandheld
+  id: M14RadioHandheldGidra
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14GidraChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14GidraChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+
+- type: entity
+  name: Рация ВДНХ
+  description: Выглядит старым и потрёпанным, возможно эта рация много пережила.
+  parent: RadioHandheld
+  id: M14RadioHandheldVDNH
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14VDNHChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14VDNHChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+
+- type: entity
+  name: Рация Техников
+  description: Сделано вроде из мусора, удивительно что работает.
+  parent: RadioHandheld
+  id: M14RadioHandheldTehnick
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14TehnickiChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14TehnickiChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+
+- type: entity
+  name: Рация Красной Линии
+  description: Товарщь? Слышно? Да-да, комунизм.
+  parent: RadioHandheld
+  id: M14RadioHandheldRedLine
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: M14RedLineChannel
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - M14RedLineChannel
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
