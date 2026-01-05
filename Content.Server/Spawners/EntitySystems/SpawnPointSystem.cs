@@ -1,4 +1,4 @@
-﻿using Content.Server.GameTicking;
+using Content.Server.GameTicking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
 using Robust.Shared.Map;
@@ -32,17 +32,26 @@ public sealed class SpawnPointSystem : EntitySystem
             if (args.Station != null && _stationSystem.GetOwningStation(uid, xform) != args.Station)
                 continue;
 
-            if (_gameTicker.RunLevel == GameRunLevel.InRound && spawnPoint.SpawnType == SpawnPointType.LateJoin)
+            //Metro14-start
+
+            //if (_gameTicker.RunLevel == GameRunLevel.InRound && spawnPoint.SpawnType == SpawnPointType.LateJoin)
+            //{
+            //    possiblePositions.Add(xform.Coordinates);
+            //}
+            //
+            //if (_gameTicker.RunLevel != GameRunLevel.InRound &&
+            //    spawnPoint.SpawnType == SpawnPointType.Job &&
+            //    (args.Job == null || spawnPoint.Job == null || spawnPoint.Job == args.Job))
+            //{
+            //    possiblePositions.Add(xform.Coordinates);
+            //}
+
+            if (args.Job == null || spawnPoint.Job == null || spawnPoint.Job == args.Job)
             {
                 possiblePositions.Add(xform.Coordinates);
             }
 
-            if (_gameTicker.RunLevel != GameRunLevel.InRound &&
-                spawnPoint.SpawnType == SpawnPointType.Job &&
-                (args.Job == null || spawnPoint.Job == null || spawnPoint.Job == args.Job))
-            {
-                possiblePositions.Add(xform.Coordinates);
-            }
+            // Metro14-end
         }
 
         if (possiblePositions.Count == 0)
