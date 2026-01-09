@@ -1,0 +1,16 @@
+- type: entity
+  id: EffectElectricity
+  components: 
+  - type: PointLight
+    radius: 1
+    energy: 15
+    color: "#00bfff"
+  - type: TimedDespawn
+    lifetime: 3
+  - type: LightningArcShooter
+    arcDepth: 5
+    lightningPrototype: Lightning
+    maxLightningArc: 1
+    shootMaxInterval: 1.5
+    shootMinInterval: 0.2
+    shootRange: 10
