@@ -9,109 +9,6 @@ using Robust.Shared.Network;
 
 namespace Content.Server._Metro14.SponsorSystem;
 
-
-[AdminCommand(AdminFlags.Admin)]
-public sealed class GrantSponsorCommand : LocalizedCommands
-{
-    [Dependency] private readonly IPlayerLocator _playerLocator = default!;
-    [Dependency] private readonly IAdminManager _adminManager = default!;
-    [Dependency] private readonly IServerDbManager _dbManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-
-    public override string Command => "grantsponsor";
-
-    public override async void Execute(IConsoleShell shell, string argStr, string[] args)
-    {
-        if (args.Length != 1)
-        {
-            shell.WriteError("Usage: grantsponsor <player>");
-            return;
-        }
-
-        var playerName = args[0];
-
-        var flags = Enum.GetValues(typeof(AdminFlags))
-                .Cast<AdminFlags>()
-                .Where(f => f != AdminFlags.None && f != AdminFlags.Host) // Исключаем служебные флаги  
-                .ToList();
-
-        Console.WriteLine("Доступные админские флаги:");
-
-        foreach (var flag in flags)
-        {
-            var flagName = Enum.GetName(typeof(AdminFlags), flag);
-            var flagValue = (uint)flag;
-            var bitPosition = flagValue > 0 ? (int)Math.Log2(flagValue) : -1;
-
-            Console.WriteLine($"  {flagName} = 1 << {bitPosition} (значение: {flagValue})");
-        }
-
-        //// Найти игрока  
-        //var info = await _playerLocator.LookupIdByNameOrIdAsync(playerName);
-        //if (info == null)
-        //{
-        //    shell.WriteError($"Player {playerName} not found");
-        //    return;
-        //}
-
-        //// Получить текущие данные админа  
-        //var adminData = await _dbManager.GetAdminDataForAsync(info.UserId);
-
-        //if (adminData == null)
-        //{
-        //    // Создать нового админа с флагом Sponsor  
-        //    var newAdmin = new Admin
-        //    {
-        //        UserId = info.UserId.UserId,
-        //        Title = "Sponsor",
-        //        Deadminned = false,
-        //        Suspended = false,
-        //        Flags = new List<AdminFlag>
-        //        {
-        //            new AdminFlag { Flag = "Sponsor", Negative = false }
-        //        }
-        //    };
-
-        //    await _dbManager.AddAdminAsync(newAdmin);
-        //}
-        //else
-        //{
-        //    // Добавить флаг существующему админу  
-        //    if (!adminData.Flags.Any(f => f.Flag == "Sponsor"))
-        //    {
-        //        adminData.Flags.Add(new AdminFlag { Flag = "Sponsor", Negative = false });
-        //        await _dbManager.UpdateAdminAsync(adminData);
-        //    }
-        //    else
-        //    {
-        //        shell.WriteError($"{playerName} already has Sponsor flag");
-        //        return;
-        //    }
-        //}
-
-        //// Получить сессию игрока для перезагрузки прав  
-        //var playerSession = _playerManager.GetSessionById(info.UserId);
-        //if (playerSession != null)
-        //{
-        //    _adminManager.ReloadAdmin(playerSession);
-        //}
-
-        //shell.WriteLine($"Granted Sponsor flag to {playerName}");
-    }
-
-    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
-    {
-        return args.Length switch
-        {
-            1 => CompletionResult.FromHintOptions(
-                CompletionHelper.SessionNames(players: _playerManager),
-                "Player name or GUID"
-            ),
-            _ => CompletionResult.Empty
-        };
-    }
-}
-
 /// <summary>
 /// Класс-обработчик команды для добавления игрока в БД спонсоров.
 /// </summary>
@@ -238,7 +135,7 @@ public sealed class SponsorSystemAddCommand : LocalizedCommands
 /// <summary>
 /// Класс-обработчик команды удаления игрока из БД спонсоров.
 /// </summary>
-[AdminCommand(AdminFlags.Admin)]
+[AdminCommand(AdminFlags.Sponsor)]
 public sealed class SponsorSystemRemoveCommand : LocalizedCommands
 {
     [Dependency] private readonly IServerDbManager _dbManager = default!;
@@ -429,3 +326,136 @@ public sealed class SponsorSystemListCommand : LocalizedCommands
         };
     }
 }
+
+//[AdminCommand(AdminFlags.Admin)]
+//public sealed class GrantSponsorCommand : LocalizedCommands
+//{
+//    [Dependency] private readonly IPlayerLocator _playerLocator = default!;
+//    [Dependency] private readonly IAdminManager _adminManager = default!;
+//    [Dependency] private readonly IServerDbManager _dbManager = default!;
+//    [Dependency] private readonly IPlayerManager _playerManager = default!;
+
+//    public override string Command => "grantsponsor";
+
+//    public override async void Execute(IConsoleShell shell, string argStr, string[] args)
+//    {
+//        if (args.Length != 1)
+//        {
+//            shell.WriteError("Usage: grantsponsor <player>");
+//            return;
+//        }
+
+//        var playerName = args[0];
+
+//        // Найти игрока  
+//        var info = await _playerLocator.LookupIdByNameOrIdAsync(playerName);
+//        if (info == null)
+//        {
+//            shell.WriteError($"Player {playerName} not found");
+//            return;
+//        }
+
+//        // Получить текущие данные админа  
+//        var adminData = await _dbManager.GetAdminDataForAsync(info.UserId);
+
+//        if (adminData != null)
+//        {
+//            await _dbManager.RemoveAdminAsync(info.UserId);
+
+//            if (_playerManager.TryGetSessionById(info.UserId, out var session))
+//            {
+//                _adminManager.ReloadAdmin(session);
+//            }
+//        }
+//    }
+
+//    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+//    {
+//        return args.Length switch
+//        {
+//            1 => CompletionResult.FromHintOptions(
+//                CompletionHelper.SessionNames(players: _playerManager),
+//                "Player name or GUID"
+//            ),
+//            _ => CompletionResult.Empty
+//        };
+//    }
+//}
+
+//[AdminCommand(AdminFlags.Admin)]
+//public sealed class AddAllSponsorCommand : LocalizedCommands
+//{
+//    [Dependency] private readonly IPlayerLocator _playerLocator = default!;
+//    [Dependency] private readonly IAdminManager _adminManager = default!;
+//    [Dependency] private readonly IServerDbManager _dbManager = default!;
+//    [Dependency] private readonly IPlayerManager _playerManager = default!;
+
+//    public override string Command => "add_all_admin_flags";
+
+//    public override async void Execute(IConsoleShell shell, string argStr, string[] args)
+//    {
+//        if (args.Length != 1)
+//        {
+//            shell.WriteError("Usage: grantsponsor <player>");
+//            return;
+//        }
+
+//        var playerName = args[0];
+
+//        var info = await _playerLocator.LookupIdByNameOrIdAsync(playerName);
+//        if (info == null)
+//        {
+//            shell.WriteError($"Player {playerName} not found");
+//            return;
+//        }
+
+//        // Проверяем, не является ли игрок уже админом  
+//        var existingAdmin = await _dbManager.GetAdminDataForAsync(info.UserId);
+//        if (existingAdmin != null)
+//        {
+//            shell.WriteError($"Player {playerName} is already an admin");
+//            return;
+//        }
+
+//        var admin = new Admin
+//        {
+//            UserId = info.UserId,
+//            Title = "Super Admin",
+//            Deadminned = false,
+//            Suspended = false
+//        };
+
+//        admin.Flags = new List<AdminFlag>();
+//        foreach (AdminFlags flag in Enum.GetValues<AdminFlags>())
+//        {
+//            if (flag != AdminFlags.None)
+//            {
+//                admin.Flags.Add(new AdminFlag
+//                {
+//                    Flag = flag.ToString().ToUpper(), // ← Используйте этот метод  
+//                    Negative = false
+//                });
+//            }
+//        }
+
+//        await _dbManager.AddAdminAsync(admin);
+
+//        // Получаем сессию игрока для перезагрузки прав  
+//        if (_playerManager.TryGetSessionById(info.UserId, out var playerSession))
+//        {
+//            _adminManager.ReloadAdmin(playerSession);
+//        }
+//    }
+
+//    public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+//    {
+//        return args.Length switch
+//        {
+//            1 => CompletionResult.FromHintOptions(
+//                CompletionHelper.SessionNames(players: _playerManager),
+//                "Player name or GUID"
+//            ),
+//            _ => CompletionResult.Empty
+//        };
+//    }
+//}

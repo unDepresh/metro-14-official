@@ -64,7 +64,7 @@ namespace Content.Shared.Administration
             var flags = AdminFlags.None;
             foreach (var name in names)
             {
-                if (!NameFlagsMap.TryGetValue(name.ToUpper(), out var value))
+                if (!NameFlagsMap.TryGetValue(name, out var value))
                 {
                     throw new ArgumentException($"Invalid admin flag name: {name}");
                 }
