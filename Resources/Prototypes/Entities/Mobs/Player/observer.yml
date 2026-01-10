@@ -39,12 +39,14 @@
   description: Boo!
   categories: [ HideSpawnMenu ]
   components:
+  - type: CanBeSponsorGhost  #Metro14
   - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#fff8"
+    drawdepth: Ghosts
     layers:
-    - state: animated
-      shader: unshaded
+    - map: ["enum.GhostVisualLayers.Base"]
+      state: ghost
+      sprite: _Metro14/Mobs/Ghosts/ghost.rsi
+  - type: Appearance
   - type: ContentEye
     maxZoom: 1.44,1.44
   - type: Eye

@@ -1,0 +1,1745 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "https://github.com/Mojave-Sun/mojave-sun-13/blob/HEAD/icons/mob/clothing/head.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "swat",
+            "directions": 4
+        },
+        {
+            "name": "helmetalt",
+            "directions": 4
+        },
+        {
+            "name": "helmetalt-flight",
+            "directions": 4
+        },
+        {
+            "name": "helmetalt-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "helmet",
+            "directions": 4
+        },
+        {
+            "name": "helmet-flight",
+            "directions": 4
+        },
+        {
+            "name": "helmet-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "helmet-cam",
+            "directions": 4
+        },
+        {
+            "name": "helmet-cam-flight",
+            "directions": 4
+        },
+        {
+            "name": "helmet-cam-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "riot",
+            "directions": 4
+        },
+        {
+            "name": "riot-flight",
+            "directions": 4
+        },
+        {
+            "name": "riot-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "riotup",
+            "directions": 4
+        },
+        {
+            "name": "bio",
+            "directions": 4
+        },
+        {
+            "name": "bio_general",
+            "directions": 4
+        },
+        {
+            "name": "bio_cmo",
+            "directions": 4
+        },
+        {
+            "name": "bio_virology",
+            "directions": 4,
+            "delays": [
+                [
+                    0.3,
+                    0.3
+                ],
+                [
+                    0.3,
+                    0.3
+                ],
+                [
+                    0.3,
+                    0.3
+                ],
+                [
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bio_security",
+            "directions": 4
+        },
+        {
+            "name": "bio_janitor",
+            "directions": 4
+        },
+        {
+            "name": "bio_scientist",
+            "directions": 4
+        },
+        {
+            "name": "bombsuit",
+            "directions": 4
+        },
+        {
+            "name": "bombsuit_white",
+            "directions": 4
+        },
+        {
+            "name": "bombsuit_sec",
+            "directions": 4
+        },
+        {
+            "name": "bombsuitOld",
+            "directions": 4
+        },
+        {
+            "name": "bombsuitsec_old",
+            "directions": 4
+        },
+        {
+            "name": "rad",
+            "directions": 4
+        },
+        {
+            "name": "spaceold",
+            "directions": 4
+        },
+        {
+            "name": "space",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-green",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-green-dark",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-orange",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-orange_light",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-orange_light1",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-blue",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-green",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-blue",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-med",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-orange",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-red",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-engie",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-helm-black-engie1",
+            "directions": 4
+        },
+        {
+            "name": "syndicate",
+            "directions": 4
+        },
+        {
+            "name": "tophat",
+            "directions": 4
+        },
+        {
+            "name": "thunderdome",
+            "directions": 4
+        },
+        {
+            "name": "wizard",
+            "directions": 4
+        },
+        {
+            "name": "santahat",
+            "directions": 4
+        },
+        {
+            "name": "santahatnorm",
+            "directions": 4
+        },
+        {
+            "name": "pwig",
+            "directions": 4
+        },
+        {
+            "name": "detective",
+            "directions": 4
+        },
+        {
+            "name": "centcom",
+            "directions": 4
+        },
+        {
+            "name": "captain",
+            "directions": 4
+        },
+        {
+            "name": "paper",
+            "directions": 4
+        },
+        {
+            "name": "security",
+            "directions": 4
+        },
+        {
+            "name": "viking"
+        },
+        {
+            "name": "chef",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_yellow",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_yellow",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_orange",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_orange",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_white",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_white",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_red",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_red",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_dblue",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_dblue",
+            "directions": 4
+        },
+        {
+            "name": "witch",
+            "directions": 4
+        },
+        {
+            "name": "hoscap",
+            "directions": 4
+        },
+        {
+            "name": "policehelm",
+            "directions": 4
+        },
+        {
+            "name": "flat_cap"
+        },
+        {
+            "name": "cowboy"
+        },
+        {
+            "name": "pirate",
+            "directions": 4
+        },
+        {
+            "name": "bandana",
+            "directions": 4
+        },
+        {
+            "name": "plaguedoctor",
+            "directions": 4
+        },
+        {
+            "name": "headslime",
+            "directions": 4
+        },
+        {
+            "name": "vintageberet",
+            "directions": 4
+        },
+        {
+            "name": "archaicberet",
+            "directions": 4
+        },
+        {
+            "name": "ushankadown",
+            "directions": 4
+        },
+        {
+            "name": "ushankaup",
+            "directions": 4
+        },
+        {
+            "name": "wizard-fake",
+            "directions": 4
+        },
+        {
+            "name": "redwizard",
+            "directions": 4
+        },
+        {
+            "name": "yellowwizard",
+            "directions": 4
+        },
+        {
+            "name": "bunny",
+            "directions": 4
+        },
+        {
+            "name": "violetwizard",
+            "directions": 4
+        },
+        {
+            "name": "weldingup",
+            "directions": 4
+        },
+        {
+            "name": "welding",
+            "directions": 4
+        },
+        {
+            "name": "marisa",
+            "directions": 4
+        },
+        {
+            "name": "s-ninja",
+            "directions": 4
+        },
+        {
+            "name": "void",
+            "directions": 4
+        },
+        {
+            "name": "capcap",
+            "directions": 4
+        },
+        {
+            "name": "nursehat",
+            "directions": 4
+        },
+        {
+            "name": "bowler",
+            "directions": 4
+        },
+        {
+            "name": "greenbandana",
+            "directions": 4
+        },
+        {
+            "name": "xenom",
+            "directions": 4
+        },
+        {
+            "name": "metroid",
+            "directions": 4
+        },
+        {
+            "name": "petehat",
+            "directions": 4
+        },
+        {
+            "name": "mailman",
+            "directions": 4
+        },
+        {
+            "name": "culthood",
+            "directions": 4
+        },
+        {
+            "name": "cueball",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    5.6
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    5.6
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    5.6
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    5.6
+                ]
+            ]
+        },
+        {
+            "name": "sombrero",
+            "directions": 4
+        },
+        {
+            "name": "hasturhood",
+            "directions": 4
+        },
+        {
+            "name": "redcoat",
+            "directions": 4
+        },
+        {
+            "name": "dermal",
+            "directions": 4
+        },
+        {
+            "name": "hgpiratecap",
+            "directions": 4
+        },
+        {
+            "name": "magus",
+            "directions": 4
+        },
+        {
+            "name": "cargosoft",
+            "directions": 4
+        },
+        {
+            "name": "cargosoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "cult_helmet",
+            "directions": 4
+        },
+        {
+            "name": "cult_hoodalt",
+            "directions": 4
+        },
+        {
+            "name": "greysoft",
+            "directions": 4
+        },
+        {
+            "name": "greysoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "bearpelt",
+            "directions": 4
+        },
+        {
+            "name": "xmashat",
+            "directions": 4
+        },
+        {
+            "name": "chickenhead",
+            "directions": 4
+        },
+        {
+            "name": "cardborg_h",
+            "directions": 4
+        },
+        {
+            "name": "xenos",
+            "directions": 4
+        },
+        {
+            "name": "paper_words",
+            "directions": 4
+        },
+        {
+            "name": "gladiator",
+            "directions": 4
+        },
+        {
+            "name": "roman_c",
+            "directions": 4
+        },
+        {
+            "name": "roman",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_reindeer",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_reindeer",
+            "directions": 4
+        },
+        {
+            "name": "blacksoft",
+            "directions": 4
+        },
+        {
+            "name": "blacksoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "bluetaghelm",
+            "directions": 4
+        },
+        {
+            "name": "redtaghelm",
+            "directions": 4
+        },
+        {
+            "name": "kitty",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "kittyinner",
+            "directions": 4
+        },
+        {
+            "name": "lingspacehelmet",
+            "directions": 4
+        },
+        {
+            "name": "hopcap",
+            "directions": 4
+        },
+        {
+            "name": "lingarmorhelmet",
+            "directions": 4
+        },
+        {
+            "name": "drone_maint_hat",
+            "directions": 4
+        },
+        {
+            "name": "drone_repair_hat",
+            "directions": 4
+        },
+        {
+            "name": "cone",
+            "directions": 4
+        },
+        {
+            "name": "wardendrill",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_atmos",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_atmos",
+            "directions": 4
+        },
+        {
+            "name": "nun_hood",
+            "directions": 4
+        },
+        {
+            "name": "bandred_up",
+            "directions": 4
+        },
+        {
+            "name": "bandgold_up",
+            "directions": 4
+        },
+        {
+            "name": "bandblue_up",
+            "directions": 4
+        },
+        {
+            "name": "bandgreen_up",
+            "directions": 4
+        },
+        {
+            "name": "bandbotany_up",
+            "directions": 4
+        },
+        {
+            "name": "bandskull_up",
+            "directions": 4
+        },
+        {
+            "name": "bandblack_up",
+            "directions": 4
+        },
+        {
+            "name": "breadslice",
+            "directions": 4
+        },
+        {
+            "name": "meatbreadslice",
+            "directions": 4
+        },
+        {
+            "name": "creamcheesebreadslice",
+            "directions": 4
+        },
+        {
+            "name": "xenobreadslice",
+            "directions": 4
+        },
+        {
+            "name": "bananabreadslice",
+            "directions": 4
+        },
+        {
+            "name": "tofubreadslice",
+            "directions": 4
+        },
+        {
+            "name": "spidermeatslice",
+            "directions": 4
+        },
+        {
+            "name": "mimanabreadslice",
+            "directions": 4
+        },
+        {
+            "name": "moldybreadslice",
+            "directions": 4
+        },
+        {
+            "name": "griffinhat",
+            "directions": 4
+        },
+        {
+            "name": "bunnyhead",
+            "directions": 4
+        },
+        {
+            "name": "justice2",
+            "directions": 4
+        },
+        {
+            "name": "justice2up",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "justice",
+            "directions": 4
+        },
+        {
+            "name": "justiceup",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "monkeymind",
+            "directions": 4
+        },
+        {
+            "name": "monkeymind1",
+            "directions": 4
+        },
+        {
+            "name": "monkeymind1up",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "monkeymind2",
+            "directions": 4
+        },
+        {
+            "name": "monkeymind2up",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "monkeymind3",
+            "directions": 4
+        },
+        {
+            "name": "monkeymind3up",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "alienhelmet",
+            "directions": 4
+        },
+        {
+            "name": "jester_hat",
+            "directions": 4
+        },
+        {
+            "name": "drone_scout_hat",
+            "directions": 4
+        },
+        {
+            "name": "blackwizard",
+            "directions": 4
+        },
+        {
+            "name": "canada",
+            "directions": 4
+        },
+        {
+            "name": "swatsyndie",
+            "directions": 4
+        },
+        {
+            "name": "rice_hat",
+            "directions": 4
+        },
+        {
+            "name": "carp_helm",
+            "directions": 4
+        },
+        {
+            "name": "carp_casual",
+            "directions": 4
+        },
+        {
+            "name": "ian",
+            "directions": 4
+        },
+        {
+            "name": "rainbowsoft",
+            "directions": 4
+        },
+        {
+            "name": "rainbowsoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "secsoft",
+            "directions": 4
+        },
+        {
+            "name": "secsoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "redsoft",
+            "directions": 4
+        },
+        {
+            "name": "redsoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "bluesoft",
+            "directions": 4
+        },
+        {
+            "name": "bluesoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "greensoft",
+            "directions": 4
+        },
+        {
+            "name": "greensoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "yellowsoft",
+            "directions": 4
+        },
+        {
+            "name": "yellowsoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "orangesoft",
+            "directions": 4
+        },
+        {
+            "name": "orangesoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "mimesoft",
+            "directions": 4
+        },
+        {
+            "name": "mimesoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "purplesoft",
+            "directions": 4
+        },
+        {
+            "name": "purplesoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "bucket",
+            "directions": 4
+        },
+        {
+            "name": "crusader",
+            "directions": 4
+        },
+        {
+            "name": "ablativehood",
+            "directions": 4,
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ],
+                [
+                    0.5,
+                    0.5
+                ],
+                [
+                    0.5,
+                    0.5
+                ],
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "crusader-red",
+            "directions": 4
+        },
+        {
+            "name": "crusader-blue",
+            "directions": 4
+        },
+        {
+            "name": "knight_greyscale",
+            "directions": 4
+        },
+        {
+            "name": "knight_blue",
+            "directions": 4
+        },
+        {
+            "name": "knight_red",
+            "directions": 4
+        },
+        {
+            "name": "knight_green",
+            "directions": 4
+        },
+        {
+            "name": "knight_yellow",
+            "directions": 4
+        },
+        {
+            "name": "knight_templar",
+            "directions": 4
+        },
+        {
+            "name": "knight_ancient",
+            "directions": 4
+        },
+        {
+            "name": "snowman_h",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_cakehat",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_cakehat",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "hardhat0_energycake",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_energycake",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "lizard",
+            "directions": 4
+        },
+        {
+            "name": "chaplain_hood",
+            "directions": 4
+        },
+        {
+            "name": "chaplain_hood_leader",
+            "directions": 4
+        },
+        {
+            "name": "bishopmitre",
+            "directions": 4
+        },
+        {
+            "name": "clownmitre",
+            "directions": 4
+        },
+        {
+            "name": "monkhood",
+            "directions": 4
+        },
+        {
+            "name": "mystichood",
+            "directions": 4
+        },
+        {
+            "name": "kippah",
+            "directions": 4
+        },
+        {
+            "name": "medievaljewhat",
+            "directions": 4
+        },
+        {
+            "name": "taqiyahwhite",
+            "directions": 4
+        },
+        {
+            "name": "taqiyahred",
+            "directions": 4
+        },
+        {
+            "name": "beanierasta",
+            "directions": 4
+        },
+        {
+            "name": "justicered",
+            "directions": 4
+        },
+        {
+            "name": "justiceblue",
+            "directions": 4
+        },
+        {
+            "name": "justicepink",
+            "directions": 4
+        },
+        {
+            "name": "justicegreen",
+            "directions": 4
+        },
+        {
+            "name": "justiceyellow",
+            "directions": 4
+        },
+        {
+            "name": "beekeeper",
+            "directions": 4
+        },
+        {
+            "name": "papersack",
+            "directions": 4
+        },
+        {
+            "name": "papersack_smile",
+            "directions": 4
+        },
+        {
+            "name": "explorer",
+            "directions": 4
+        },
+        {
+            "name": "golhood",
+            "directions": 4
+        },
+        {
+            "name": "dragon",
+            "directions": 4
+        },
+        {
+            "name": "clockwork_helmet",
+            "directions": 4
+        },
+        {
+            "name": "clockwork_helmet_old",
+            "directions": 4
+        },
+        {
+            "name": "reclaimer",
+            "directions": 4
+        },
+        {
+            "name": "blueshift",
+            "directions": 4
+        },
+        {
+            "name": "beaniechristmas",
+            "directions": 4
+        },
+        {
+            "name": "beanie",
+            "directions": 4
+        },
+        {
+            "name": "beaniestriped",
+            "directions": 4
+        },
+        {
+            "name": "beaniestripedred",
+            "directions": 4
+        },
+        {
+            "name": "beaniestripedblue",
+            "directions": 4
+        },
+        {
+            "name": "beaniestripedgreen",
+            "directions": 4
+        },
+        {
+            "name": "crown",
+            "directions": 4
+        },
+        {
+            "name": "fancycrown",
+            "directions": 4
+        },
+        {
+            "name": "bee",
+            "directions": 4
+        },
+        {
+            "name": "witchhunterhat",
+            "directions": 4
+        },
+        {
+            "name": "curator",
+            "directions": 4
+        },
+        {
+            "name": "skull",
+            "directions": 4
+        },
+        {
+            "name": "beretblack",
+            "directions": 4
+        },
+        {
+            "name": "headphones_on",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "jester2",
+            "directions": 4
+        },
+        {
+            "name": "pharoah_hat",
+            "directions": 4
+        },
+        {
+            "name": "scarecrow_hat",
+            "directions": 4
+        },
+        {
+            "name": "lobster_hat",
+            "directions": 4
+        },
+        {
+            "name": "drfreeze_hat",
+            "directions": 4
+        },
+        {
+            "name": "nemes_headdress",
+            "directions": 4
+        },
+        {
+            "name": "hostile_env_glass",
+            "directions": 4
+        },
+        {
+            "name": "foilhat",
+            "directions": 4
+        },
+        {
+            "name": "flashsuit",
+            "directions": 4
+        },
+        {
+            "name": "durathread",
+            "directions": 4
+        },
+        {
+            "name": "peaceflower",
+            "directions": 4
+        },
+        {
+            "name": "beaniedurathread",
+            "directions": 4
+        },
+        {
+            "name": "weldvisor",
+            "directions": 4
+        },
+        {
+            "name": "weldhelmet",
+            "directions": 4
+        },
+        {
+            "name": "waldo_hat",
+            "directions": 4
+        },
+        {
+            "name": "rus_ushanka",
+            "directions": 4
+        },
+        {
+            "name": "rus_helmet",
+            "directions": 4
+        },
+        {
+            "name": "woodbucket",
+            "directions": 4
+        },
+        {
+            "name": "hunter",
+            "directions": 4
+        },
+        {
+            "name": "syndicate-contract-helm",
+            "directions": 4
+        },
+        {
+            "name": "techpriesthood",
+            "directions": 4
+        },
+        {
+            "name": "delinquent",
+            "directions": 4
+        },
+        {
+            "name": "intern_hat",
+            "directions": 4
+        },
+        {
+            "name": "paramedicsoft",
+            "directions": 4
+        },
+        {
+            "name": "paramedicsoft_flipped",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_purple",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_purple",
+            "directions": 4
+        },
+        {
+            "name": "headphones",
+            "directions": 4
+        },
+        {
+            "name": "fedora",
+            "directions": 4
+        },
+        {
+            "name": "fedora_beige",
+            "directions": 4
+        },
+        {
+            "name": "fedora_white",
+            "directions": 4
+        },
+        {
+            "name": "fedora_carpskin",
+            "directions": 4
+        },
+        {
+            "name": "policecap_families",
+            "directions": 4
+        },
+        {
+            "name": "JackFrostHat",
+            "directions": 4
+        },
+        {
+            "name": "infiltrator",
+            "directions": 4
+        },
+        {
+            "name": "debug_custom_head",
+            "directions": 4
+        },
+        {
+            "name": "wig",
+            "directions": 4
+        },
+        {
+            "name": "eldritch",
+            "directions": 4
+        },
+        {
+            "name": "weddingveil"
+        },
+        {
+            "name": "ninja_newcowl",
+            "directions": 4
+        },
+        {
+            "name": "void_cloak",
+            "directions": 4
+        },
+        {
+            "name": "spacepirate",
+            "directions": 4
+        },
+        {
+            "name": "spacebandana",
+            "directions": 4
+        },
+        {
+            "name": "centcom_cap",
+            "directions": 4
+        },
+        {
+            "name": "godslayer",
+            "directions": 4
+        },
+        {
+            "name": "banddurathread_up",
+            "directions": 4
+        },
+        {
+            "name": "h2helmet",
+            "directions": 4
+        },
+        {
+            "name": "cage",
+            "directions": 4
+        },
+        {
+            "name": "prophet",
+            "directions": 4
+        },
+        {
+            "name": "prophet-blue",
+            "directions": 4
+        },
+        {
+            "name": "prophet-red",
+            "directions": 4
+        },
+        {
+            "name": "shrine_wig",
+            "directions": 4
+        },
+        {
+            "name": "constable",
+            "directions": 4
+        },
+        {
+            "name": "rbt_ticking",
+            "directions": 4,
+            "delays": [
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            ]
+        },
+        {
+            "name": "reverse_bear_trap",
+            "directions": 4
+        },
+        {
+            "name": "human_leather",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_pumpkin",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_pumpkin",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_blumpkin",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_blumpkin",
+            "directions": 4
+        },
+        {
+            "name": "carved_pumpkin-emissive",
+            "directions": 4
+        },
+        {
+            "name": "irs_hat",
+            "directions": 4
+        },
+        {
+            "name": "pg_hat",
+            "directions": 4
+        },
+        {
+            "name": "tmc_hat",
+            "directions": 4
+        },
+        {
+            "name": "decker_hat",
+            "directions": 4
+        },
+        {
+            "name": "morningstar_hat",
+            "directions": 4
+        },
+        {
+            "name": "saints_hat",
+            "directions": 4
+        },
+        {
+            "name": "sovietushankadown",
+            "directions": 4
+        },
+        {
+            "name": "sovietushankaup",
+            "directions": 4
+        },
+        {
+            "name": "allies_helmet",
+            "directions": 4
+        },
+        {
+            "name": "yuri_helmet",
+            "directions": 4
+        },
+        {
+            "name": "football_helmet_blue",
+            "directions": 4
+        },
+        {
+            "name": "football_helmet_red",
+            "directions": 4
+        },
+        {
+            "name": "cone-emissive",
+            "directions": 4
+        },
+        {
+            "name": "hardhat0_atmos-emissive",
+            "directions": 4
+        },
+        {
+            "name": "hardhat1_atmos-emissive",
+            "directions": 4
+        },
+        {
+            "name": "marine_command",
+            "directions": 4
+        },
+        {
+            "name": "marine_command-flight",
+            "directions": 4
+        },
+        {
+            "name": "marine_command-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "marine_security",
+            "directions": 4
+        },
+        {
+            "name": "marine_security-flight",
+            "directions": 4
+        },
+        {
+            "name": "marine_security-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "marine_engineer",
+            "directions": 4
+        },
+        {
+            "name": "marine_engineer-flight",
+            "directions": 4
+        },
+        {
+            "name": "marine_engineer-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "marine_medic",
+            "directions": 4
+        },
+        {
+            "name": "marine_medic-flight",
+            "directions": 4
+        },
+        {
+            "name": "marine_medic-flight-on",
+            "directions": 4
+        },
+        {
+            "name": "berserker",
+            "directions": 4
+        },
+        {
+            "name": "hostile_env",
+            "directions": 4
+        },
+        {
+            "name": "cowboy_hat_black",
+            "directions": 4
+        },
+        {
+            "name": "cowboy_hat_white",
+            "directions": 4
+        },
+        {
+            "name": "cowboy_hat_grey",
+            "directions": 4
+        },
+        {
+            "name": "cowboy_hat_red",
+            "directions": 4
+        },
+        {
+            "name": "cowboy_hat_brown",
+            "directions": 4
+        }
+    ]
+}

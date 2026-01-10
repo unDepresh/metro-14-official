@@ -1171,6 +1171,80 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
+        //Metro14-start
+        #region Sponsor
+
+        public async Task<bool> IsSponsorAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.Sponsor
+                .Where(s => s.UserId == userId.UserId &&
+                           s.IsActive &&
+                           (s.ExpiryDate == null || s.ExpiryDate.Value > DateTime.UtcNow))
+                .AnyAsync();
+        }
+
+        public async Task<SponsorInfo?> GetSponsorInfoAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.Sponsor
+                .Where(s => s.UserId == userId.UserId)
+                .Select(s => new SponsorInfo(s.UserId, s.SponsorTier, s.ExpiryDate, s.IsActive))
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task AddOrUpdateSponsorAsync(NetUserId userId, string tier, DateTime? expiryDate = null, bool isActive = true)
+        {
+            await using var db = await GetDb();
+
+            var sponsor = await db.DbContext.Sponsor
+                .SingleOrDefaultAsync(s => s.UserId == userId.UserId);
+
+            if (sponsor == null)
+            {
+                sponsor = new Sponsor
+                {
+                    UserId = userId.UserId,
+                    SponsorTier = tier,
+                    ExpiryDate = expiryDate,
+                    IsActive = isActive
+                };
+                db.DbContext.Sponsor.Add(sponsor);
+            }
+            else
+            {
+                sponsor.SponsorTier = tier;
+                sponsor.ExpiryDate = expiryDate;
+                sponsor.IsActive = isActive;
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveSponsorAsync(NetUserId userId)
+        {
+            await using var db = await GetDb();
+            var sponsor = await db.DbContext.Sponsor
+                .SingleOrDefaultAsync(s => s.UserId == userId.UserId);
+
+            if (sponsor != null)
+            {
+                db.DbContext.Sponsor.Remove(sponsor);
+                await db.DbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<SponsorInfo>> GetAllSponsorsAsync()
+        {
+            await using var db = await GetDb();
+            return await db.DbContext.Sponsor
+                .Select(s => new SponsorInfo(s.UserId, s.SponsorTier, s.ExpiryDate, s.IsActive))
+                .ToListAsync();
+        }
+
+        #endregion
+        //Metro14-end
+
         #region Uploaded Resources Logs
 
         public async Task AddUploadedResourceLogAsync(NetUserId user, DateTimeOffset date, string path, byte[] data)

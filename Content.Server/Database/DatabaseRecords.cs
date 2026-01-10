@@ -125,3 +125,13 @@ public sealed record PlayerRecord(
 public sealed record RoundRecord(int Id, DateTimeOffset? StartDate, ServerRecord Server);
 
 public sealed record ServerRecord(int Id, string Name);
+
+//Metro14-start
+
+public record SponsorInfo(
+    Guid UserId,
+    string Tier,
+    DateTime? ExpiryDate,
+    bool IsActive);
+
+//Metro14-end

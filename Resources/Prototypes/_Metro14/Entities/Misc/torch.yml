@@ -1,0 +1,109 @@
+- type: entity
+  name: Факел
+  parent: BaseItem
+  id: M14Torch
+  description: Факел из дерева
+  components:
+    - type: ExpendableLight
+      refuelMaterialID: WoodPlank
+      glowDuration: 110
+      refuelMaximumDuration: 205
+      fadeOutDuration: 4
+      iconStateSpent: torch_spent
+      turnOnBehaviourID: turn_on
+      fadeOutBehaviourID: fade_out
+      # Sounds legit nuff
+      litSound:
+        path: /Audio/Items/Flare/flare_on.ogg
+    - type: Sprite
+      sprite: Objects/Misc/torch.rsi
+      layers:
+        - map: [ enum.ExpendableLightVisualLayers.Base ]
+          state: torch_unlit
+        - map: [ enum.ExpendableLightVisualLayers.Glow ]
+          state: lit_overlay
+          color: "#FFFFFF"
+          visible: false
+          shader: unshaded
+        - map: [ enum.ExpendableLightVisualLayers.Overlay ]
+          state: torch_nocloth
+    - type: Icon
+      sprite: Objects/Misc/torch.rsi
+      state: icon
+    - type: Construction
+      graph: M14Torch1
+      node: m14torch
+    - type: Item
+      sprite: Objects/Misc/torch.rsi
+      heldPrefix: unlit
+    - type: Appearance
+    - type: PointLight
+      enabled: false
+      color: "#E25822"
+      radius: 1.0
+      energy: 5.0
+      netsync: false
+    - type: IgnitionSource
+      temperature: 400
+      ignited: false
+    - type: LightBehaviour
+      behaviours:
+        - !type:RandomizeBehaviour # immediately make it bright and flickery
+          id: turn_on
+          interpolate: Nearest
+          minDuration: 0.02
+          maxDuration: 0.06
+          startValue: 4.0
+          endValue: 7.0
+          property: Energy
+          isLooped: true
+        - !type:FadeBehaviour # have the radius start small and get larger as it starts to burn
+          id: turn_on
+          maxDuration: 8.0
+          startValue: 1.0
+          endValue: 7.0
+        - !type:RandomizeBehaviour # weaker flicker as it fades out
+          id: fade_out
+          interpolate: Nearest
+          minDuration: 0.02
+          maxDuration: 0.06
+          startValue: 4.0
+          endValue: 7.0
+          property: Energy
+          isLooped: true
+        - !type:FadeBehaviour # fade out radius as it burns out
+          id: fade_out
+          maxDuration: 4.0
+          startValue: 6.0
+          endValue: 1.0
+    - type: Tag
+      tags:
+      - Torch
+
+
+- type: construction
+  id: M14Torch1
+  graph: M14Torch1
+  startNode: start
+  targetNode: m14torch
+  category: construction-category-tools
+  objectType: Item
+
+
+- type: constructionGraph
+  id: M14Torch1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: m14torch
+          steps:
+            - material: M14WoodPlank
+              amount: 3
+              doAfter: 3
+            - material: M14Cloth
+              amount: 1
+              doAfter: 1
+    - node: m14torch
+      entity: M14Torch
+

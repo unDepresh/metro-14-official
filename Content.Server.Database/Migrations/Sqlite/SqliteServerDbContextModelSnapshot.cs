@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -1276,6 +1276,36 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("server_unban", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.Sponsor", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.Property<DateTime?>("ExpiryDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("expiry_date");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_active");
+
+                    b.Property<string>("SponsorTier")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("sponsor_tier");
+
+                    b.HasKey("UserId")
+                        .HasName("PK_sponsor");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.HasIndex("SponsorTier", "IsActive");
+
+                    b.ToTable("sponsor", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Trait", b =>
                 {
                     b.Property<int>("Id")
@@ -1894,6 +1924,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_server_unban_server_ban_ban_id");
 
                     b.Navigation("Ban");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.Sponsor", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithOne()
+                        .HasForeignKey("Content.Server.Database.Sponsor", "UserId")
+                        .HasPrincipalKey("Content.Server.Database.Player", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_sponsor_player_player_id");
+
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Trait", b =>

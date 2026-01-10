@@ -254,6 +254,21 @@ namespace Content.Server.Database
 
         #endregion
 
+        //Metro14-start
+        #region Sponsor
+
+        Task<bool> IsSponsorAsync(NetUserId userId);
+
+        Task<SponsorInfo?> GetSponsorInfoAsync(NetUserId userId);
+
+        Task AddOrUpdateSponsorAsync(NetUserId userId, string tier, DateTime? expiryDate = null, bool isActive = true);
+
+        Task RemoveSponsorAsync(NetUserId userId);
+
+        Task<List<SponsorInfo>> GetAllSponsorsAsync();
+        #endregion
+        //Metro14-end
+
         #region Whitelist
 
         Task<bool> GetWhitelistStatusAsync(NetUserId player);
@@ -786,6 +801,42 @@ namespace Content.Server.Database
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.CountAdminLogs(round));
         }
+
+        //Metro14-start
+        #region Sponsor Realization
+
+        public Task<bool> IsSponsorAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.IsSponsorAsync(userId));
+        }
+
+        public Task<SponsorInfo?> GetSponsorInfoAsync(NetUserId userId)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetSponsorInfoAsync(userId));
+        }
+
+        public Task AddOrUpdateSponsorAsync(NetUserId userId, string tier, DateTime? expiryDate = null, bool isActive = true)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddOrUpdateSponsorAsync(userId, tier, expiryDate, isActive));
+        }
+
+        public Task RemoveSponsorAsync(NetUserId userId)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveSponsorAsync(userId));
+        }
+
+        public Task<List<SponsorInfo>> GetAllSponsorsAsync()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllSponsorsAsync());
+        }
+
+        #endregion
+        //Metro14-end
 
         public Task<bool> GetWhitelistStatusAsync(NetUserId player)
         {

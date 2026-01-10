@@ -27,7 +27,7 @@
   parent: BaseWeaponShotgun
   id: M14WeaponShotgunAshot
   description: Говно и трубы, описывает своим существованием всё метро.
-  components:
+  components: # needs to be super inaccurate because you don't need to wield it
   - type: Sprite
     sprite: _Metro14/Objects/Weapons/Guns/Shotguns/ashot_pistol.rsi
   - type: Clothing
@@ -39,7 +39,7 @@
   - type: Gun
     damageMultiplierModified: 0.7
     fireRate: 3
-    soundGunshot:
+    soundGunshot: # Corvax-Guns
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
   - type: GunSpreadModifier
     spread: 0.1

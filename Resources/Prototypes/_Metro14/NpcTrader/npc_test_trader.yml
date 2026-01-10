@@ -19,7 +19,7 @@
         - npc-trader-little-money-2
         - npc-trader-little-money-3
       catalogs:
-        - TestTrader
+        - TestTrader #Добавить таблетку дексалина
     - type: Sprite
       sprite: _Metro14/Structures/NpcTrader.rsi
       state: trader

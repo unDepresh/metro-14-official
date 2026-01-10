@@ -1,0 +1,7 @@
+- type: latheRecipe
+  id: M14devicesDNVlethe
+  result: M14NightVisionDeviceHud
+  completetime: 70
+  materials:
+    M14Steel: 1000
+    M14ReinforcedGlass: 300

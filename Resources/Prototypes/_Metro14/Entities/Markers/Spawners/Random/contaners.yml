@@ -1,44 +1,55 @@
 - type: entityTable
   id: M14MaintWeaponTable
-  table: !type:AllSelector
+  table: !type:GroupSelector
     children:
     # Common Group
-    - !type:GroupSelector
-      weight: 25
+    - !type:AllSelector
+      weight: 23
       children:
       - id: Machete
     # Rare Group
-    - !type:GroupSelector
-      weight: 35
+    - !type:AllSelector
+      weight: 9
       children:
       - id: ClothingUniformJumpsuitCasualBlue
-      - id: CombatKnife
       - id: ClothingMaskGas
       - id: ExGrenade
-      - id: BowImprovised
       - id: DrinkWineBottleFull
         weight: 0.5
       - id: M14WeaponShotgunAshot
         weight: 30
       - id: ClothingOuterRobesCult
       - id: M14FoodTinPorknbean
-    - !type:GroupSelector
-      weight: 5
+    - !type:AllSelector
+      weight: 25
       children: 
        - id: BowImprovised
        - id: ArrowRegular
        - id: ArrowRegular
        - id: FoodMeatHuman
-    - !type:GroupSelector
-      weight: 1
+    - !type:AllSelector
+      weight: 11
       children: 
        - id: ClothingOuterArmorRiot
-       - id: M14MaterialCardboard10
        - id: M14MaterialCloth
        - id: M14MaterialGunpowder
        - id: M14MaterialSheetSteel10
-
-
+    - !type:AllSelector
+      weight: 30
+      children: 
+       - id: Flare
+       - id: ShellShotgunFlare
+       - id: M14MaterialCardboard10
+       - id: CombatKnife
+       - id: DrinkWaterBottleFull
+       - id: FoodBurgerHuman
+    - !type:AllSelector
+      weight: 14
+      children: 
+       - id: SyringeInaprovaline
+       - id: ChemistryBottleAloxadone
+       - id: Gauze1
+       - id: Gauze1
 
 
 - type: entity
@@ -50,3 +61,17 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: M14MaintWeaponTable
+
+
+
+- type: entity
+  id: M14closetspawner
+  suffix: Fertilized, Chicken
+  components:
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+    - M14ClosetMaintenanceFilledRandom
+    intervalSeconds: 700
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1

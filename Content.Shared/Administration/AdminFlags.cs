@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.Administration
+namespace Content.Shared.Administration
 {
     /// <summary>
     ///     Permissions that admins can have.
@@ -123,6 +123,15 @@
         ///     Lets you set the color of your OOC name.
         /// </summary>
         NameColor = 1 << 21,
+
+        //Metro14-start
+
+        /// <summary>  
+        ///      Now you can add sponsor tier to player.
+        /// </summary>  
+        Sponsor = 1 << 22,
+
+        //Metro14-end
 
         /// <summary>
         ///     Dangerous host permissions like scsi.

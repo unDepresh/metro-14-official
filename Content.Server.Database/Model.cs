@@ -23,6 +23,7 @@ namespace Content.Server.Database
         public DbSet<Profile> Profile { get; set; } = null!;
         public DbSet<AssignedUserId> AssignedUserId { get; set; } = null!;
         public DbSet<Player> Player { get; set; } = default!;
+        public DbSet<Sponsor> Sponsor { get; set; } = default!; //Metro14
         public DbSet<Admin> Admin { get; set; } = null!;
         public DbSet<AdminRank> AdminRank { get; set; } = null!;
         public DbSet<Round> Round { get; set; } = null!;
@@ -371,6 +372,24 @@ namespace Content.Server.Database
                 .OwnsOne(p => p.HWId)
                 .Property(p => p.Type)
                 .HasDefaultValue(HwidType.Legacy);
+
+            //Metro14-start
+            modelBuilder.Entity<Sponsor>()
+                .HasKey(s => s.UserId);
+
+            modelBuilder.Entity<Sponsor>()
+                .HasOne(s => s.Player)
+                .WithOne() // У Player нет коллекции спонсоров  
+                .HasForeignKey<Sponsor>(s => s.UserId)
+                .HasPrincipalKey<Player>(p => p.UserId);
+
+            modelBuilder.Entity<Sponsor>()
+                .HasIndex(s => s.UserId)
+                .IsUnique();
+
+            modelBuilder.Entity<Sponsor>()
+                .HasIndex(s => new { s.SponsorTier, s.IsActive });
+            //Metro14-end
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -596,6 +615,23 @@ namespace Content.Server.Database
         public List<ServerRoleBan> AdminServerRoleBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
     }
+
+    //Metro14-start
+
+    /// <summary>
+    /// Таблица для системы спонсоров.
+    /// </summary>
+    public class Sponsor
+    {
+        [Key] public Guid UserId { get; set; }
+        public string SponsorTier { get; set; } = string.Empty;
+        public DateTime? ExpiryDate { get; set; }
+        public bool IsActive { get; set; }
+
+        public Player Player { get; set; } = null!;
+    }
+
+    //Metro14-end
 
     [Table("whitelist")]
     public class Whitelist

@@ -6,6 +6,11 @@
   abstract: true
   components:
   - type: Hunger
+  - type: SkullMeter #Metro-14
+    alwaysHumanRoles:
+    - M14Furer
+    - M14Ministr
+    - M14SoldierGydra
   - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
     sprite: Mobs/Species/Human/parts.rsi
     state: full
