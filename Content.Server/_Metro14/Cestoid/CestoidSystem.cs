@@ -60,8 +60,8 @@ public sealed class CestoidSystem : EntitySystem
     /// <param name="args"> Аргументы события инициализации </param>
     private void OnComponentInit(EntityUid uid, CestoidComponent component, ComponentInit args)
     {
-        TrySetAction(uid, component.CestoidInfectionAction, component.CestoidInfectionActionEntity);
-        TrySetAction(uid, component.CestoidShootingDownAction, component.CestoidShootingDownActionEntity);
+        TrySetAction(uid, component.CestoidInfectionAction, ref component.CestoidInfectionActionEntity);
+        TrySetAction(uid, component.CestoidShootingDownAction, ref component.CestoidShootingDownActionEntity);
         TrySetEnlargedTresholds(uid);
 
         if (component.IdAimProto != null && _mindSystem.TryGetMind(uid, out var mindId, out var mind))
@@ -82,7 +82,7 @@ public sealed class CestoidSystem : EntitySystem
     /// <param name="uid"> Ленточник </param>
     /// <param name="actionProtoId"> Id прототипа действия </param>
     /// <param name="actionEntityUid"> Сущность, хранящая действие </param>
-    private void TrySetAction(EntityUid uid, EntProtoId actionProtoId, EntityUid? actionEntityUid)
+    private void TrySetAction(EntityUid uid, EntProtoId actionProtoId, ref EntityUid? actionEntityUid)
     {
         actionEntityUid = _actionsSystem.AddAction(uid, actionProtoId);
 
