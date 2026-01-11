@@ -14,26 +14,17 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Metro14.SponsorSystem.GhostSkinSystem;
 
-/// <summary>
-/// Класс с логикой смены скинов у наблюдателей спонсоров.
-/// </summary>
 public sealed class SponsorGhostSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IServerDbManager _dbManager = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
 
     public override void Initialize()
     {
-        // инициализация и удаление компонента
         SubscribeLocalEvent<CanBeSponsorGhostComponent, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<CanBeSponsorGhostComponent, ComponentRemove>(OnComponentRemove);
-
-        // выход в госта
         SubscribeLocalEvent<CanBeSponsorGhostComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<CanBeSponsorGhostComponent, PlayerAttachedEvent>(OnPlayerAttached);
-
-        // нажатие кнопки-действия
         SubscribeLocalEvent<CanBeSponsorGhostComponent, TryChangeGhostSkinActionEvent>(OnTryChangeGhostSkinActionPressed);
     }
 
@@ -58,8 +49,7 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// </summary>
     private async void OnMindAdded(EntityUid uid, CanBeSponsorGhostComponent component, MindAddedMessage args)
     {
-        // защита от дураков, которые решат выдать данный компонент другим сущностям.
-        if (!TryComp<GhostComponent>(uid, out var ghost))
+        if (!TryComp<GhostComponent>(uid, out var ghost)) // защита от дураков, которые решат выдать данный компонент другим сущностям.
             return;
 
         if (!TryComp<MindContainerComponent>(uid, out var mindContainer))
@@ -107,9 +97,6 @@ public sealed class SponsorGhostSystem : EntitySystem
         SetGhostSprite(uid, spriteState);
     }
 
-    /// <summary>
-    /// Когда игрок переходит в админ призрака (/aghost).
-    /// </summary>
     private async void OnPlayerAttached(EntityUid uid, CanBeSponsorGhostComponent component, PlayerAttachedEvent args)
     {
         // Проверяем, что присоединенная сущность - призрак с нашим компонентом  
@@ -164,6 +151,8 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// <summary>
     /// Вспомогательный метод для установки нужного спрайта призраку.
     /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="spriteState"></param>
     private void SetGhostSprite(EntityUid uid, string spriteState)
     {
         if (!TryComp<AppearanceComponent>(uid, out var appearance))
@@ -188,6 +177,9 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// <summary>
     /// Обработчик ивента, поднимаемого при нажатии кнопки для смены скина наблюдателя.
     /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="component"></param>
+    /// <param name="args"></param>
     private void OnTryChangeGhostSkinActionPressed(EntityUid uid, CanBeSponsorGhostComponent component, TryChangeGhostSkinActionEvent args)
     {
         if (!TryComp<GhostComponent>(uid, out var ghost))
@@ -210,6 +202,9 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// <summary>
     /// Вспомогательный метод для безопасной смены индекса скина.
     /// </summary>
+    /// <param name="currentIndex"></param>
+    /// <param name="maxIndex"></param>
+    /// <returns></returns>
     private int ChangeIndex(int currentIndex, int maxIndex)
     {
         return currentIndex + 1 >= maxIndex ? 0 : currentIndex + 1;
@@ -218,6 +213,9 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// <summary>
     /// Вспомогательный метод для установки действия смены скина наблюдателя.
     /// </summary>
+    /// <param name="uid"></param>
+    /// <param name="actionProtoId"></param>
+    /// <param name="actionEntityUid"></param>
     private void TrySetAction(EntityUid uid, EntProtoId actionProtoId, ref EntityUid? actionEntityUid)
     {
         actionEntityUid = _actionsSystem.AddAction(uid, actionProtoId);

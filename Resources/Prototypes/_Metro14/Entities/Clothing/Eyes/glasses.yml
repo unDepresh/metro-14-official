@@ -1,0 +1,36 @@
+- type: entity
+  parent: ClothingEyesGlasses
+  id: M14ClothingEyesGlasses
+  name: очки
+  description: Очки с специальными линзами для улучшения зрения.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Eyes/Glasses/glasses.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Eyes/Glasses/glasses.rsi
+
+- type: entity
+  parent: ClothingEyesGlassesSunglasses
+  id: M14ClothingEyesGlassesSunglasses
+  name: солнечные очки
+  description: Очки для защиты от солнечного света. Впрочем.. они довольно бесполезны в метро.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Eyes/Glasses/sunglasses.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Eyes/Glasses/sunglasses.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesSafetyGlasses
+  name: защитные очки
+  description: Очки, созданные специально для защиты глаз от попадания в них чего либо.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Eyes/Glasses/safety_glasses.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Eyes/Glasses/safety_glasses.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.97

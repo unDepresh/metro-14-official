@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "Metro-14 CLA",
+  "copyright": "Metro-14",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "KL-suit-icon"
+    },
+    {
+      "name": "KL-suit",
+      "directions": 4
+    },
+    {
+      "name": "KL-suit-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "KL-suit-inhand-right",
+      "directions": 4
+    }
+  ]
+}

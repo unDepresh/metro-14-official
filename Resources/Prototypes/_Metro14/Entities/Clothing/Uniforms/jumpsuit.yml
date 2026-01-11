@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingUniformBase
+  parent: M14UnsensoredClothingUniformBase
   id: M14ClothingUniformJumpsuitOfficer
   name: униформа офицера
   description: Стандартная униформа для унтер состава. На удивление довольно ухоженная.
@@ -10,7 +10,7 @@
     sprite: _Metro14/Clothing/Uniforms/Jumpsuit/officer.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: M14UnsensoredClothingUniformBase
   id: M14ClothingUniformTelogreykaBrown
   name: телогрейка
   description: Тёплый комплект одежды, состоящий из ватника и утеплённых штанов с подтяжками.
@@ -35,7 +35,7 @@
       visible: false
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: M14UnsensoredClothingUniformBase
   id: M14ClothingUniformTelogreykaBlack
   name: телогрейка
   description: Тёплый комплект одежды, состоящий из ватника и утеплённых штанов с подтяжками.
@@ -60,7 +60,7 @@
       visible: false
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: M14UnsensoredClothingUniformBase
   id: ClothingUniformJumpsuitCentcomOfficerBlack
   name: special operations officer uniform
   description: Special Operations Officer uniform, nothing like that. Although... If you have time to read this, it's too late...
@@ -69,3 +69,99 @@
       sprite: _Metro14/Clothing/Uniforms/Jumpsuit/centcom_officer_black.rsi
     - type: Clothing
       sprite: _Metro14/Clothing/Uniforms/Jumpsuit/centcom_officer_black.rsi
+
+# Color
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitBlackBeige
+  name: повседневная одежда
+  description: Одежда, состоящая из чёрных штанов и бежевой футболки.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Color/black_beige.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Color/black_beige.rsi
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitGreybrownJunk
+  name: повседневная одежда
+  description: Одежда, состоящая из серо-коричневых штанов и футболки.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Color/grey-brown_junk.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Color/grey-brown_junk.rsi
+
+# Hansa
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitHansaSoldier
+  name: серая камуфляжная форма
+  description: Серая камуфляжная форма. Я не думаю, что она скроет вас от других глах.. Хотя всё возможно.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Hansa/soldier.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Hansa/soldier.rsi
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitHansaTradeAgent
+  name: чёрный деловой костюм
+  description: Вы такой важный в этом костюме. Да да, это 100% правда!
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Hansa/trade_agent.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Hansa/trade_agent.rsi
+
+# Hydra
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitHydra
+  name: чёрная железнодорожная униформа
+  description: Чёрная железнодорожная униформа, которую раньше использовали машинисты поездов и прочих локомотивов.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/hydra.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/hydra.rsi
+
+# Sparta
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitSparta
+  name: комбинезон спартанца
+  description: Одежда самого обычного спартанца.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta.rsi
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitSpartaLieutenantColonel
+  name: комбинезон подполковника Спарты
+  description: Чёрный комбинезон, который побывал в многих разных передряг.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta_lieutenant-colonel.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta_lieutenant-colonel.rsi
+
+- type: entity
+  parent: M14UnsensoredClothingUniformBase
+  id: M14ClothingUniformJumpsuitSpartaColonel
+  name: комбинезон полковника Спарты
+  description: Одежда ветерана спецопераций по спасению человечества. 
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta_colonel.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/Uniforms/Jumpsuit/Sparta/sparta_colonel.rsi

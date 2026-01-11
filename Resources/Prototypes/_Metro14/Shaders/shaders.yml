@@ -2,3 +2,8 @@
   id: GreenOverlay
   kind: source
   path: "/Textures/_Metro14/Shaders/green_overlay.swsl"
+
+- type: shader
+  id: Hallucinations
+  kind: source
+  path: "/Textures/_Metro14/Shaders/hallucinations.swsl"

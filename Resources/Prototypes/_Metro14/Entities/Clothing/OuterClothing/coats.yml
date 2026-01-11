@@ -15,3 +15,30 @@
           Slash: 0.8
           Piercing: 0.6
           Heat: 0.9
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: M14ClothingOuterCoatBomber
+  name: бомбер
+  description: Толстая, поношенная кожаная куртка-бомбер времен Второй мировой войны.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/OuterClothing/Coats/bomber.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/OuterClothing/Coats/bomber.rsi
+
+- type: entity
+  parent: ClothingOuterStorageFoldableBase
+  id: M14ClothingOuterCoatFuhrer
+  name: пальто Фюрера
+  description: Пальто Фюрера. Он довольно модный, но и устрашает.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Clothing/OuterClothing/Coats/fuhrer.rsi
+  - type: Clothing
+    sprite: _Metro14/Clothing/OuterClothing/Coats/fuhrer.rsi
+
+- type: entity
+  parent: [ClothingOuterStorageFoldableBaseOpened, M14ClothingOuterCoatFuhrer]
+  id: M14ClothingOuterCoatFuhrerOpened
+  name: пальто Фюрера

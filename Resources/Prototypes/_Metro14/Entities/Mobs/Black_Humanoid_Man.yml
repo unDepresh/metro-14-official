@@ -23,7 +23,7 @@
       300: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
-    baseSprintSpeed : 5
+    baseSprintSpeed : 7
   - type: DamageStateVisuals
     states:
       Alive:
@@ -54,3 +54,4 @@
       collection: FootstepThud
   - type: Body
     prototype: Human
+  - type: SpecialAbilities

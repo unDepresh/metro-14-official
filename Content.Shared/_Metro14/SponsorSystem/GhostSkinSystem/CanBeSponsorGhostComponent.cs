@@ -1,8 +1,8 @@
+using Robust.Shared.GameObjects;
+using Robust.Shared.Serialization;
 using System.Collections.Generic;
 using Content.Shared.Actions;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._Metro14.SponsorSystem.GhostSkinSystem;
 
@@ -12,6 +12,7 @@ public sealed partial class CanBeSponsorGhostComponent : Component
     /// <summary>
     /// Состояние спрайта по умолчанию для не-спонсоров  
     /// </summary>
+    [DataField]
     public string DefaultState = "ghost";
 
     /// <summary>
@@ -30,14 +31,13 @@ public sealed partial class CanBeSponsorGhostComponent : Component
 
     public List<string> PossibleSkins = new List<string>();
 
-    /// <summary>
-    /// Индекс текущего включенного скина.
-    /// </summary>
+    [DataField]
     public int CurrentIndex = 0;
 
     /// <summary>
     /// Сущность, хранящая действие смены скина наблюдателя.
     /// </summary>
+    [DataField]
     public EntityUid? TryChangeGhostSkinActionEntity;
 
     /// <summary>
