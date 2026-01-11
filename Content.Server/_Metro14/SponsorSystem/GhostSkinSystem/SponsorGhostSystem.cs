@@ -1,5 +1,6 @@
+using System.Linq;
 using Content.Server.Database;
-using Content.Server._Metro14.SponsorSystem.GhostSkinSystem;
+using Content.Shared._Metro14.SponsorSystem.GhostSkinSystem;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Ghost;
@@ -39,7 +40,7 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// <summary>
     /// Базовый метод обработки события инициализации компонента CanBeSponsorGhostComponent.
     /// </summary>
-    private void OnComponentInit(EntityUid uid, CanBeSponsorGhostComponent component, ComponentInit args)
+    private async void OnComponentInit(EntityUid uid, CanBeSponsorGhostComponent component, ComponentInit args)
     {
         TrySetAction(uid, component.TryChangeGhostSkinAction, ref component.TryChangeGhostSkinActionEntity);
     }
@@ -49,11 +50,7 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// </summary>
     private void OnComponentRemove(EntityUid uid, CanBeSponsorGhostComponent component, ComponentRemove args)
     {
-        if (!TryComp<ActionsComponent>(uid, out var actionsComp))
-            return;
-
-        if (component.TryChangeGhostSkinActionEntity != null)
-            _actionsSystem.RemoveAction((uid, actionsComp), component.TryChangeGhostSkinActionEntity);
+        TryRemoveAction(uid, component);
     }
 
     /// <summary>
@@ -82,6 +79,8 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (!isSponsor)
         {
+            TryRemoveAction(uid, component);
+
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -90,23 +89,19 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (sponsorInfo == null || !sponsorInfo.IsActive)
         {
+            TryRemoveAction(uid, component);
+
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
 
-        var spriteState = component.SponsorStates.GetValueOrDefault(
-            sponsorInfo.Tier.ToLower(),
-            component.DefaultState
-        );
-
-        int indexSprite = component.SponsorsRankStates.IndexOf(spriteState);
-        if (indexSprite >= 0)
+        var spriteState = component.DefaultState;
+        if (component.SponsorStates.ContainsKey(sponsorInfo.Tier.ToLower()))
         {
-            component.CurrentIndex = indexSprite;
-            for (int i = 0; i <= indexSprite; i++)
-            {
-                component.AvailableStates.Add(component.SponsorsRankStates[i]);
-            }
+            spriteState = component.SponsorStates[sponsorInfo.Tier.ToLower()].Last();
+
+            component.PossibleSkins = component.SponsorStates[sponsorInfo.Tier.ToLower()];
+            component.CurrentIndex = component.PossibleSkins.Count - 1;
         }
 
         SetGhostSprite(uid, spriteState);
@@ -138,6 +133,8 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (!isSponsor)
         {
+            TryRemoveAction(uid, component);
+
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -146,23 +143,19 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (sponsorInfo == null || !sponsorInfo.IsActive)
         {
+            TryRemoveAction(uid, component);
+
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
 
-        var spriteState = component.SponsorStates.GetValueOrDefault(
-            sponsorInfo.Tier.ToLower(),
-            component.DefaultState
-        );
-
-        int indexSprite = component.SponsorsRankStates.IndexOf(spriteState);
-        if (indexSprite >= 0)
+        var spriteState = component.DefaultState;
+        if (component.SponsorStates.ContainsKey(sponsorInfo.Tier.ToLower()))
         {
-            component.CurrentIndex = indexSprite;
-            for (int i = 0; i <= indexSprite; i++)
-            {
-                component.AvailableStates.Add(component.SponsorsRankStates[i]);
-            }
+            spriteState = component.SponsorStates[sponsorInfo.Tier.ToLower()].Last();
+
+            component.PossibleSkins = component.SponsorStates[sponsorInfo.Tier.ToLower()];
+            component.CurrentIndex = component.PossibleSkins.Count - 1;
         }
 
         SetGhostSprite(uid, spriteState);
@@ -180,6 +173,19 @@ public sealed class SponsorGhostSystem : EntitySystem
     }
 
     /// <summary>
+    /// Вспомогательный метод для удаления действия при снятии компонента с
+    /// сущности или в случае, если игрок за наблюдателя не является спонсором.
+    /// </summary>
+    private void TryRemoveAction(EntityUid uid, CanBeSponsorGhostComponent component)
+    {
+        if (!TryComp<ActionsComponent>(uid, out var actionsComp))
+            return;
+
+        if (component.TryChangeGhostSkinActionEntity != null)
+            _actionsSystem.RemoveAction((uid, actionsComp), component.TryChangeGhostSkinActionEntity);
+    }
+
+    /// <summary>
     /// Обработчик ивента, поднимаемого при нажатии кнопки для смены скина наблюдателя.
     /// </summary>
     private void OnTryChangeGhostSkinActionPressed(EntityUid uid, CanBeSponsorGhostComponent component, TryChangeGhostSkinActionEvent args)
@@ -190,8 +196,11 @@ public sealed class SponsorGhostSystem : EntitySystem
         if (component.TryChangeGhostSkinActionEntity == null)
             return;
 
-        component.CurrentIndex = ChangeIndex(component.CurrentIndex, component.AvailableStates.Count);
-        var spriteState = component.SponsorsRankStates[component.CurrentIndex];
+        if (component.PossibleSkins.Count <= 0)
+            return;
+
+        component.CurrentIndex = ChangeIndex(component.CurrentIndex, component.PossibleSkins.Count);
+        var spriteState = component.PossibleSkins[component.CurrentIndex];
 
         SetGhostSprite(uid, spriteState);
 

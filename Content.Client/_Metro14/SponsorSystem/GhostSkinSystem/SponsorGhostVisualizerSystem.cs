@@ -1,6 +1,6 @@
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
-using Content.Server._Metro14.SponsorSystem.GhostSkinSystem;
+using Content.Shared._Metro14.SponsorSystem.GhostSkinSystem;
 
 namespace Content.Client._Metro14.SponsorSystem.GhostSkinSystem;
 

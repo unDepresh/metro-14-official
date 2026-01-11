@@ -57,8 +57,8 @@
       - MobState
     event: !type:CestoidShootingDownActionEvent
 
-# Данная способность необходима для переключения ПНВ (включить/выключить).
-# Дата добавления 25.12.2025
+# Данная способность необходима для переключения скина наблюдателя.
+# Дата добавления 11.01.2026
 # По вопросам работы компонента (системы, что обрабатывает компонент) можно обратиться к BeatusCrow в дискорд.
 - type: entity
   parent: BaseAction
@@ -69,7 +69,7 @@
   - type: Action
     useDelay: 2
     itemIconStyle: BigAction
-    icon: _Metro14/Mobs/Ghosts/ghost.rsi/ghost1.png
+    icon: _Metro14/Interface/Actions/GhostSkin/ghost1.png
     checkCanInteract: false
   - type: InstantAction
     event: !type:TryChangeGhostSkinActionEvent

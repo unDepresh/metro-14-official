@@ -4,7 +4,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Server._Metro14.SponsorSystem.GhostSkinSystem;
+namespace Content.Shared._Metro14.SponsorSystem.GhostSkinSystem;
 
 [RegisterComponent]
 public sealed partial class CanBeSponsorGhostComponent : Component
@@ -17,35 +17,18 @@ public sealed partial class CanBeSponsorGhostComponent : Component
     /// <summary>
     /// Маппинг уровней спонсора на состояния спрайта  
     /// </summary>
-    public Dictionary<string, string> SponsorStates = new()
+    public Dictionary<string, List<string>> SponsorStates = new()
     {
-        { "soldier", "ghost_camo" },
-        { "lieutenant", "ghost_fire" },
-        { "colonel", "ghost_blazeit" },
-        { "beatus_individual_tier", "ghostburger" },
-        { "ramzesina_individual_tier", "god" },
-        { "kompotik_individual_tier", "uncloak" }
+        ["ghost"] = new() { "ghost" },
+        ["soldier"] = new() { "ghost", "ghost_camo" },
+        ["lieutenant"] = new() { "ghost", "ghost_camo", "ghost_fire" },
+        ["colonel"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit" },
+        ["beatus_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "ghostburger" },
+        ["ramzesina_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "god" },
+        ["kompotik_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "uncloak" }
     };
 
-    /// <summary>
-    /// Список уровней спонсора.
-    /// Самый последниий - самый высокий.
-    /// Данное решение необходимо для возможности обладателю, например, подписки полковника менять свой скин на солдата/лейтенанта/полковника.
-    /// </summary>
-    public List<string> SponsorsRankStates = new List<string>() {
-        "ghost",
-        "ghost_camo",
-        "ghost_fire",
-        "ghost_blazeit",
-        "ghostburger",
-        "god",
-        "uncloak",
-    };
-
-    /// <summary>
-    /// Это поле необходимо для переключения скинов. В нем хранятся все доступные игроку скины.
-    /// </summary>
-    public List<string> AvailableStates = new List<string>();
+    public List<string> PossibleSkins = new List<string>();
 
     /// <summary>
     /// Индекс текущего включенного скина.
