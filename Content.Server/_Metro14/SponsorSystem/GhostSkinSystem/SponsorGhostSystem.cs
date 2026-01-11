@@ -33,7 +33,7 @@ public sealed class SponsorGhostSystem : EntitySystem
     /// </summary>
     private async void OnComponentInit(EntityUid uid, CanBeSponsorGhostComponent component, ComponentInit args)
     {
-        TrySetAction(uid, component.TryChangeGhostSkinAction, ref component.TryChangeGhostSkinActionEntity);
+        //TrySetAction(uid, component.TryChangeGhostSkinAction, ref component.TryChangeGhostSkinActionEntity);
     }
 
     /// <summary>
@@ -69,8 +69,6 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (!isSponsor)
         {
-            //TryRemoveAction(uid, component);
-
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -79,8 +77,6 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (sponsorInfo == null || !sponsorInfo.IsActive)
         {
-            //TryRemoveAction(uid, component);
-
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -95,6 +91,7 @@ public sealed class SponsorGhostSystem : EntitySystem
         }
 
         SetGhostSprite(uid, spriteState);
+        TrySetAction(uid, component.TryChangeGhostSkinAction, ref component.TryChangeGhostSkinActionEntity);
     }
 
     private async void OnPlayerAttached(EntityUid uid, CanBeSponsorGhostComponent component, PlayerAttachedEvent args)
@@ -120,8 +117,6 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (!isSponsor)
         {
-            //TryRemoveAction(uid, component);
-
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -130,8 +125,6 @@ public sealed class SponsorGhostSystem : EntitySystem
 
         if (sponsorInfo == null || !sponsorInfo.IsActive)
         {
-            //TryRemoveAction(uid, component);
-
             SetGhostSprite(uid, component.DefaultState);
             return;
         }
@@ -146,6 +139,7 @@ public sealed class SponsorGhostSystem : EntitySystem
         }
 
         SetGhostSprite(uid, spriteState);
+        TrySetAction(uid, component.TryChangeGhostSkinAction, ref component.TryChangeGhostSkinActionEntity);
     }
 
     /// <summary>
