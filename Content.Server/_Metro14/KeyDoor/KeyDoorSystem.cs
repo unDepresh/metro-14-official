@@ -34,24 +34,42 @@ public sealed class KeyDoorSystem : EntitySystem
         var user = args.User;
 
         if (!TryComp<KeyDoorComponent>(door, out var keyDoorComponent))
+        {
+            args.Handled = true;
             return;
+        }
 
         if (keyDoorComponent.Access.Count == 0)
         {
             ChangeDoorState(uid, keyDoorComponent);
+
+            args.Handled = true;
             return;
         }
 
-        var keyForDoorComponent = TryFindKey(user);
-        if (keyForDoorComponent == null || keyForDoorComponent.AccessList.Count == 0)
-            return;
+        List<EntityUid> allKeys = new List<EntityUid>();
+        TryFindKey(user, ref allKeys);
 
-        foreach (string keyAccess in keyForDoorComponent.AccessList)
+        foreach (var key in allKeys)
         {
-            if (keyDoorComponent.Access.Contains(keyAccess))
+            if (!TryComp<KeyForDoorComponent>(key, out var keyForDoorComponent))
+                continue;
+
+            if (keyForDoorComponent.AccessList.Count == 0)
             {
-                ChangeDoorState(uid, keyDoorComponent);
+                args.Handled = true;
                 return;
+            }
+
+            foreach (string keyAccess in keyForDoorComponent.AccessList)
+            {
+                if (keyDoorComponent.Access.Contains(keyAccess))
+                {
+                    ChangeDoorState(uid, keyDoorComponent);
+
+                    args.Handled = true;
+                    return;
+                }
             }
         }
 
@@ -91,7 +109,7 @@ public sealed class KeyDoorSystem : EntitySystem
     /// <summary>
     /// Метод для поиска ключа у игрока.
     /// </summary>
-    public KeyForDoorComponent? TryFindKey(EntityUid user)
+    public void TryFindKey(EntityUid user, ref List<EntityUid> allKeys)
     {
         // Проверяем руки на наличие предмета
         if (_entityManager.TryGetComponent(user, out HandsComponent? handsComponent))
@@ -103,7 +121,7 @@ public sealed class KeyDoorSystem : EntitySystem
                 if (tempHoldItem != null)
                 {
                     if (TryComp<KeyForDoorComponent>((EntityUid) tempHoldItem, out var keyForDoorComponent))
-                        return keyForDoorComponent;
+                        allKeys.Add((EntityUid) tempHoldItem);
                 }
             }
         }
@@ -115,38 +133,33 @@ public sealed class KeyDoorSystem : EntitySystem
             if (!_entityManager.TryGetComponent(item, out StorageComponent? storageComponent))
             {
                 if (TryComp<KeyForDoorComponent>((EntityUid) item, out var keyForDoorComp))
-                    return keyForDoorComp;
+                    allKeys.Add(item);
             }
             else
             {
                 if (storageComponent == null)
                     continue;
 
-                return TryFindKeyInStorage(storageComponent);
+                TryFindKeyInStorage(storageComponent, ref allKeys);
             }
         }
-        return null;
     }
 
     /// <summary>
     /// Вспомагательный метод для рекурсивного поиска ключа в рюкзаке.
     /// </summary>
-    private KeyForDoorComponent? TryFindKeyInStorage(StorageComponent storageComp)
+    private void TryFindKeyInStorage(StorageComponent storageComp, ref List<EntityUid> allKeys)
     {
         foreach (var storageItem in storageComp.StoredItems)
         {
             if (TryComp<KeyForDoorComponent>((EntityUid) storageItem.Key, out var keyForDoorComp))
-                return keyForDoorComp;
+                allKeys.Add(storageItem.Key);
 
             if (_entityManager.TryGetComponent(storageItem.Key, out StorageComponent? storageComponent))
             {
-                KeyForDoorComponent? theorComp = TryFindKeyInStorage(storageComponent);
-                if (theorComp != null)
-                    return theorComp;
+                TryFindKeyInStorage(storageComponent, ref allKeys);
             }
         }
-
-        return null;
     }
 
     /// <summary>
