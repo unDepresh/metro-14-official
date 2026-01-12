@@ -102,8 +102,8 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformJumpskirtRedLine
-  name: Юбка солдата красной линии
+  id: M14ClothingUniformJumpskirtRedLine
+  name: юбка солдата красной линии
   description: Последний писк моды, говорят что Виктория была тут, но это лишь слухи 
   components:
     - type: Sprite

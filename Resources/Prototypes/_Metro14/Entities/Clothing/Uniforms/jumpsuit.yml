@@ -156,7 +156,7 @@
 - type: entity
   parent: M14UnsensoredClothingUniformBase
   id: M14ClothingUniformJumpsuitHydra
-  name: Чёрная униформа железнодорожника
+  name: чёрная униформа железнодорожника
   description: Чёрная униформа железнодорожника, которую раньше использовали машинисты поездов и прочих локомотивов.
   components:
   - type: Sprite
