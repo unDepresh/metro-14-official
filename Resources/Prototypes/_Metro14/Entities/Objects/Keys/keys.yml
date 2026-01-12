@@ -5,6 +5,7 @@
   description: Этот ключ может открыть дверь, а может и нет. Вы не знаете.
   abstract: true
   components:
+  - type: KeyForDoor
   - type: Sprite
     sprite: _Metro14/Objects/Misc/key.rsi
     state: icon
@@ -14,12 +15,8 @@
   - type: Item
     size: Small
     heldPrefix: default
-  - type: Access
-  - type: IdCard
-  - type: StationRecordKeyStorage
   - type: Tag
     tags:
-    - DoorBumpOpener
     - M14Key
 
 #IDs with layers
@@ -29,101 +26,136 @@
   id: M14MetroKey
   suffix: Без доступа
 
+# спарта
 - type: entity
   parent: M14BaseKey
   id: M14SpartaKey
   suffix: Спарта
   components:
-  - type: PresetIdCard
-    job: M14SoldierSparta
+  - type: KeyForDoor
+    accessList:
+    - key_access_sparta_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfSpartaKey
   suffix: Глава Спарта
   components:
-  - type: PresetIdCard
-    job: M14HeadOfSparta
+  - type: KeyForDoor
+    accessList:
+    - key_access_sparta_head
+    - key_access_sparta_general
 
+# ганза
 - type: entity
   parent: M14BaseKey
   id: M14HansaKey
   suffix: Ганза
   components:
-  - type: PresetIdCard
-    job: M14OfficerHansa
+  - type: KeyForDoor
+    accessList:
+    - key_access_hansa_general
+
+- type: entity
+  parent: M14BaseKey
+  id: M14TraderAgentOfHansaKey
+  suffix: Торговый агент Ганза
+  components:
+  - type: KeyForDoor
+    accessList:
+    - key_access_hansa_trader_agent
+    - key_access_hansa_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfHansaKey
   suffix: Глава Ганза
   components:
-  - type: PresetIdCard
-    job: M14HeadOfHansa
+  - type: KeyForDoor
+    accessList:
+    - key_access_hansa_head
+    - key_access_hansa_trader_agent
+    - key_access_hansa_general
 
+# гидра
 - type: entity
   parent: M14BaseKey
   id: M14HydraKey
   suffix: Гидра
   components:
-  - type: PresetIdCard
-    job: M14SoldierHydra
+  - type: KeyForDoor
+    accessList:
+    - key_access_hydra_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfHydraKey
   suffix: Глава Гидра
   components:
-  - type: PresetIdCard
-    job: M14HeadOfHydra
+  - type: KeyForDoor
+    accessList:
+    - key_access_hydra_head
+    - key_access_hydra_general
 
+# красная линия
 - type: entity
   parent: M14BaseKey
   id: M14RedLineKey
   suffix: Красная Линия
   components:
-  - type: PresetIdCard
-    job: M14SoldierRedline
+  - type: KeyForDoor
+    accessList:
+    - key_access_redline_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfRedLineKey
   suffix: Глава Красная Линия
   components:
-  - type: PresetIdCard
-    job: M14HeadOfRedLine
+  - type: KeyForDoor
+    accessList:
+    - key_access_redline_head
+    - key_access_redline_general
 
+# ВДНХ
 - type: entity
   parent: M14BaseKey
   id: M14VDNKHKey
   suffix: ВДНХ
   components:
-  - type: PresetIdCard
-    job: M14SecurityVDNH
+  - type: KeyForDoor
+    accessList:
+    - key_access_VDNH_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfVDNKHKey
   suffix: Глава ВДНХ
   components:
-  - type: PresetIdCard
-    job: M14HeadOfVDNH
+  - type: KeyForDoor
+    accessList:
+    - key_access_VDNH_head
+    - key_access_VDNH_general
 
+# техники
 - type: entity
   parent: M14BaseKey
   id: M14KTechKey
   suffix: Техники
   components:
-  - type: PresetIdCard
-    job: M14TechnicTech
+  - type: KeyForDoor
+    accessList:
+    - key_access_tech_general
 
 - type: entity
   parent: M14BaseKey
   id: M14HeadOfTechKey
   suffix: Глава Техники
   components:
-  - type: PresetIdCard
-    job: M14HeadOfTech
+  - type: KeyForDoor
+    accessList:
+    - key_access_tech_head
+    - key_access_tech_general
 
 - type: entity
   parent: Clothing
@@ -157,49 +189,3 @@
   - type: Item
     size: Small
     heldPrefix: default
-  - type: Access
-  - type: IdCard
-  - type: StationRecordKeyStorage
-  - type: Tag
-    tags:
-    - DoorBumpOpener
-    - M14SetOfKeys
-
-#тестовые ключи...
-- type: entity
-  parent: Clothing
-  id: M14BaseTestKey
-  name: ключ
-  description: Этот ключ может открыть дверь, а может и нет. Вы не знаете.
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: _Metro14/Objects/Misc/key.rsi
-    state: icon
-  - type: Clothing
-    slots:
-    - idcard
-  - type: Item
-    size: Small
-    heldPrefix: default
-
-- type: entity
-  parent: M14BaseTestKey
-  id: M14TestHeadOfVDNKHKey
-  suffix: Глава ВДНХ
-  components:
-  - type: KeyForDoor
-    accessList:
-    - test_vdnkh_access
-
-- type: entity
-  parent: M14BaseTestKey
-  id: M14TestHeadOfHydraKey
-  suffix: Гидра
-  components:
-  - type: KeyForDoor
-    accessList:
-    - test_hydra_access
-  - type: Tag
-    tags:
-    - M14Key

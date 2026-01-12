@@ -6,6 +6,7 @@ using Content.Shared.Inventory;
 using Content.Shared._Metro14.KeyDoor;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics;
 
 namespace Content.Server._Metro14.KeyDoor;
 
@@ -17,6 +18,7 @@ public sealed class KeyDoorSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly OccluderSystem _occluder = default!;
 
     public override void Initialize()
     {
@@ -64,6 +66,10 @@ public sealed class KeyDoorSystem : EntitySystem
             SetDoorSprite(uid, keyDoorComponent.CloseSpriteState);
 
             _physics.SetCanCollide(uid, true);
+
+            if (keyDoorComponent.Occluder)
+                _occluder.SetEnabled(uid, true);
+
             _audio.PlayPvs(keyDoorComponent.CloseSound, uid);
         }
         else
@@ -72,6 +78,10 @@ public sealed class KeyDoorSystem : EntitySystem
             SetDoorSprite(uid, keyDoorComponent.OpenSpriteState);
 
             _physics.SetCanCollide(uid, false);
+
+            if (keyDoorComponent.Occluder)
+                _occluder.SetEnabled(uid, false);
+
             _audio.PlayPvs(keyDoorComponent.OpenSound, uid);
         }
     }

@@ -6,6 +6,12 @@ namespace Content.Shared._Metro14.KeyDoor;
 public sealed partial class KeyDoorComponent : Component
 {
     /// <summary>
+    /// По умолчанию дверь не прозрачная.
+    /// </summary>
+    [DataField]
+    public bool Occluder = true;
+
+    /// <summary>
     /// Список необходимых доступов для открытия двери.
     /// </summary>
     [DataField]
