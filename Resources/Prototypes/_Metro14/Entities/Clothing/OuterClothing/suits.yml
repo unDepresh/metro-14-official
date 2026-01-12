@@ -85,7 +85,7 @@
   - type: Clothing
     sprite: _Metro14/Clothing/OuterClothing/Suits/cult.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodCult
+    clothingPrototype: M14ClothingHeadHatHoodCult
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
@@ -95,7 +95,7 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatHoodCult
+  id: M14ClothingHeadHatHoodCult
   categories: [ HideSpawnMenu ]
   name: капюшон культиста
   description: Выглядит ещё загадочнее.
@@ -129,7 +129,7 @@
   - type: Clothing
     sprite: _Metro14/Clothing/OuterClothing/Suits/hcult.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodLeadCult
+    clothingPrototype: M14ClothingHeadHatHoodLeadCult
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
@@ -139,7 +139,7 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatHoodLeadCult
+  id: M14ClothingHeadHatHoodLeadCult
   categories: [ HideSpawnMenu ]
   name: капюшон лидера культиста
   description: Выглядит ещё невероятно загадочнее.
