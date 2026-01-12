@@ -7,8 +7,6 @@
   supervisors: job-supervisors-tech
   icon: "JobIconTech"
   canBeAntag: true
-  access:
-    - M14Tech
 
 - type: startingGear
   id: M14SecurityTechGear

@@ -7,8 +7,6 @@
   icon: "JobIconRedline"
   supervisors: job-supervisors-politruk
   canBeAntag: true
-  accessGroups:
-    - M14RedLine
 
 - type: startingGear
   id: M14PolitHandRedLineGear

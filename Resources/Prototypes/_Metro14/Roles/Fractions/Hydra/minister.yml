@@ -7,8 +7,6 @@
   icon: "JobIconHydra"
   supervisors: job-supervisors-predsedatel
   canBeAntag: true
-  accessGroups:
-    - M14Hydra
 
 - type: startingGear
   id: M14MinisterHydraGear

@@ -6,8 +6,6 @@
   startingGear: M14HeadOfRedLineGear
   icon: "JobIconRedline"
   canBeAntag: false
-  accessGroups:
-    - M14RedLine
 
 - type: startingGear
   id: M14HeadOfRedLineGear

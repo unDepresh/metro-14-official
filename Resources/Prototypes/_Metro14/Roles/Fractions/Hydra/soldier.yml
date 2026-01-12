@@ -7,8 +7,6 @@
   supervisors: job-supervisors-gydra
   icon: "JobIconHydra"
   canBeAntag: true
-  access:
-    - M14Hydra
 
 - type: startingGear
   id: M14SoldierHydraGear

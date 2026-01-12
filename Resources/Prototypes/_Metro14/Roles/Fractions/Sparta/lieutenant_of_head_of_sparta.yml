@@ -7,8 +7,6 @@
   supervisors: job-supervisors-podpolkovnik
   icon: "JobIconSparta"
   canBeAntag: true
-  accessGroups:
-    - M14Sparta
 
 - type: startingGear
   id: M14LieutenantOfHeadOfSpartaGear

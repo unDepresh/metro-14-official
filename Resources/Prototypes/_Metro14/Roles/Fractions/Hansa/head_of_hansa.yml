@@ -6,8 +6,6 @@
   startingGear: M14HeadOfHansaGear
   icon: "JobIconHansa"
   canBeAntag: false
-  accessGroups:
-    - M14Hansa
 
 - type: startingGear
   id: M14HeadOfHansaGear

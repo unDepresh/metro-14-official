@@ -7,9 +7,7 @@
   supervisors: job-supervisors-sparta
   icon: "JobIconSparta"
   canBeAntag: true
-  access:
-    - M14Sparta
-
+  
 - type: startingGear
   id: M14MedicSpartaGear
   equipment:

@@ -7,8 +7,6 @@
   icon: "JobIconHydra"
   canBeAntag: false
   whitelisted: true
-  accessGroups:
-    - M14Hydra
 
 - type: startingGear
   id: M14HeadOfHydraGear
