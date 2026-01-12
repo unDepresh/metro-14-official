@@ -164,3 +164,42 @@
     tags:
     - DoorBumpOpener
     - M14SetOfKeys
+
+#тестовые ключи...
+- type: entity
+  parent: Clothing
+  id: M14BaseTestKey
+  name: ключ
+  description: Этот ключ может открыть дверь, а может и нет. Вы не знаете.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/key.rsi
+    state: icon
+  - type: Clothing
+    slots:
+    - idcard
+  - type: Item
+    size: Small
+    heldPrefix: default
+
+- type: entity
+  parent: M14BaseTestKey
+  id: M14TestHeadOfVDNKHKey
+  suffix: Глава ВДНХ
+  components:
+  - type: KeyForDoor
+    accessList:
+    - test_vdnkh_access
+
+- type: entity
+  parent: M14BaseTestKey
+  id: M14TestHeadOfHydraKey
+  suffix: Гидра
+  components:
+  - type: KeyForDoor
+    accessList:
+    - test_hydra_access
+  - type: Tag
+    tags:
+    - M14Key
