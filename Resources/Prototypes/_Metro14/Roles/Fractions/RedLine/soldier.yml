@@ -17,3 +17,7 @@
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesFingerless
     back: ClothingBackpack
+  storage:
+    back:
+    - M14RadioHandheldRedLine
+    - M14RedLineKey

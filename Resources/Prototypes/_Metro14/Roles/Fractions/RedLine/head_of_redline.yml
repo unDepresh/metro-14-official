@@ -18,3 +18,7 @@
     gloves: ClothingHandsGlovesCombat
     back: ClothingMilitaryBackpack
     pocket1: M14HeadOfRedLineKey
+  storage:
+    back:
+    - M14RadioHandheldRedLine
+

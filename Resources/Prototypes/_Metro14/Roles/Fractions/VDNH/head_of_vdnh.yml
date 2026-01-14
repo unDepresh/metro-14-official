@@ -19,3 +19,7 @@
     back: ClothingBackpackMerc
     pocket1: SurvivalKnife
     pocket2: M14HeadOfVDNKHKey
+  storage:
+    back:
+    - M14RadioHandheldVDNH
+    - M14WeaponShotgunAshot

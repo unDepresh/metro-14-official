@@ -18,3 +18,7 @@
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesCombat
     back: ClothingMilitaryBackpack
+  storage:
+    back:
+    - M14RadioHandheldSparta
+    - M14SpartaKey

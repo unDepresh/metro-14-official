@@ -18,9 +18,11 @@
     shoes: ClothingShoesBootsLaceup
     back: ClothingBackpackSatchel
     pocket1: LuxuryPen
-    pocket2: M14HansaPassport
+    pocket2: M14HansaKey
   inhand:
     - BriefcaseBrownFilled
   storage:
     back:
     - RubberStampTrader
+    - M14HansaPassport
+    - M14RadioHandheldGanza

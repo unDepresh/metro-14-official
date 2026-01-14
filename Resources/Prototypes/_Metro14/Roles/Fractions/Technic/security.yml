@@ -17,3 +17,8 @@
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesFingerless
     back: ClothingBackpack
+    pocket1: M14WeaponShotgunAshot
+  storage:
+    back:
+    - M14RadioHandheldTehnick
+    - M14KTechKey
