@@ -14,4 +14,4 @@ radistation-reconfigured-successfully = Вышка успешно перенас
 radistation-reconfigured-failed = Вышка не смогла уловить сигнал вашей частоты.
 
 radistation-switch-frequency-successfully = Переключить частоту
-radistation-switch-frequency-failed = Переключить не удается... Механизм заржавел.
+radistation-switch-frequency-failed = Попробуйте переключить радиостанцию на свою частоту.
