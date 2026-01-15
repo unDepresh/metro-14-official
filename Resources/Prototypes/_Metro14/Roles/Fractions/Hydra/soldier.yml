@@ -17,3 +17,7 @@
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesColorBlack
     back: ClothingBackpack
+  storage:
+    back:
+    - M14RadioHandheldGidra
+    - M14HydraKey

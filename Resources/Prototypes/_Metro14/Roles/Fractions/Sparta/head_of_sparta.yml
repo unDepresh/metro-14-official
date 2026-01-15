@@ -20,3 +20,7 @@
     gloves: ClothingHandsMercGlovesCombat
     back: ClothingMilitaryBackpack
     pocket2: M14HeadOfSpartaKey
+  storage:
+    back:
+    - M14RadioHandheldSparta
+    - M14SpartaKey

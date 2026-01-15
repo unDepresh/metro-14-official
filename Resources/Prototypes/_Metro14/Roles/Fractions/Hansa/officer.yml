@@ -18,4 +18,9 @@
     gloves: ClothingHandsGlovesFingerless
     shoes: ClothingShoesBootsCombatFilled
     back: ClothingBackpackMerc
-    pocket1: M14HansaPassport
+    pocket2: M14HansaKey
+  storage:
+    back:
+    - M14HansaPassport
+    - M14RadioHandheldGanza
+    

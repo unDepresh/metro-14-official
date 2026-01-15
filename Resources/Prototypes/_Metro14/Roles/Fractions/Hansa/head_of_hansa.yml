@@ -19,4 +19,7 @@
     shoes: ClothingShoesBootsCombatFilled
     back: ClothingMilitaryBackpack
     pocket1: M14HeadOfHansaKey
-    pocket2: M14HansaPassport
+  storage:
+    back:
+    - M14HansaPassport
+    - M14RadioHandheldGanza

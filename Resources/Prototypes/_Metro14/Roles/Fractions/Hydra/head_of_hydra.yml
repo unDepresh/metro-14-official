@@ -20,3 +20,6 @@
     gloves: ClothingHandsGlovesCombat
     back: ClothingMilitaryBackpack
     pocket1: M14HeadOfHydraKey
+  storage:
+    back:
+    - M14RadioHandheldGidra

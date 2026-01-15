@@ -17,3 +17,7 @@
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesColorBlack
     back: ClothingMilitaryBackpack
+  storage:
+    back:
+    - M14RadioHandheldSparta
+    - M14SpartaKey

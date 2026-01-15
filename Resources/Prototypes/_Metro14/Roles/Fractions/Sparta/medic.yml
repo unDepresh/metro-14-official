@@ -19,3 +19,7 @@
     gloves: ClothingHandsGlovesLatex
     back: ClothingMilitaryBackpack
     belt: ClothingBeltMilitaryWebbingMedFilled
+  storage:
+    back:
+    - M14RadioHandheldSparta
+    - M14SpartaKey

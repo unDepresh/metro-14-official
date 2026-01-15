@@ -26,7 +26,7 @@ public sealed partial class CanBeSponsorGhostComponent : Component
         ["colonel"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit" },
         ["beatus_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "ghostburger" },
         ["ramzesina_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "god" },
-        ["kompotik_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "uncloak" }
+        ["kompotik_individual_tier"] = new() { "ghost", "ghost_camo", "ghost_fire", "ghost_blazeit", "ghost_kompotik" }
     };
 
     public List<string> PossibleSkins = new List<string>();

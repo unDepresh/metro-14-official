@@ -17,3 +17,8 @@
     gloves: ClothingHandsGlovesColorLightBrown
     back: ClothingBackpack
     belt: ClothingBeltUtilityEngineering
+    pocket1: M14WeaponShotgunAshot
+  storage:
+    back:
+    - M14RadioHandheldTehnick
+    - M14KTechKey

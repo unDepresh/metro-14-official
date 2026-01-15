@@ -17,3 +17,8 @@
     shoes: ClothingShoesBootsWork
     back: ClothingBackpack
     pocket1: SurvivalKnife
+    pocket2: M14WeaponShotgunAshot
+  storage:
+    back:
+    - M14RadioHandheldVDNH
+    - M14VDNKHKey
