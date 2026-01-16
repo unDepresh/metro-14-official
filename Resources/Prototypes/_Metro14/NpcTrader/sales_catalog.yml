@@ -14,10 +14,10 @@
   catalog: # предложения данного каталога
     NPC_Trader_Offer_Ashot: 7 
     NPC_Trader_Offer_Ashot_sales: 5
-    NPC_Trader_Offer_Ak12: 2
-    NPC_Trader_Offer_Duplet: 3
+    NPC_Trader_Offer_Ak12: 1
     NPC_Trader_Offer_mosinka: -1
     NPC_Trader_Ashot_to_granade: 8
+    NPC_Trader_Ashot_to_gra11: -1
 
 - type: npcTraderSalesCatalog # один из возможных каталогов для торговца
   id: TestTrader2

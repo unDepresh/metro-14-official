@@ -106,18 +106,6 @@
   takingItems:
     M14Weaponak12: 1
 
-- type: npcTraderItemForCatalog
-  id: NPC_Trader_Offer_Duplet
-  name: Ак12 
-  description: Ууу с этой пушечкой не балуй...хотя...можно и побаловаться
-  canRespawn: true
-  timeRespawn: 600 # 600 секунд, то есть 10 минут
-  countRespawn: 2
-  givingItems:
-    CartridgeLightRifle: 40
-  takingItems:
-    M14Duplet2033: 1
-
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Offer_M14ClothingShoesValenki
@@ -194,3 +182,12 @@
     Machete: 1
   takingItems:
     M14MagazineBoxLightRifleBig10: 2
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Ashot_to_gra11
+  name: Дробные патроны
+  description: Ауауау
+  givingItems:
+    CartridgeLightRifle: 3
+  takingItems:
+    ShellShotgun: 6

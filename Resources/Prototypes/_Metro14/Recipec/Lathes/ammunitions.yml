@@ -27,7 +27,7 @@
   result: CartridgeLightRifle
   completetime: 0.1
   materials:
-    M14Steel: 1
+    M14Steel: 15
     M14Gunpowder: 1
 
 - type: latheRecipe

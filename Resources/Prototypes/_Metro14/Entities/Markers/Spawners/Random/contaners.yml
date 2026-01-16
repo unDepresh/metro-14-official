@@ -19,7 +19,6 @@
       - id: M14WeaponShotgunAshot
         weight: 30
       - id: ClothingOuterRobesCult
-      - id: M14FoodTinPorknbean
     - !type:AllSelector
       weight: 25
       children: 
@@ -50,7 +49,17 @@
        - id: ChemistryBottleAloxadone
        - id: Gauze1
        - id: Gauze1
-
+    - !type:AllSelector
+      weight: 18
+      children: 
+       - id: ClothingEyesGlassesMeson
+       - id: M14MaterialSheetPlastic10
+       - id: M14MaterialSheetGlass10
+       - id: M14MaterialSheetPlasteel1
+    - !type:AllSelector
+      weight: 22
+      children: 
+       - id: M14MaterialCloth1
 
 - type: entity
   id: M14ClosetMaintenanceFilledRandom

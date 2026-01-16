@@ -5,3 +5,36 @@
   materials:
     M14Steel: 300
     M14Cloth: 500
+
+- type: latheRecipe
+  id: ClothingHeadHatHardhatWhite
+  result: ClothingHeadHatHardhatWhite
+  completetime: 2
+  materials:
+    M14Glass: 300
+    M14Plastic: 900
+
+- type: latheRecipe
+  id: Floodlight
+  result: Floodlight
+  completetime: 15
+  materials:
+    M14Glass: 900
+    M14Steel: 1200
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorPlateHeavy
+  result: M14ClothingOuterArmorPlateHeavy
+  completetime: 1
+  materials:
+    M14Plastic: 900
+    M14Steel: 1900
+    M14Cloth: 500
+
+- type: latheRecipe
+  id: M14ClothingOuterArmor6b13
+  result: M14ClothingOuterArmor6b13
+  completetime: 1
+  materials:
+    M14Plastic: 900
+    M14Steel: 1400

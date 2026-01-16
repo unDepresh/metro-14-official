@@ -23,8 +23,8 @@
     M14Wood: 250
 
 - type: latheRecipe
-  id: WeaponSniperMosin
-  result: WeaponSniperMosin
+  id: M14WeaponSniperMosin
+  result: M14WeaponSniperMosin
   completetime: 15
   materials:
     M14Steel: 1250
