@@ -4,23 +4,34 @@ on:
   push:
     branches: [ master, staging, stable ]
   merge_group:
-  pull_request:
+  pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
 
 jobs:
   build:
-    if: github.actor != 'PJBot' && github.event.pull_request.draft == false
+    if: github.actor != 'PJBot' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
     strategy:
       matrix:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
 
-    steps:
+    steps:      
+    - name: Checkout code safely
+      uses: actions/checkout@v4.2.2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        submodules: 'recursive'
+
     - name: Checkout Master
       uses: actions/checkout@v4.2.2
-
+      
     - name: Setup Submodule
       run: |
         git submodule update --init --recursive
@@ -51,7 +62,12 @@ jobs:
       shell: pwsh
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        # Добавляем больше вывода в лог
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj `
+          -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed `
+          --logger "console;verbosity=normal" `
+          --blame-hang-timeout 10min
+          
   ci-success:
     name: Build & Test Debug
     needs:
