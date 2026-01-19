@@ -34,6 +34,8 @@
         layer:
         - AirlockLayer
   - type: Airtight
+    airBlocked: true
+    noAirWhenFullyAirBlocked: false
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic

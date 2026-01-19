@@ -18,7 +18,7 @@ public sealed partial class NightVisionDeviceOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
         _depressiveShader = _prototypeManager.Index(Shader).InstanceUnique();
-        ZIndex = 9; // draw this over the DamageOverlay, RainbowOverlay etc, but before the black and white shader
+        ZIndex = -1; // draw this over the DamageOverlay, RainbowOverlay etc, but before the black and white shader
     }
 
     protected override void Draw(in OverlayDrawArgs args)

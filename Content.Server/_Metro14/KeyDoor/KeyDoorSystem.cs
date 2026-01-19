@@ -1,3 +1,5 @@
+using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Storage;
 using Content.Shared.Hands.Components;
@@ -12,6 +14,7 @@ namespace Content.Server._Metro14.KeyDoor;
 
 public sealed class KeyDoorSystem : EntitySystem
 {
+    [Dependency] private readonly AirtightSystem _airtightSystem = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly SharedHandsSystem _handSystem = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
@@ -88,6 +91,9 @@ public sealed class KeyDoorSystem : EntitySystem
             if (keyDoorComponent.Occluder)
                 _occluder.SetEnabled(uid, true);
 
+            if (TryComp(uid, out AirtightComponent? airtight))
+                _airtightSystem.SetAirblocked((uid, airtight), true);
+
             _audio.PlayPvs(keyDoorComponent.CloseSound, uid);
         }
         else
@@ -99,6 +105,9 @@ public sealed class KeyDoorSystem : EntitySystem
 
             if (keyDoorComponent.Occluder)
                 _occluder.SetEnabled(uid, false);
+
+            if (TryComp(uid, out AirtightComponent? airtight))
+                _airtightSystem.SetAirblocked((uid, airtight), false);
 
             _audio.PlayPvs(keyDoorComponent.OpenSound, uid);
         }

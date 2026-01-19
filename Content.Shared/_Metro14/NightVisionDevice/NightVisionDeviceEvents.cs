@@ -28,3 +28,9 @@ public sealed class ToggleNightVisionDeviceEvent : EntityEventArgs
         PathToSound = pathToSound;
     }
 }
+
+[RegisterComponent]
+public sealed partial class NightVisionDeviceUserComponent : Component
+{
+    public ResolvedSoundSpecifier? PathToSound = null;
+}

@@ -1,15 +1,16 @@
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
-using Robust.Server.Player;
 using Content.Shared._Metro14.NightVisionDevice;
 using Content.Shared.Actions;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mind.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Robust.Server.Player;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 
 namespace Content.Server._Metro14.NightVisionDevice;
 
@@ -30,6 +31,9 @@ public sealed class NightVisionDeviceSystem : EntitySystem
         SubscribeLocalEvent<NightVisionDeviceComponent, GetItemActionsEvent>(OnGetActions);
         SubscribeLocalEvent<NightVisionDeviceComponent, GotUnequippedEvent>(OnGotUnequipped);
         SubscribeLocalEvent<ToggleNightVisionDeviceActionEvent>(OnToggleNightVision);
+
+        //SubscribeLocalEvent<NightVisionDeviceUserComponent, MindRemovedMessage>(OnMindRemovedMessage);
+        //SubscribeLocalEvent<NightVisionDeviceUserComponent, MindUnvisitedMessage>(OnMindUnvisitedMessage);
     }
 
     /// <summary>
@@ -181,4 +185,20 @@ public sealed class NightVisionDeviceSystem : EntitySystem
         component.Enabled = false;
 
     }
+
+    //private void OnMindRemovedMessage(EntityUid uid, NightVisionDeviceUserComponent component, MindRemovedMessage args)
+    //{
+    //    if (_playerManager.TryGetSessionByEntity(uid, out var session) && component.Enabled)
+    //    {
+    //        RaiseNetworkEvent(new ToggleNightVisionDeviceEvent(false, GetNetEntity(uid), _audioSystem.ResolveSound(component.SoundPathDisable)), session);
+    //    }
+    //}
+
+    //private void OnMindUnvisitedMessage(EntityUid uid, NightVisionDeviceUserComponent component, MindUnvisitedMessage args)
+    //{
+    //    if (_playerManager.TryGetSessionByEntity(uid, out var session) && component.Enabled)
+    //    {
+    //        RaiseNetworkEvent(new ToggleNightVisionDeviceEvent(false, GetNetEntity(uid), _audioSystem.ResolveSound(component.SoundPathDisable)), session);
+    //    }
+    //}
 }

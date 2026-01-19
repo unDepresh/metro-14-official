@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Server._Metro14.GameRules;
 using Content.Server.RoundEnd;
+using Content.Shared.GameTicking;
 using Content.Shared._Metro14.RadioStation;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
@@ -36,6 +37,7 @@ public sealed class RadioStationSystem : EntitySystem
         SubscribeLocalEvent<RadioStationComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<RadioStationComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<RadioStationComponent, RadioStationChangeFrequencieDoAfterEvent>(OnChangeFrequencie);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
     }
 
     /// <summary>
@@ -110,6 +112,24 @@ public sealed class RadioStationSystem : EntitySystem
     }
 
     /// <summary>
+    /// При перезапуске раунда очищаем все, чтобы не было проблем с картами, которые содержат иные радиостанции.
+    /// </summary>
+    /// <param name="ev"></param>
+    private void OnRoundCleanup(RoundRestartCleanupEvent ev)
+    {
+        CountdownIsOn = false;
+
+        FinalTime = TimeSpan.FromSeconds(60);
+        _timeToDefeat = 900;
+
+        _roundstartFrequencies.Clear();
+        _currentFractionFrequencies.Clear();
+        _blockedFractionFrequencies.Clear();
+        _defeatedFractions.Clear();
+        _frequenciesLocalizationMapping.Clear();
+    }
+
+    /// <summary>
     /// При инициализации компонента первой вышки на карте составляется список доступных частот.
     /// </summary>
     /// <param name="uid"> Радиостанция </param>
@@ -174,6 +194,9 @@ public sealed class RadioStationSystem : EntitySystem
                         {
                             component.CurrentFrequence = rolesFrequencies.Key;
                             TryFindDefeatedFractions();
+
+                            if (_defeatedFractions.ContainsKey(component.CurrentFrequence))
+                                _defeatedFractions.Remove(component.CurrentFrequence);
 
                             _popupSystem.PopupEntity(Loc.GetString("radistation-reconfigured-successfully"), uid);
                             flag = false;
