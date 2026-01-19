@@ -133,13 +133,10 @@ public sealed class NightVisionDeviceSystem : EntitySystem
                     var wearer = container.Owner;
                     if (TryComp<MobStateComponent>(wearer, out var mobState))
                     {
-                        // Если носитель в крите или умер - снимаем очки  
                         if (_mobState.IsCritical(wearer, mobState) || _mobState.IsDead(wearer, mobState))
                         {
-                            // Снимаем очки из слота EYES  
                             _inventorySystem.TryUnequip(wearer, "eyes", force: true);
 
-                            // Отправляем событие выключения  
                             TryRiseEvent(uid, false, nightVisionDeviceComponent.SoundPathDisable);
                             nightVisionDeviceComponent.Enabled = false;
                             continue;
