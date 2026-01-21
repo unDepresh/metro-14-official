@@ -1,17 +1,19 @@
 using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Server._Metro14.GameRules;
+using Content.Server._Metro14.RadioStation.PeaceTreaty;
 using Content.Server.RoundEnd;
-using Content.Shared.GameTicking;
-using Content.Shared._Metro14.RadioStation;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
+using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Roles.Jobs;
+using Content.Shared._Metro14.RadioStation;
 using Robust.Server.Player;
+using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -26,7 +28,9 @@ public sealed class RadioStationSystem : EntitySystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly PeaceTreatySystem _peaceTreatySystem = default!;
     [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
+    [Dependency] private readonly SharedChatSystem _chatSystem = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
@@ -79,7 +83,7 @@ public sealed class RadioStationSystem : EntitySystem
     /// Поле для отслеживания состояния раунда.
     /// Значении true - отсчет окончания раунда идет.
     /// </summary>
-    private bool CountdownIsOn = false;
+    private static bool CountdownIsOn = false;
 
     /// <summary>
     /// Время окончания раунда.
@@ -93,28 +97,58 @@ public sealed class RadioStationSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var defeatedFraction in _defeatedFractions)
+        // Обработка поражённых фракций
+        foreach (var (fraction, defeatTime) in _defeatedFractions.ToList())
         {
-            if (_gameTiming.CurTime < defeatedFraction.Value)
+            if (_gameTiming.CurTime < defeatTime)
                 continue;
 
-            _blockedFractionFrequencies.Add(defeatedFraction.Key);
-            _defeatedFractions.Remove(defeatedFraction.Key);
+            _blockedFractionFrequencies.Add(fraction);
+            _defeatedFractions.Remove(fraction);
+            _peaceTreatySystem.RemoveDefeatedAllies(fraction);
         }
 
-        if (CountdownIsOn)
+        var shouldHaveCountdown = RadioStationRuleSystem.IsEnabledRule && CheckAlliesRule();
+        var hasMultipleFactions = _currentFractionFrequencies.Count != 1;
+
+        if (!CountdownIsOn && shouldHaveCountdown)
         {
-            if (_gameTiming.CurTime >= FinalTime)
-            {
-                _roundEndSystem.EndRound();
-            }
+            StartCountdown();
         }
+        else if (CountdownIsOn && hasMultipleFactions && !shouldHaveCountdown)
+        {
+            StopCountdown();
+        }
+
+        if (CountdownIsOn && _gameTiming.CurTime >= FinalTime)
+        {
+            _roundEndSystem.EndRound();
+        }
+    }
+
+    /// <summary>
+    /// Вспомогательный метод для начала отсчета до окончания раунда.
+    /// </summary>
+    private void StartCountdown()
+    {
+        CountdownIsOn = true;
+        FinalTime = _gameTiming.CurTime + TimeSpan.FromSeconds(_timeToDefeat);
+        SendGlobalMessage();
+        Log.Debug("Countdown started for fraction victory");
+    }
+
+    /// <summary>
+    /// Вспомогательный метод для остановки отсчета до окончания раунда.
+    /// </summary>
+    private void StopCountdown()
+    {
+        CountdownIsOn = false;
+        Log.Debug("Countdown stopped");
     }
 
     /// <summary>
     /// При перезапуске раунда очищаем все, чтобы не было проблем с картами, которые содержат иные радиостанции.
     /// </summary>
-    /// <param name="ev"></param>
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
     {
         CountdownIsOn = false;
@@ -224,16 +258,7 @@ public sealed class RadioStationSystem : EntitySystem
     /// </summary>
     private void TryFindDefeatedFractions()
     {
-        _currentFractionFrequencies.Clear();
-
-        var query = EntityManager.AllEntityQueryEnumerator<RadioStationComponent>();
-        while (query.MoveNext(out var uid, out var radioStationComponent))
-        {
-            if (string.Compare(radioStationComponent.CurrentFrequence, "neutral_frequency") == 0)
-                continue;
-
-            _currentFractionFrequencies.Add(radioStationComponent.CurrentFrequence);
-        }
+        FindAliveFraction();
 
         if (RadioStationRuleSystem.IsEnabledRule)
         {
@@ -241,8 +266,9 @@ public sealed class RadioStationSystem : EntitySystem
             {
                 CountdownIsOn = true;
                 FinalTime = _gameTiming.CurTime + TimeSpan.FromSeconds(_timeToDefeat);
+                SendGlobalMessage();
             }
-            else if (CountdownIsOn)
+            else if (CountdownIsOn && !CheckAlliesRule())
             {
                 CountdownIsOn = false;
             }
@@ -265,6 +291,46 @@ public sealed class RadioStationSystem : EntitySystem
 
             SendMessageToRole(temoHashSet, Loc.GetString("last-radio-station-lost-message", ("time", _timeToDefeat / 60)));
         }
+    }
+
+    /// <summary>
+    /// Метод для обновления списка _currentFractionFrequencies живых фракций.
+    /// </summary>
+    private void FindAliveFraction()
+    {
+        _currentFractionFrequencies.Clear();
+
+        var query = EntityManager.AllEntityQueryEnumerator<RadioStationComponent>();
+        while (query.MoveNext(out var uid, out var radioStationComponent))
+        {
+            if (string.Compare(radioStationComponent.CurrentFrequence, "neutral_frequency") == 0)
+                continue;
+
+            _currentFractionFrequencies.Add(radioStationComponent.CurrentFrequence);
+        }
+    }
+
+    /// <summary>
+    /// Метод для проверки всех оставшихся фракций на пердмет нахождения в одном союзе.
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckAlliesRule()
+    {
+        FindAliveFraction();
+        if (_currentFractionFrequencies.Count < 2)
+            return false;
+
+        int count = 0;
+        foreach (var allies in PeaceTreatySystem.AlliesFractions)
+        {
+            HashSet<string> fullAllies = new HashSet<string>(allies.Value);
+            fullAllies.Add(allies.Key);
+
+            if (_currentFractionFrequencies.IsSubsetOf(fullAllies))
+                count++;
+        }
+
+        return ((count != 0) && (PeaceTreatySystem.AlliesFractions.Count == count));
     }
 
     /// <summary>
@@ -315,5 +381,18 @@ public sealed class RadioStationSystem : EntitySystem
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Метод для отправки глобального оповещения о тотальном превосходстве 1 фракции/союза над остальными.
+    /// </summary>
+    private void SendGlobalMessage()
+    {
+        _chatSystem.DispatchGlobalAnnouncement(
+            Loc.GetString("radistation-final-time-start", ("time", (_timeToDefeat / 60))),
+            Loc.GetString("radistation-final-time-sender"),
+            playSound: true,
+            new SoundPathSpecifier("/Audio/Announcements/announce.ogg"),
+            Color.Gold);
     }
 }

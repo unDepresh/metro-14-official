@@ -3,8 +3,10 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server._Metro14.GameRules.Components;
 using Content.Server._Metro14.RadioStation;
-using Content.Shared._Metro14.RadioStation;
+using Content.Server._Metro14.RadioStation.PeaceTreaty;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared._Metro14.RadioStation;
 
 namespace Content.Server._Metro14.GameRules;
 
@@ -18,11 +20,12 @@ public sealed class RadioStationRuleSystem : GameRuleSystem<RadioStationRuleComp
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
     }
 
     /// <summary>
     /// Поле отражающее, выбран ли в данный момент режим захвата радиостанций.
-    /// Необходимо, чтобы при захвате последней радиостанции раунд закончился.
+    /// Это необходимо для того, чтобы при захвате последней радиостанции раунд закончился.
     /// </summary>
     public static bool IsEnabledRule = false;
 
@@ -42,6 +45,11 @@ public sealed class RadioStationRuleSystem : GameRuleSystem<RadioStationRuleComp
     private string _radiostationLeaderFrequency = "";
 
     /// <summary>
+    /// Частота фракции-лидера без локализации.
+    /// </summary>
+    private string _radiostationLeaderFrequencyWithoutLocalization = "";
+
+    /// <summary>
     /// Базовый метод инициализации правила в игре.
     /// </summary>
     protected override void Added(EntityUid uid, RadioStationRuleComponent comp, GameRuleComponent gameRule, GameRuleAddedEvent args)
@@ -49,6 +57,19 @@ public sealed class RadioStationRuleSystem : GameRuleSystem<RadioStationRuleComp
         base.Added(uid, comp, gameRule, args);
 
         IsEnabledRule = true;
+    }
+
+    /// <summary>
+    /// На всякий случай при перезапуске раунда очищаем всю информацию.
+    /// </summary>
+    private void OnRoundCleanup(RoundRestartCleanupEvent ev)
+    {
+        IsEnabledRule = false;
+
+        _radiostationSummaryCount = 0;
+        _radiostationCapturedCount = 0;
+        _radiostationLeaderFrequency = "";
+        _radiostationLeaderFrequencyWithoutLocalization = "";
     }
 
     /// <summary>
@@ -62,6 +83,22 @@ public sealed class RadioStationRuleSystem : GameRuleSystem<RadioStationRuleComp
         args.AddLine(Loc.GetString("radiostation-summary-count", ("count", _radiostationSummaryCount)));
         args.AddLine(Loc.GetString("radiostation-captured-count", ("count", _radiostationCapturedCount)));
         args.AddLine(Loc.GetString("radiostation-leader-frequency", ("frequency", _radiostationLeaderFrequency)));
+
+        if (PeaceTreatySystem.AlliesFractions.Count != 0)
+        {
+            if (PeaceTreatySystem.FrequenciesLocalizationMapping.ContainsKey(_radiostationLeaderFrequencyWithoutLocalization))
+            {
+                args.AddLine(Loc.GetString("radiostation-allies-info", ("frequency", Loc.GetString(PeaceTreatySystem.FrequenciesLocalizationMapping[_radiostationLeaderFrequencyWithoutLocalization]))));
+
+                foreach (string frequence in PeaceTreatySystem.AlliesFractions[_radiostationLeaderFrequencyWithoutLocalization])
+                {
+                    if (PeaceTreatySystem.FrequenciesLocalizationMapping.ContainsKey(frequence))
+                        args.AddLine(Loc.GetString("radiostation-allies-info-dop", ("frequency", Loc.GetString(PeaceTreatySystem.FrequenciesLocalizationMapping[frequence]))));
+                    else
+                        args.AddLine(Loc.GetString("radiostation-allies-info-dop", ("frequency", Loc.GetString(frequence))));
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -104,6 +141,7 @@ public sealed class RadioStationRuleSystem : GameRuleSystem<RadioStationRuleComp
             out var localizedFreq))
         {
             leaderFrequency = localizedFreq;
+            _radiostationLeaderFrequencyWithoutLocalization = fractionWinner.Key;
         }
 
         _radiostationSummaryCount = totalStations;
