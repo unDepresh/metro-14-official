@@ -1,8 +1,0 @@
-- type: gamePreset
-  id: Metro14MinimalPreset
-  name: metro14-minimal-title
-  description: metro14-minimal-description
-  showInVote: true
-  rules:
-  - Metro14BasicRoundstartVariation
-  - RadioStationRule

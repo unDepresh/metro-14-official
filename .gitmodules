@@ -2,3 +2,6 @@
 	path = RobustToolbox
 	url = https://github.com/space-wizards/RobustToolbox.git
 	branch = master
+[submodule "Resources/Prototypes/_Metro14"]
+	path = Resources/Prototypes/_Metro14
+	url = https://github.com/Metro-Observers/_Metro14_Prototype.git

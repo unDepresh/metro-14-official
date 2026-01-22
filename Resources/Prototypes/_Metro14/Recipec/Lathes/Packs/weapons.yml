@@ -1,8 +1,0 @@
-- type: latheRecipePack
-  id: M14Weapons
-  recipes:
-  - M14WeaponRifleAk74
-  - M14WeaponShotgunAshot
-  - M14WeaponShotgunDuplet
-  - M14WeaponSniperMosin
-  - M14Weaponak12
