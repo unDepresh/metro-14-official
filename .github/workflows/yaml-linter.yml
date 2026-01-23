@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, staging, stable ]
   merge_group:
-  pull_request_target:  # Используем pull_request_target для доступа к секретам
+  pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
   workflow_dispatch:
 
@@ -20,55 +20,43 @@ jobs:
       pull-requests: write
     
     steps:
-      # 1. КРИТИЧЕСКИ ВАЖНО: Клонируем код ИЗ PR (head), а не в target
+      # 1. Для PR: клонируем код из PR
       - name: Checkout PR code
+        if: github.event_name == 'pull_request_target'
         uses: actions/checkout@v4.2.2
         with:
-          # Клонируем из репозитория PR
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}  # Используем GITHUB_TOKEN для клонирования
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
           
-      # 2. Настраиваем доступ к приватным подмодулям с нашим токеном
-      - name: Setup Git authentication for private submodules
+      # 2. Для push/workflow: клонируем текущий репозиторий
+      - name: Checkout current code
+        if: github.event_name != 'pull_request_target'
+        uses: actions/checkout@v4.2.2
+        with:
+          token: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.GITHUB_TOKEN }}
+          submodules: false
+          
+      # 3. Настраиваем приватные подмодули
+      - name: Setup private submodules
         env:
           PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN }}
         run: |
-          echo "🔧 Настраиваем доступ к приватным подмодулям..."
+          [ -n "$PAT" ] && git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          git submodule update --init --recursive
           
-          if [ -n "$PAT" ]; then
-            git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
-            echo "Токен настроен"
-          else
-            echo "Токен не найден!"
-            exit 1
-          fi
-          
-      # 3. Инициализируем подмодули из проверяемого PR
-      - name: Initialize and update submodules
-        run: |
-          echo "Инициализируем подмодули из PR..."
-          
-          # Инициализируем подмодули
-          git submodule update --init --recursive --force
-          
-          echo "Подмодули инициализированы"
-          
-      # 4. Настройка .NET Core
+      # 4. Сборка и запуск линтера
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4.1.0
         with:
           dotnet-version: 10.0.x
           
-      # 5. Восстановление зависимостей
       - name: Install dependencies
         run: dotnet restore
         
-      # 6. Сборка проекта
       - name: Build
         run: dotnet build --configuration Release --no-restore /p:WarningsAsErrors= /m
         
-      # 7. Запуск линтера YAML
       - name: Run Linter
         run: dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build
