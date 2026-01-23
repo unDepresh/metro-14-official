@@ -31,18 +31,31 @@ jobs:
         env:
           PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          echo "Настраиваем доступ к приватным подмодулям..."
-          
-          # Настраиваем замену URL для приватных подмодулей
-          if [ -n "$PAT" ]; then
-            git config --global url."https://x-access-token:$PAT@github.com/Metro-Observers".insteadOf "https://github.com/Metro-Observers"
-            echo "Токен настроен для организации Metro-Observers"
-          else
-            echo "Токен не найден. Используем стандартную аутентификацию."
+          echo "🔧 Настраиваем доступ к приватным подмодулям..."
+    
+          # Проверяем наличие токена
+          if [ -z "$PAT" ]; then
+            echo "ОШИБКА: Токен не найден!"
+            echo "Добавьте секрет PRIVATE_SUBMODULE_TOKEN или ORG_ACCESS_TOKEN"
+            exit 1
           fi
-          
-          # Также настраиваем для стандартных github URL если нужно
+    
+          echo "Длина токена: ${#PAT} символов"
+    
+          #Вариант 1: Замена всех GitHub URL (проще, но менее безопасно)
+          #git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+    
+          # Вариант 2: Только для вашей организации (более безопасно)
+          git config --global url."https://x-access-token:$PAT@github.com/Metro-Observers/".insteadOf "https://github.com/Metro-Observers/"
+    
+          # Для git:// протокола
           git config --global url."https://github.com".insteadOf "git://github.com"
+    
+          echo "Настройки Git применены"
+    
+          # Проверяем конфигурацию
+          echo "Проверка конфигурации Git:"
+          git config --global --get-regexp "url.*insteadof"
           
       # 3. Инициализируем и обновляем подмодули
       - name: Initialize and update submodules
