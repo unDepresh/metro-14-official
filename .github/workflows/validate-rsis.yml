@@ -4,41 +4,57 @@ on:
   push:
     branches: [ master, staging, stable ]
   merge_group:
-  pull_request:
+  pull_request_target:
     paths:
       - '**.rsi/**'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   validate_rsis:
     name: Validate RSIs
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    
     steps:
-      # 1. Клонируем основной репозиторий с токеном для приватных подмодулей
+      # 1. Клонируем код из PR
       - uses: actions/checkout@v4.2.2
         with:
-          token: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
           
-      # 2. Настраиваем доступ к приватным подмодулям Metro-Observers
-      - name: Setup private submodules
+      # 2. Настройка приватных подмодулей (если есть доступ)
+      - name: Setup submodules
         env:
-          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN }}
         run: |
-          # Настраиваем Git для использования токена
-          git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
-          
-          # Инициализируем подмодули
-          git submodule update --init --recursive
+          if [ -n "$PAT" ]; then
+            git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          fi
+          git submodule update --init --recursive || echo "Подмодули частично инициализированы"
       
-      - name: Pull engine updates
-        uses: space-wizards/submodule-dependency@v0.1.5
-        
-      - name: Install Python dependencies
+      # 3. Установка зависимостей
+      - name: Install dependencies
         run: |
-          pip3 install --ignore-installed --user pillow jsonschema
+          pip3 install --user pillow jsonschema
           
+      # 4. Запуск валидации
       - name: Validate RSIs
         run: |
-          python3 Schemas/validate_rsis.py Resources/
+          # Ищем скрипт
+          if [ -f "Schemas/validate_rsis.py" ]; then
+            SCRIPT="Schemas/validate_rsis.py"
+          elif [ -f "RobustToolbox/Schemas/validate_rsis.py" ]; then
+            SCRIPT="RobustToolbox/Schemas/validate_rsis.py"
+          else
+            echo "Скрипт не найден"
+            exit 1
+          fi
+          
+          # Запускаем валидацию
+          python3 "$SCRIPT" Resources/

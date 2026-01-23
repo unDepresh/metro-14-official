@@ -12,7 +12,7 @@ on:
       - 'RobustToolbox'
       - 'RobustToolbox/**'
   merge_group:
-  pull_request:
+  pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
     paths:
@@ -23,37 +23,39 @@ on:
       - '**.yml'
       - 'RobustToolbox'
       - 'RobustToolbox/**'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
     name: Test Packaging
     if: github.actor != 'PJBot' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
 
     steps:
-      # 1. Клонируем основной репозиторий с токеном для приватных подмодулей
-      - name: Checkout Master
+      # 1. Клонируем код ИЗ PR
+      - name: Checkout code
         uses: actions/checkout@v4.2.2
         with:
-          token: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
           
-      # 2. Настраиваем доступ к приватным подмодулям Metro-Observers
+      # 2. Настраиваем приватные подмодули
       - name: Setup private submodules
         env:
-          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN }}
         run: |
-          # Настраиваем Git для использования токена
-          git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          [ -n "$PAT" ] && git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          git submodule update --init --recursive || echo "Подмодули частично инициализированы"
           
-          # Инициализируем подмодули
-          git submodule update --init --recursive
-          
-      - name: Pull engine updates
-        uses: space-wizards/submodule-dependency@v0.1.5
-
-      - name: Update Engine Submodules
+      # 3. Обновляем RobustToolbox
+      - name: Update RobustToolbox
         run: |
           cd RobustToolbox/
           git submodule update --init --recursive
