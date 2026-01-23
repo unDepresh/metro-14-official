@@ -4,11 +4,36 @@ on:
   pull_request:
     paths:
       - 'RobustToolbox'
-
+      - 'Content.Client/_Metro14'
+      - 'Content.Server/_Metro14'
+      - 'Content.Shared/_Metro14'
+      
 jobs:
   this_aint_right:
-    name: Submodule update in pr found
+    name: Submodule update in PR found
     runs-on: ubuntu-latest
     steps:
-      - name: Fail
-        run: exit 1
+      - name: Check for any changes in submodule directories
+        run: |
+          echo "Проверяем изменения в подмодулях..."
+          
+          # Получаем список измененных файлов
+          changed_files=$(git diff --name-only HEAD^ HEAD 2>/dev/null || echo "")
+          
+          # Проверяем, есть ли изменения в директориях подмодулей
+          if echo "$changed_files" | grep -q "^RobustToolbox/" || \
+             echo "$changed_files" | grep -q "^Content\.Client/_Metro14/" || \
+             echo "$changed_files" | grep -q "^Content\.Server/_Metro14/" || \
+             echo "$changed_files" | grep -q "^Content\.Shared/_Metro14/"; then
+            
+            echo "ОШИБКА: Обнаружены прямые изменения в подмодулях!"
+            echo ""
+            echo "Измененные файлы в подмодулях:"
+            echo "$changed_files" | grep -E "^(RobustToolbox|Content\..*/_Metro14)/"
+            echo ""
+            echo "ПОДМОДУЛИ НЕЛЬЗЯ ИЗМЕНЯТЬ НАПРЯМУЮ!"
+            echo "Обновляйте только ссылку на коммит через git submodule update"
+            exit 1
+          else
+            echo "Изменений в подмодулях не обнаружено"
+          fi
