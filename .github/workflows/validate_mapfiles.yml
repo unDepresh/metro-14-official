@@ -29,91 +29,29 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
           
-      # 2. Отладка: что у нас есть после клонирования
-      - name: Debug - check what we cloned
-        run: |
-          echo "Содержимое после клонирования:"
-          ls -la
-          echo ""
-          echo "Подмодули в .gitmodules:"
-          cat .gitmodules || echo "Нет .gitmodules"
-          
-      # 3. Настраиваем приватные подмодули
+      # 2. Настраиваем приватные подмодули
       - name: Setup private submodules
         env:
           PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN }}
         run: |
-          echo "Настраиваем доступ к приватным подмодулям..."
+          [ -n "$PAT" ] && git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          git submodule update --init --recursive
           
-          if [ -n "$PAT" ]; then
-            git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
-            echo "Токен настроен"
-          else
-            echo "Нет токена для приватных подмодулей"
-          fi
-          
-          echo "Инициализируем подмодули..."
-          git submodule update --init --recursive || echo "Частичная инициализация"
-          
-      # 4. ПРОВЕРКА: Что в RobustToolbox
-      - name: Debug - check RobustToolbox
+      # 3. Проверяем что схема существует
+      - name: Verify schema exists
         run: |
-          echo "Проверяем RobustToolbox..."
-          if [ -d "RobustToolbox/" ]; then
-            echo "RobustToolbox существует"
-            echo "Содержимое RobustToolbox:"
-            ls -la RobustToolbox/
-            echo ""
-            echo "Ищем Schemas:"
-            find RobustToolbox -name "Schemas" -type d
-            echo ""
-            echo "Содержимое RobustToolbox/Schemas (если есть):"
-            ls -la RobustToolbox/Schemas/ 2>/dev/null || echo "Директория Schemas не найдена"
-            echo ""
-            echo "Ищем mapfile.yml:"
-            find RobustToolbox -name "mapfile.yml" -o -name "mapfile.yaml"
-          else
-            echo "RobustToolbox не найден!"
-            echo "Текущая директория: $(pwd)"
-            echo "Список файлов:"
-            ls -la
-          fi
-          
-      # 5. Ищем схему в разных местах
-      - name: Find schema file
-        id: find_schema
-        run: |
-          echo "Ищем схему mapfile..."
-          
-          # Проверяем разные возможные пути
-          SCHEMA_PATHS=(
-            "RobustToolbox/Schemas/mapfile.yml"
-            "RobustToolbox/Schemas/mapfile.yaml"
-            "Schemas/mapfile.yml"
-            "Schemas/mapfile.yaml"
-            "Content.Shared/Schemas/mapfile.yml"
-          )
-          
-          for path in "${SCHEMA_PATHS[@]}"; do
-            if [ -f "$path" ]; then
-              echo "Найдена схема: $path"
-              echo "schema_path=$path" >> $GITHUB_OUTPUT
-              break
-            fi
-          done
-          
-          if [ -z "${{ steps.find_schema.outputs.schema_path }}" ]; then
-            echo "Схема mapfile не найдена ни в одном из мест:"
-            printf '  - %s\n' "${SCHEMA_PATHS[@]}"
+          if [ ! -f "RobustToolbox/Schemas/mapfile.yml" ]; then
+            echo "Схема не найдена: RobustToolbox/Schemas/mapfile.yml"
+            echo "Содержимое RobustToolbox/Schemas:"
+            ls -la RobustToolbox/Schemas/ 2>/dev/null || echo "Директория не найдена"
             exit 1
           fi
+          echo "Схема найдена"
           
-      # 6. Проверяем измененные map файлы
+      # 4. Проверяем измененные map файлы
       - name: Check changed map files
         id: changed_files
         run: |
-          echo "🔍 Ищем измененные map файлы..."
-          
           BASE_REF="${{ github.event.pull_request.base.ref }}"
           HEAD_REF="${{ github.event.pull_request.head.ref }}"
           
@@ -127,26 +65,23 @@ jobs:
           fi
           
           if [ -n "$CHANGED_FILES" ]; then
-            echo "Измененные файлы:"
-            echo "$CHANGED_FILES"
             echo "changed=true" >> $GITHUB_OUTPUT
           else
-            echo "Нет изменений в map файлах"
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
           
-      # 7. Запускаем валидатор
+      # 5. Запускаем валидатор
       - name: Validate map files
         if: steps.changed_files.outputs.changed == 'true'
         uses: PaulRitter/yaml-schema-validator@v1
         with:
-          schema: ${{ steps.find_schema.outputs.schema_path }}
+          schema: RobustToolbox/Schemas/mapfile.yml
           path_pattern: .*Resources/Maps/.*
           validators_path: RobustToolbox/Schemas/mapfile_validators.py
           validators_requirements: RobustToolbox/Schemas/mapfile_requirements.txt
           
-      # 8. Пропускаем если нет изменений
+      # 6. Пропускаем если нет изменений
       - name: Skip if no map changes
         if: steps.changed_files.outputs.changed == 'false'
         run: |
-          echo "Нет изменений в map файлах, валидация пропущена"
+          echo "Нет изменений в map файлах"
