@@ -23,6 +23,7 @@ on:
       - '**.yml'
       - 'RobustToolbox'
       - 'RobustToolbox/**'
+  workflow_dispatch: 
 
 jobs:
   build:
