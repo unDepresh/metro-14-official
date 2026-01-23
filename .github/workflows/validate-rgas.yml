@@ -5,7 +5,7 @@ on:
   merge_group:
   pull_request_target:
     types: [ opened, reopened, synchronize, ready_for_review ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   yaml-schema-validation:
@@ -13,30 +13,127 @@ jobs:
     if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    
     steps:
-      # 1. Клонируем основной репозиторий с токеном для приватных подмодулей
-      - uses: actions/checkout@v4.2.2
+      # 1. Клонируем код ИЗ PR (не из целевой ветки!)
+      - name: Checkout PR code
+        uses: actions/checkout@v4.2.2
         with:
-          token: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.ref || github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
           
       # 2. Настраиваем доступ к приватным подмодулям Metro-Observers
       - name: Setup private submodules
         env:
-          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PRIVATE_SUBMODULE_TOKEN || secrets.ORG_ACCESS_TOKEN }}
         run: |
-          # Настраиваем Git для использования токена
-          git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          echo "Настраиваем доступ к приватным подмодулям..."
           
-          # Инициализируем подмодули
-          git submodule update --init --recursive
-      
-      - name: Pull engine updates
-        uses: space-wizards/submodule-dependency@v0.1.5
-        
-      - uses: PaulRitter/yaml-schema-validator@v1
+          if [ -n "$PAT" ] && { 
+            [ "${{ github.event_name }}" != "pull_request_target" ] || 
+            [ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" ]; 
+          }; then
+            echo "Настраиваем токен для приватных подмодулей"
+            git config --global url."https://x-access-token:$PAT@github.com".insteadOf "https://github.com"
+          else
+            echo "Используем публичный доступ (PR из форка или нет токена)"
+          fi
+          
+          echo "Инициализируем подмодули..."
+          if git submodule update --init --recursive; then
+            echo "Подмодули инициализированы"
+          else
+            echo "Не удалось полностью инициализировать подмодули"
+            echo "Продолжаем с доступными подмодулями..."
+          fi
+          
+      # 3. Обновляем RobustToolbox
+      - name: Update RobustToolbox
+        run: |
+          echo "Обновляем RobustToolbox..."
+          if [ -d "RobustToolbox/" ]; then
+            cd RobustToolbox
+            git submodule update --init --recursive
+            cd ..
+            echo "RobustToolbox обновлен"
+          else
+            echo "RobustToolbox не найден!"
+            exit 1
+          fi
+          
+      # 4. Проверяем наличие схем RGA
+      - name: Check RGA schemas
+        run: |
+          echo "🔍 Проверяем наличие схем RGA..."
+          
+          SCHEMA_PATHS=(
+            "Schemas/rga.yml"
+            "RobustToolbox/Schemas/rga.yml"
+            "Content.Shared/Schemas/rga.yml"
+          )
+          
+          for path in "${SCHEMA_PATHS[@]}"; do
+            if [ -f "$path" ]; then
+              echo "Схема найдена: $path"
+              SCHEMA_PATH="$path"
+              break
+            fi
+          done
+          
+          if [ -z "$SCHEMA_PATH" ]; then
+            echo "Схема rga.yml не найдена ни в одном из мест:"
+            printf '  - %s\n' "${SCHEMA_PATHS[@]}"
+            exit 1
+          fi
+          
+          echo "SCHEMA_PATH=$SCHEMA_PATH" >> $GITHUB_ENV
+          
+      # 5. Проверяем измененные attribution файлы в PR
+      - name: Check changed attribution files
+        id: changed_files
+        if: github.event_name == 'pull_request_target'
+        run: |
+          echo "Ищем измененные attribution файлы в PR..."
+          
+          BASE_REF="${{ github.event.pull_request.base.ref }}"
+          HEAD_REF="${{ github.event.pull_request.head.ref }}"
+          
+          if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+            git remote add pr_head "https://github.com/${{ github.event.pull_request.head.repo.full_name }}.git"
+            git fetch pr_head $HEAD_REF
+            CHANGED_FILES=$(git diff --name-only origin/$BASE_REF pr_head/$HEAD_REF -- "*attributions.yml" "*attributions.yaml" 2>/dev/null || echo "")
+          else
+            git fetch origin $BASE_REF $HEAD_REF
+            CHANGED_FILES=$(git diff --name-only origin/$BASE_REF origin/$HEAD_REF -- "*attributions.yml" "*attributions.yaml" 2>/dev/null || echo "")
+          fi
+          
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "Измененные attribution файлы:"
+            echo "$CHANGED_FILES"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "Нет изменений в attribution файлах"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+          
+      # 6. Запускаем валидатор RGA схем
+      - name: Validate RGA files
+        if: github.event_name != 'pull_request_target' || steps.changed_files.outputs.changed == 'true'
+        uses: PaulRitter/yaml-schema-validator@v1
         with:
-          schema: Schemas/rga.yml
+          schema: ${{ env.SCHEMA_PATH || 'Schemas/rga.yml' }}
           path_pattern: .*attributions.ya?ml$
           validators_path: Schemas/rga_validators.py
           validators_requirements: Schemas/rga_requirements.txt
+          
+      # 7. Пропускаем если нет изменений
+      - name: Skip if no attribution changes
+        if: github.event_name == 'pull_request_target' && steps.changed_files.outputs.changed == 'false'
+        run: |
+          echo "Нет изменений в attribution файлах, валидация пропущена"
