@@ -18,7 +18,7 @@
       pen:
         maxVol: 25
         reagents:
-        - ReagentId: M_14voenstim
+        - ReagentId: M14voenstim
           Quantity: 25
   - type: Injector
     solutionName: pen

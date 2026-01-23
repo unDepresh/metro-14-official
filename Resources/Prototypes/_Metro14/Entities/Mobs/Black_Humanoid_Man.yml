@@ -53,5 +53,4 @@
     footstepSoundCollection:
       collection: FootstepThud
   - type: Body
-    prototype: Human
   - type: SpecialAbilities
