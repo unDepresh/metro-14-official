@@ -34,7 +34,7 @@
 - type: latheRecipe
   id: M14ClothingOuterArmor6b2Recipe
   result: M14ClothingOuterArmor6b2
-  completetime: 3
+  completetime: 3 
   materials:
     Plastic: 500
     Steel: 3200
@@ -48,7 +48,7 @@
     Steel: 4800
 
 - type: latheRecipe
-  id: M14ClothingOuterArmorIOTVBlackRecipe
+  id: M14ClothingOuterArmorIOTVBlackRecipe 
   result: M14ClothingOuterArmorIOTVBlack
   completetime: 3
   materials:
