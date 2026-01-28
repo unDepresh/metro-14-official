@@ -1,0 +1,24 @@
+- type: entity
+  parent: M14Weaponak12
+  id: M14Weaponak12InfectedPlague
+  suffix: Зараженный , Огненная чума
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true
+
+- type: entity
+  parent: M14ClothingHeadHelmetHeavy
+  id: M14ClothingHeadHelmetHeavyInfectedPlagueBoth # у вещей лучше ставить internalInfection в true. Иначе они
+  suffix: Зараженный , Огненная чума # не будут заражать при надевании. То есть если их надеть перчатками, то все будет ок.
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true
+    internalInfection: true
+
+- type: entity
+  parent: M14FoodTinCucumber
+  id: M14FoodTinCucumberInfectedPlague
+  suffix: Зараженный , Огненная чума
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true
