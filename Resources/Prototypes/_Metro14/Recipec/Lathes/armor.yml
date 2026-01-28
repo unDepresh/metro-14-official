@@ -32,9 +32,49 @@
     Cloth: 500
 
 - type: latheRecipe
-  id: M14ClothingOuterArmor6b13
-  result: M14ClothingOuterArmor6b13
-  completetime: 1
+  id: M14ClothingOuterArmor6b2Recipe
+  result: M14ClothingOuterArmor6b2
+  completetime: 3
   materials:
-    Plastic: 900
+    Plastic: 500
+    Steel: 3200
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorIOTVGreenRecipe
+  result: M14ClothingOuterArmorIOTVGreen
+  completetime: 2
+  materials:
+    Plastic: 300
     Steel: 1400
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorIOTVBlackRecipe
+  result: M14ClothingOuterArmorIOTVBlack
+  completetime: 3
+  materials:
+    Plastic: 400
+    Steel: 4800
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorPlateCarrierGreenRecipe
+  result: M14ClothingOuterArmorPlateCarrierGreen
+  completetime: 2
+  materials:
+    Plastic: 600
+    Steel: 4800
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorPlateCarrierGrayRecipe
+  result: M14ClothingOuterArmorPlateCarrierGray
+  completetime: 2
+  materials:
+    Plastic: 500
+    Steel: 4800
+
+- type: latheRecipe
+  id: M14ClothingOuterArmorPlateCarrierBlueRecipe
+  result: M14ClothingOuterArmorPlateCarrierBlue
+  completetime: 3
+  materials:
+    Plastic: 600
+    Steel: 4800
