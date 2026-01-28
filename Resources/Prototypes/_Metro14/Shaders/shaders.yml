@@ -7,3 +7,8 @@
   id: Hallucinations
   kind: source
   path: "/Textures/_Metro14/Shaders/hallucinations.swsl"
+
+- type: shader
+  id: InfectedShader
+  kind: source
+  path: "/Textures/_Metro14/Shaders/infected.swsl"

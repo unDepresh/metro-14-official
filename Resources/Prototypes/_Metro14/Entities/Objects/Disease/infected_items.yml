@@ -1,0 +1,33 @@
+- type: entity
+  parent: M14Weaponak12
+  id: M14Weaponak12InfectedPlague
+  suffix: Зараженный , Огненная чума
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true
+
+- type: entity
+  parent: M14ClothingHeadHelmetHeavy
+  id: M14ClothingHeadHelmetHeavyInfectedPlagueBoth
+  suffix: Зараженный , Огненная чума
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true
+    internalInfection: true
+
+- type: entity
+  parent: M14ClothingHeadHelmetHeavy
+  id: M14ClothingHeadHelmetHeavyInfectedPlagueInternal # то есть при УФ свете он будет выглядеть, как чистый :)
+  suffix: Зараженный , Огненная чума , Внутренне
+  components:
+  - type: InfectedItemPlague
+    externalInfection: false
+    internalInfection: true
+
+- type: entity
+  parent: M14FoodTinCucumber
+  id: M14FoodTinCucumberInfectedPlague
+  suffix: Зараженный , Огненная чума
+  components:
+  - type: InfectedItemPlague
+    externalInfection: true

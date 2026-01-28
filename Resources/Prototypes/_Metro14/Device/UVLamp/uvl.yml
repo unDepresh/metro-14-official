@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseItem
+  id: M14UltraVioletLamp
+  name: ultraviolet lamp
+  description: Look at what others don't see.
+  components:
+  - type: UltraVioletLamp
+  - type: Sprite
+    sprite: Objects/Tools/seclite.rsi
+    state: seclite
+  - type: PointLight
+    enabled: false
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: NightVisionDevice
+    soundPathActivate: /Audio/_Metro14/NightVisionDevice/nvd-on.ogg
+    soundPathDisable: /Audio/_Metro14/NightVisionDevice/nvd-off.ogg
+    toggleAction: ActionToggleNightVisionDevice
+  - type: Item
+    sprite: Objects/Tools/flashlight.rsi
+    storedRotation: -90
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot

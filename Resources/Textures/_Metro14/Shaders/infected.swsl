@@ -1,0 +1,42 @@
+uniform sampler2D SCREEN_TEXTURE;
+
+// Параметры ультрафиолетового эффекта
+uniform highp float u_uv_intensity = 1.8;        // Интенсивность свечения
+uniform highp float u_uv_glow = 0.9;            // Сила свечения
+uniform highp float u_uv_noise = 0.15;          // Шум для эффекта "флуоресценции"
+uniform highp float u_uv_speed = 1.0;           // Скорость анимации шума
+uniform highp float u_uv_color_boost = 2.2;     // Усиление сине-зелёных цветов
+
+void fragment() {
+    highp vec4 color = texture(SCREEN_TEXTURE, UV);
+
+    highp vec3 uv_color = vec3(0.1, 0.9, 0.95);
+
+    highp float noise = fract(sin(dot(UV * 3.0 + TIME * u_uv_speed,
+                                     vec2(12.9898, 78.233))) * 43758.5453);
+    highp float noise2 = fract(sin(dot(UV * 1.5 - TIME * u_uv_speed * 0.7,
+                                      vec2(41.978, 93.121))) * 69543.215);
+    highp float animated_noise = mix(noise, noise2, 0.5);
+
+    highp float brightness = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+
+    highp float glow_map = pow(brightness, 0.7);
+
+    highp vec3 glow_effect = uv_color * glow_map * u_uv_glow;
+
+    highp float noise_glow = (animated_noise * 2.0 - 1.0) * u_uv_noise;
+    glow_effect *= (1.0 + noise_glow);
+
+    highp vec3 boosted_color = color.rgb;
+    boosted_color.g *= (1.0 + u_uv_color_boost * glow_map * 0.3);
+    boosted_color.b *= (1.0 + u_uv_color_boost * glow_map * 0.4);
+    boosted_color.r *= (1.0 - glow_map * 0.2); // Слегка гасим красный
+
+    highp vec3 final_color = mix(boosted_color, uv_color, glow_map * u_uv_intensity * 0.3);
+    final_color += glow_effect;
+
+    highp float base_glow = smoothstep(0.0, 0.3, brightness) * 0.1;
+    final_color += uv_color * base_glow * u_uv_intensity;
+
+    COLOR = vec4(final_color, color.a);
+}

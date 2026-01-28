@@ -1,0 +1,13 @@
+- type: reagent
+  id: Pirogardin
+  name: reagent-name-pirogardin
+  group: Medicine
+  desc: reagent-desc-pirogardin
+  physicalDesc: reagent-physical-desc-pirogardin
+  flavor: medicine
+  color: "#D2691E"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:AddImmunityPlagueEffect
