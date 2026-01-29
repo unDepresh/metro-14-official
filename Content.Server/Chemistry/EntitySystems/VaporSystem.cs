@@ -16,6 +16,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
 using System.Numerics;
+using Content.Shared.EntityEffects;//Metro14
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -29,6 +30,8 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly ThrowingSystem _throwing = default!;
         [Dependency] private readonly ReactiveSystem _reactive = default!;
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+        [Dependency] private readonly EntityLookupSystem _lookup = default!; //Metro14
+        [Dependency] private readonly SharedEntityEffectsSystem _entityEffects = default!; //Metro14
 
         public override void Initialize()
         {
@@ -108,6 +111,35 @@ namespace Content.Server.Chemistry.EntitySystems
                 // Return early if we're not active
                 if (!vaporComp.Active)
                     continue;
+
+                //Metro14-start
+                var entities = _lookup.GetEntitiesInRange<TransformComponent>(xform.Coordinates, 0.5f);
+                foreach (var entity in entities)
+                {
+                    if (entity.Owner == uid) continue;
+
+                    foreach (var (_, soln) in _solutionContainerSystem.EnumerateSolutions((uid, container)))
+                    {
+                        var solution = soln.Comp.Solution;
+                        foreach (var reagentQuantity in solution.Contents)
+                        {
+                            if (reagentQuantity.Quantity == FixedPoint2.Zero)
+                                continue;
+
+                            var reagent = _protoManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+
+                            // Применяем новые эффекты облака  
+                            if (reagent.VaporEffects != null)
+                            {
+                                foreach (var effect in reagent.VaporEffects)
+                                {
+                                    _entityEffects.TryApplyEffect(entity, effect, (float)reagentQuantity.Quantity);
+                                }
+                            }
+                        }
+                    }
+                }
+                //Metro14-end
 
                 // Get the current location of the vapor entity first
                 if (TryComp(xform.GridUid, out MapGridComponent? gridComp))

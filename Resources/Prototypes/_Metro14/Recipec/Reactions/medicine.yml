@@ -1,0 +1,78 @@
+# «Гашение» — как тушение огня водой, но не до конца, а до «тления» (стабильного состояния).
+- type: reaction
+  id: StabilizingQuenchReaction
+  reactants:
+    Ignitoxin:
+      amount: 2
+    Aquacylin:
+      amount: 1
+  products:
+    Aquatoxin: 3
+
+# Активирует специальные вещества в
+# Идеально описывает превращение яда (Акватоксин) в ингибитор (Фотофиаг).
+- type: reaction
+  id: PhotoAquativeNeutralization
+  reactants:
+    Ignitoxin:
+      amount: 1
+    Photocytosine:
+      amount: 1
+  products:
+    Photophiag: 1
+
+# Подчёркивает объединение теплового агента (Ксилотермин) и светящегося (Фотофиаг) под действием фермента-посредника (Глициохол).
+- type: reaction
+  id: ThermoLuminescentSymbiosis
+  reactants:
+    Photophiag:
+      amount: 2
+    Xylothermin:
+      amount: 2
+    Glyciochol:
+      amount: 1
+      catalyst: true
+  products:
+    Xylophag: 4
+
+# Пыльца, попадая в раствор Аквтотаксина, формирует вокруг его молекул временный «кристаллический каркас».
+# Этот каркас не даёт Аквтотаксину сразу атаковать, но зато позволяет ему прикрепиться к клеткам и
+# блокировать рецепторы, через которые вирус чумы внедряется для размножения.
+- type: reaction
+  id: CrystallinePassivationReaction
+  reactants:
+    Aquatoxin:
+      amount: 2
+    FernPollenExtract:
+      amount: 1
+      catalyst: true
+  products:
+    Aquastasiton: 2
+
+# Теперь у нас есть все компоненты для величайшего медицинского достижения станции в борьбе с чумой.
+- type: reaction
+  id: PhoenixProcess
+  minTemp: 400
+  reactants:
+    Xylophag:
+      amount: 1
+    Aquatoxin:
+      amount: 1
+    Arachnocyte:
+      amount: 1
+      catalyst: true
+  products:
+    Pyrocatalysin: 2
+
+# Споры пещерной паутины довольно редкая вещь, так что даем возможность создать Арахноцит иначе.
+- type: reaction
+  id: TermoArachnocyte
+  conserveEnergy: true
+  minTemp: 380
+  reactants:
+    FernPollenExtract:
+      amount: 1
+    Glyciochol:
+      amount: 1
+  products:
+    Arachnocyte: 2

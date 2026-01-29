@@ -174,6 +174,9 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField]
         public Dictionary<ProtoId<ReactiveGroupPrototype>, ReactiveReagentEffectEntry>? ReactiveEffects;
 
+        [DataField]
+        public EntityEffect[]? VaporEffects; // Metro14 Новое поле для эффектов облака
+
         [DataField(serverOnly: true)]
         public List<ITileReaction> TileReactions = new(0);
 

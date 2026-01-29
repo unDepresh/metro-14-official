@@ -1,3 +1,4 @@
+# Реагент, который дает иммунитет к Огненной чуме
 - type: reagent
   id: Pirogardin
   name: reagent-name-pirogardin
@@ -11,3 +12,149 @@
       metabolismRate: 0.5
       effects:
       - !type:AddImmunityPlagueEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Pirogardin
+          min: 5
+
+# Реагент, который позволяет очистить предметы от заражения.
+- type: reagent
+  id: Aquatoxin
+  name: reagent-name-aquatoxin
+  group: Medicine
+  desc: reagent-desc-aquatoxin
+  physicalDesc: reagent-physical-desc-aquatoxin
+  flavor: medicine
+  color: "#00CED1"
+  vaporEffects:  # Наше поле ZOV ZOV ZOV Наш слон
+  - !type:RemoveInfectedItemPlagueComponentEffect
+  metabolisms:
+    Poison:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Aquatoxin
+          min: 2
+        damage:
+          groups:
+            Toxin: 0.5
+            Brute: 1
+
+# Реагент, который снимает болезнь, если она еще находится на первом этапе.
+- type: reagent
+  id: Photophiag
+  name: reagent-name-photophiag
+  group: Medicine
+  desc: reagent-desc-photophiag
+  physicalDesc: reagent-physical-desc-photophiag
+  flavor: medicine
+  color: "#9ACD32"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1.5
+      effects:
+      - !type:MinusStepOnFirstStepPlagueEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Photophiag
+          min: 4.5
+
+# Реагент, который снимает один этап болезни, если она находится на втором этапе.
+- type: reagent
+  id: Xylophag
+  name: reagent-name-xylophag
+  group: Medicine
+  desc: reagent-desc-xylophag
+  physicalDesc: reagent-physical-desc-xylophag
+  flavor: medicine
+  color: "#98FB98"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:MinusStepOnSecondStepPlagueEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Xylophag
+          min: 5
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Xylophag
+          min: 2
+        damage:
+          types:
+            Poison: 0.5
+
+# Реагент, который блокирует болезнь на текущем этапе.
+- type: reagent
+  id: Aquastasiton
+  name: reagent-name-aquastasiton
+  group: Medicine
+  desc: reagent-desc-aquastasiton
+  physicalDesc: reagent-physical-desc-aquastasiton
+  flavor: medicine
+  color: "#B0E0E6"
+  metabolisms:
+    Medicine:
+      metabolismRate: 2
+      effects:
+      - !type:StopRaisingPlagueEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Aquastasiton
+          min: 2
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Aquastasiton
+          min: 0.5
+        damage:
+          types:
+            Poison: 0.15
+
+# Реагент, который снимает один этап болезни, даже если она находится на третьем этапе.
+- type: reagent
+  id: Pyrocatalysin
+  name: reagent-name-pyrocatalysin
+  group: Medicine
+  desc: reagent-desc-pyrocatalysin
+  physicalDesc: reagent-physical-desc-pyrocatalysin
+  flavor: medicine
+  color: "#DDA0DD"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:MinusStepOnThirdStepPlagueEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Pyrocatalysin
+          min: 5
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Pyrocatalysin
+          min: 1
+        damage:
+          types:
+            Cold: 1
+            Asphyxiation: 0.25
+
+# Растения:
+# Фунгоидея люминесценс (Fungoidea luminescens) — «светящийся грибообразный». |###| Фотоцитозин - Photocytosine
+# Бриофит пирогенный (Bryophyte pyrogenus) — «огненный мох».                  |###| Игнитоксин - Ignitoxin
+# Микориза ксилотерма (Mycorhiza xylotherma) — «дерево-тепло».                |###| Ксилотермин - Xylothermin
+# Геофилус акватика (Geophilus aquaticus) — «водолюб водный».                 |###| Аквацилин - Aquacylin
+# Глициохол (фермент слизня) - Glyciochol
+# Экстракт кристального папоротника - FernPollenExtract
+# Арахноцит (Споры пещерной паутины) - Arachnocyte
+# Химические реакции:
+# Игнитоксин + Аквацилин = Акватоксин (Aquatoxin) CleanItemsPlagueEffect
+# Акватоксин + Фотоцитозин = Фотофиаг (Photophiag) MinusStepOnFirstStepPlagueEffect
+# Фотофиаг + Ксилотермин + Глициохол = Ксилофаг (Xylophag) MinusStepOnSecondStepPlagueEffect
+# Акватоксин + Экстракт Кристального Папоротника = Аквастазитон (Aquastasiton) StopRaisingPlagueEffect
+# Ксилофаг + Акватоксин + Арахноцит = Пирокатализин (Pyrocatalysin) MinusStepOnThirdStepPlagueEffect
+# Глициохол + Экстракт кристального папоротника = Арахноцит

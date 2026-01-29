@@ -1,0 +1,205 @@
+- type: entity
+  abstract: true
+  parent: ChemistryEmptyVial
+  id: M14ChemistryEmptyVial
+  name: пробирка
+  description: Маленькая пробирка
+  components:
+  - type: Tag
+    tags: &TagVial # Remove trash tag when we have a filled solution
+    - CentrifugeCompatible
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14PirogardinChemistryVial
+  suffix: Pirogardin
+  components:
+  - type: Label
+    currentLabel: reagent-name-pirogardin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Pirogardin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14AquatoxinChemistryVial
+  suffix: Aquatoxin
+  components:
+  - type: Label
+    currentLabel: reagent-name-aquatoxin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Aquatoxin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14PhotophiagChemistryVial
+  suffix: Photophiag
+  components:
+  - type: Label
+    currentLabel: reagent-name-photophiag
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Photophiag
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14XylophagChemistryVial
+  suffix: Xylophag
+  components:
+  - type: Label
+    currentLabel: reagent-name-xylophag
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Xylophag
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14AquastasitonChemistryVial
+  suffix: Aquastasiton
+  components:
+  - type: Label
+    currentLabel: reagent-name-aquastasiton
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Aquastasiton
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14PyrocatalysinChemistryVial
+  suffix: Pyrocatalysin
+  components:
+  - type: Label
+    currentLabel: reagent-name-pyrocatalysin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Pyrocatalysin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14PhotocytosineChemistryVial
+  suffix: Photocytosine
+  components:
+  - type: Label
+    currentLabel: reagent-name-photocytosine
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Photocytosine
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14IgnitoxinChemistryVial
+  suffix: Ignitoxin
+  components:
+  - type: Label
+    currentLabel: reagent-name-ignitoxin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Ignitoxin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14XylotherminChemistryVial
+  suffix: Xylothermin
+  components:
+  - type: Label
+    currentLabel: reagent-name-xylothermin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Xylothermin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14AquacylinChemistryVial
+  suffix: Aquacylin
+  components:
+  - type: Label
+    currentLabel: reagent-name-aquacylin
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Aquacylin
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14GlyciocholChemistryVial
+  suffix: Glyciochol
+  components:
+  - type: Label
+    currentLabel: reagent-name-glyciochol
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Glyciochol
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14FernPollenExtractChemistryVial
+  suffix: FernPollenExtract
+  components:
+  - type: Label
+    currentLabel: reagent-name-fern-pollen-extract
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: FernPollenExtract
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14ArachnocyteChemistryVial
+  suffix: Arachnocyte
+  components:
+  - type: Label
+    currentLabel: reagent-name-arachnocyte
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Arachnocyte
+          Quantity: 30
