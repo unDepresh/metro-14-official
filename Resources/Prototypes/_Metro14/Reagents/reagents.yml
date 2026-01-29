@@ -32,8 +32,9 @@
           reagent: Photocytosine
           min: 1
         damage:
-          Toxin: 1.5
-          Asphyxiation: 0.25
+          types:
+            Asphyxiation: 0.5
+            Poison: 1.5
 
 - type: reagent
   id: Ignitoxin
@@ -53,8 +54,9 @@
           reagent: Ignitoxin
           min: 0.5
         damage:
-          Toxin: -0.5
-          Heat: 1.0
+          types:
+            Poison: -0.5
+            Heat: 1.0
 
 - type: reagent
   id: Xylothermin
@@ -74,8 +76,9 @@
           reagent: Xylothermin
           min: 0.5
         damage:
-          Heat: 1.0
-          Cold: -1.5
+          types:
+            Heat: 1.0
+            Cold: -1.5
 
 - type: reagent
   id: Aquacylin
@@ -91,8 +94,9 @@
       effects:
       - !type:HealthChange
         damage:
-          Heat: -0.25
-          Asphyxiation: -0.25
+          types:
+            Heat: -0.25
+            Asphyxiation: -0.25
 
 - type: reagent
   id: Glyciochol
@@ -108,7 +112,8 @@
       effects:
       - !type:HealthChange
         damage:
-          Brute: -0.5
+          groups:
+            Brute: -0.5
 
 - type: reagent
   id: FernPollenExtract
@@ -133,4 +138,5 @@
       effects:
       - !type:HealthChange
         damage:
-          Toxin: 1.0
+          types:
+            Poison: 1.0
