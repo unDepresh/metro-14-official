@@ -6,7 +6,7 @@
   startingGear: M14SecurityVDNHGear
   icon: "JobIconVDNH"
   canBeAntag: true
-
+ 
 - type: startingGear
   id: M14SecurityVDNHGear
   equipment:
@@ -18,7 +18,11 @@
     back: ClothingBackpack
     pocket1: SurvivalKnife
     pocket2: M14WeaponShotgunAshot
+  inhand:
+    - M14CasingLighter
   storage:
     back:
     - M14RadioHandheldVDNH
     - M14VDNKHKey
+    - ShellShotgunSlug
+

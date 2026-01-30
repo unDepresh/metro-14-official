@@ -18,3 +18,6 @@
     back: ClothingBackpack
     pocket1: M14WeaponShotgunAshot
     pocket2: M14RadioHandheldVDNH
+  inhand:
+    - M14CasingLighter
+    

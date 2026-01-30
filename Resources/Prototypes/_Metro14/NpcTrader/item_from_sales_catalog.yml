@@ -172,7 +172,7 @@
   givingItems:
     CartridgeLightRifle: 30
   takingItems:
-    voenstimulator: 1
+    M14VoenStimulator: 1
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Machete_to_bullets
