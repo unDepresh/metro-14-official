@@ -26,8 +26,8 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           M14MaterialWoodPlank:
-            min: 3
-            max: 15
+            min: 1
+            max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Storage

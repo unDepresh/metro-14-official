@@ -21,3 +21,6 @@
   storage:
     back:
     - ShellShotgunSlug
+  inhand:
+    - M14CasingLighter
+    

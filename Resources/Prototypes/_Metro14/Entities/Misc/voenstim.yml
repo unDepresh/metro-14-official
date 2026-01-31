@@ -14,7 +14,7 @@
     changeColor: false
     emptySpriteName: medipen_empty
   - type: SolutionContainerManager
-    solutions:
+    solutions: 
       pen:
         maxVol: 25
         reagents:

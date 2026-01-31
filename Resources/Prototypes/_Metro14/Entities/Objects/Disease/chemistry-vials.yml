@@ -26,6 +26,36 @@
 
 - type: entity
   parent: M14ChemistryEmptyVial
+  id: M14IgnifiniumChemistryVial
+  suffix: Ignifinium
+  components:
+  - type: Label
+    currentLabel: reagent-name-ignifinium
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Ignifinium
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
+  id: M14PyrosporeChemistryVial
+  suffix: Pyrospore
+  components:
+  - type: Label
+    currentLabel: reagent-name-pyrospore
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Pyrospore
+          Quantity: 30
+
+- type: entity
+  parent: M14ChemistryEmptyVial
   id: M14AquatoxinChemistryVial
   suffix: Aquatoxin
   components:

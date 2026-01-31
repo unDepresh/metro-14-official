@@ -30,15 +30,15 @@
       weight: 11
       children: 
        - id: ClothingOuterArmorRiot
-       - id: M14MaterialCloth
+       - id: MaterialCloth10
        - id: M14MaterialGunpowder
-       - id: M14MaterialSheetSteel10
+       - id: SheetSteel10
     - !type:AllSelector
       weight: 30
       children: 
        - id: Flare
        - id: ShellShotgunFlare
-       - id: M14MaterialCardboard10
+       - id: MaterialCardboard10
        - id: CombatKnife
        - id: DrinkWaterBottleFull
        - id: FoodBurgerHuman
@@ -53,13 +53,13 @@
       weight: 18
       children: 
        - id: ClothingEyesGlassesMeson
-       - id: M14MaterialSheetPlastic10
-       - id: M14MaterialSheetGlass10
-       - id: M14MaterialSheetPlasteel1
+       - id: SheetPlastic10
+       - id: SheetGlass10
+       - id: SheetPlasteel10
     - !type:AllSelector
       weight: 22
       children: 
-       - id: M14MaterialCloth1
+       - id: MaterialCloth10
 
 - type: entity
   id: M14ClosetMaintenanceFilledRandom

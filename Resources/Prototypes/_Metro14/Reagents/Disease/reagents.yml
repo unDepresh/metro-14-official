@@ -17,6 +17,40 @@
           reagent: Pirogardin
           min: 5
 
+# Чудо реагент, который мгновенно излечивает от чумы. ТОЛЬКО ДЛЯ АДМИНОВ!
+- type: reagent
+  id: Ignifinium
+  name: reagent-name-ignifinium
+  group: Medicine
+  desc: reagent-desc-ignifinium
+  physicalDesc: reagent-physical-desc-ignifinium
+  flavor: medicine
+  color: "#17806d"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:RemoveInfectedPlagueComponentEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Ignifinium
+          min: 5
+
+# Реагент, который мгновенно заражает сущность чумой.
+- type: reagent
+  id: Pyrospore
+  name: reagent-name-pyrospore
+  group: Medicine
+  desc: reagent-desc-pyrospore
+  physicalDesc: reagent-physical-desc-pyrospore
+  flavor: medicine
+  color: "#FF8C00"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:AddInfectedPlagueComponentEffect
+
 # Реагент, который позволяет очистить предметы от заражения.
 - type: reagent
   id: Aquatoxin
