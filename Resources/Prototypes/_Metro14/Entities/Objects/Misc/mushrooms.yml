@@ -1,0 +1,216 @@
+- type: entity
+  name: гриб
+  parent: BaseStructure
+  id: M14Mushroom
+  suffix: Structure
+  description: грибы постоянно растущие в метро
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/spaceshroom.rsi
+      state: structure
+    - type: Transform
+      anchored: true
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2
+    - type: InteractionOutline
+    - type: Gatherable
+      toolWhitelist:
+        components:
+          - Hands
+      loot:
+        All: !type:GroupSelector
+          children:
+          - id: M14MusroomsPyrocatalysin
+          - id: M14MusroomsPhotophiag
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+    - type: PointLight
+      radius: 3.5
+      energy: 1.5
+      color: "#bae912"
+      falloff: 3
+      softness: 5
+
+- type: entity
+  name: грибочек
+  parent: FoodProduceBase
+  id: M14MusroomsPyrocatalysin
+  description: грибочек
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: Objects/Misc/spaceshroom.rsi
+    state: object
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: SpaceDrugs
+        Quantity: 10
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Aquacylin
+          Quantity: 15
+        - ReagentId: Vitamin
+          Quantity: 9
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+
+- type: entity
+  name: грибочек
+  parent: FoodProduceBase
+  id: M14MusroomsPhotophiag
+  description: грибочек
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: Objects/Misc/spaceshroom.rsi
+    state: object
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: SpaceDrugs
+        Quantity: 10
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Photophiag
+          Quantity: 15
+        - ReagentId: Vitamin
+          Quantity: 9
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+
+
+- type: entity
+  name: мох
+  parent: BaseStructureDynamic
+  id: M14Moh
+  suffix: Structure
+  placement:
+    mode: PlaceFree
+  description: возможно это поможет вам выжить
+  components:
+    - type: Sprite
+      sprite: _Metro14/Objects/Misc/moh.rsi
+      state: floor
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 1
+    - type: InteractionOutline
+    - type: Gatherable
+      toolWhitelist:
+        components:
+          - Hands
+      loot:
+        All: !type:GroupSelector
+          children:
+          - id: M14Mohitem
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+    - type: PointLight
+      radius: 3.5
+      energy: 1.5
+      color: "#1c8009"
+      falloff: 3
+      softness: 5
+
+- type: entity
+  name: мох
+  parent: FoodProduceBase
+  id: M14Mohitem
+  description: мох
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/mohitem.rsi
+    state: icon
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: SpaceDrugs
+        Quantity: 10
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Ignitoxin
+          Quantity: 15
+        - ReagentId: Vitamin
+          Quantity: 9
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
