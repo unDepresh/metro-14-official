@@ -1,0 +1,442 @@
+- type: entity
+  name: кислотный гриб
+  parent: FoodProduceBase
+  id: M14FoodSpaceshroom
+  description: зелёный, очень кислый гриб.
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+    state: icon
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Photocytosine
+          Quantity: 2
+        - ReagentId: Toxin 
+          Quantity: 8             
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: AtmosExposed
+  - type: Temperature
+    currentTemperature: 290
+  - type: TemperatureDamage
+  - type: InternalTemperature
+    thickness: 0.02
+    area: 0.02
+    conductivity: 0.43
+  - type: Tag
+    tags:
+    - Mushroom
+
+- type: entity
+  name: водяной гриб
+  parent: FoodProduceBase
+  id: M14FoodSpaceshroom2
+  description: сталкера называют еще водолюбом.
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+    state: icon2
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Aquacylin
+          Quantity: 2
+        - ReagentId: Water
+          Quantity: 8            
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: AtmosExposed
+  - type: Temperature
+    currentTemperature: 290
+  - type: TemperatureDamage
+  - type: InternalTemperature
+    thickness: 0.02
+    area: 0.02
+    conductivity: 0.43
+  - type: Tag
+    tags:
+    - Mushroom
+
+- type: entity
+  name: гриб
+  parent: FoodProduceBase
+  id: M14FoodSpaceshroom3
+  description: гриб в теплых оттенках, растёт рядом с теплом.
+  components:
+  - type: Produce
+  - type: Sprite
+    sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+    state: icon3
+  - type: FlavorProfile
+    flavors:
+      - spaceshroom
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Xylothermin
+          Quantity: 2
+  - type: StaticPrice
+    price: 20
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: AtmosExposed
+  - type: Temperature
+    currentTemperature: 290
+  - type: TemperatureDamage
+  - type: InternalTemperature
+    thickness: 0.02
+    area: 0.02
+    conductivity: 0.43
+  - type: Tag
+    tags:
+    - Mushroom
+
+- type: entity
+  name: кислотные грибы 
+  parent: BaseStructure
+  id: M14SpaceshroomAcid
+  description: Кислотные грибы, которые светятся в темноте.
+  components:
+    - type: Sprite
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+      state: structure
+    - type: Transform
+      anchored: true
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2
+    - type: PointLight  
+      color: "#32ff32"
+      radius: 4 
+      energy: 0.2          
+    - type: InteractionOutline   
+    - type: Gatherable
+      toolWhitelist:
+        components:
+          - Hands
+      loot:
+        All: !type:GroupSelector
+          children:
+          - id: M14FoodSpaceshroom
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+
+- type: entity  
+  name: кислотные грибы 
+  id: M14SpaceshroomAcid1
+  parent: [BaseStructure, M14SpaceshroomAcid]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure1
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2
+
+- type: entity  
+  name: кислотные грибы 
+  id: M14SpaceshroomAcid2
+  parent: [BaseStructure, M14SpaceshroomAcid]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure2       
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2      
+
+- type: entity  
+  name: кислотные грибы 
+  id: M14SpaceshroomAcid3
+  parent: [BaseStructure, M14SpaceshroomAcid]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure3      
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2    
+
+- type: entity  
+  name: кислотные грибы 
+  id: M14SpaceshroomAcid4
+  parent: [BaseStructure, M14SpaceshroomAcid]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure12     
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2    
+
+- type: entity
+  name: водянистые грибы
+  parent: BaseStructure
+  id: M14SpaceshroomWater
+  description: растут рядом с водой, на вкус как тухлая вода.
+  components:
+    - type: Sprite
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+      state: structure4
+    - type: Transform
+      anchored: true
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2     
+    - type: InteractionOutline   
+    - type: Gatherable
+      toolWhitelist:
+        components:
+          - Hands
+      loot:
+        All: !type:GroupSelector
+          children:
+          - id: M14FoodSpaceshroom2
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]            
+
+- type: entity  
+  name: водянистые грибы 
+  id: M14SpaceshroomWater1
+  parent: [BaseStructure, M14SpaceshroomWater]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure5       
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2  
+
+- type: entity  
+  name: водянистые грибы
+  id: M14SpaceshroomWater2
+  parent: [BaseStructure, M14SpaceshroomWater]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure6      
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2                          
+
+- type: entity  
+  name: водянистые грибы
+  id: M14SpaceshroomWater3
+  parent: [BaseStructure, M14SpaceshroomWater]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure7     
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2     
+
+- type: entity  
+  name: водянистые грибы
+  id: M14SpaceshroomWater4
+  parent: [BaseStructure, M14SpaceshroomWater]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure14     
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2   
+
+- type: entity
+  name: оранжевые грибы 
+  parent: BaseStructure
+  id: M14SpaceshroomWarm
+  description: гриб в теплых оттенках, растёт рядом с теплом.
+  components:
+    - type: Sprite
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi
+      state: structure8
+    - type: Transform
+      anchored: true
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2      
+    - type: InteractionOutline   
+    - type: Gatherable
+      toolWhitelist:
+        components:
+          - Hands
+      loot:
+        All: !type:GroupSelector
+          children:
+          - id: M14FoodSpaceshroom3
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Wood
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]            
+                
+- type: entity  
+  name: оранжевые грибы 
+  id: M14SpaceshroomWarm1
+  parent: [BaseStructure, M14SpaceshroomWarm]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure9  
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2              
+
+- type: entity  
+  name: оранжевые грибы 
+  id: M14SpaceshroomWarm2
+  parent: [BaseStructure, M14SpaceshroomWarm]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure10 
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2                                
+
+- type: entity  
+  name: оранжевые грибы 
+  id: M14SpaceshroomWarm3
+  parent: [BaseStructure, M14SpaceshroomWarm]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure11
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2             
+
+- type: entity  
+  name: оранжевые грибы 
+  id: M14SpaceshroomWarm4
+  parent: [BaseStructure, M14SpaceshroomWarm]
+  components:
+    - type: Sprite  
+      sprite: _Metro14/Objects/Consumable/Food/mushroom.rsi  
+      state: structure13
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.2                                               
