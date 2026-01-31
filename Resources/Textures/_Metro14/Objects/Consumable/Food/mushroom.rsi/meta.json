@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "license": "Metro-14CLA",
+  "copyright": "Created by loginsirs for Metro-14",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "icon2"
+    },
+    {
+      "name": "icon3"
+    },
+    {
+      "name": "structure",
+      "directions": 4
+    },
+    {
+      "name": "structure1",
+      "directions": 4
+    },
+    {
+      "name": "structure2",
+      "directions": 4
+    },
+    {
+      "name": "structure3",
+      "directions": 4
+    },
+    {
+      "name": "structure4",
+      "directions": 4
+    },
+    {
+      "name": "structure5",
+      "directions": 4
+    },
+    {
+      "name": "structure6",
+      "directions": 4
+    },
+    {
+      "name": "structure7",
+      "directions": 4
+    },
+    {
+      "name": "structure8",
+      "directions": 4
+    },
+    {
+      "name": "structure9",
+      "directions": 4
+    },
+    {
+      "name": "structure10",
+      "directions": 4
+    },
+    {
+      "name": "structure11",
+      "directions": 4
+    },
+    {
+      "name": "structure12"
+    },
+    {
+      "name": "structure13"
+    },
+    {
+      "name": "structure14"
+    }
+  ]
+}
