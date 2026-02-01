@@ -27,7 +27,7 @@
         spawn:
           MaterialWoodPlank:
             min: 1
-            max: 10
+            max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Storage
