@@ -110,6 +110,14 @@
         - FullTileMask
         layer:
         - WallLayer
+  - type: Gatherable
+    toolWhitelist:
+      components:
+        - Hands
+    loot:
+      All: !type:GroupSelector
+        children:
+        - id: MaterialWoodPlank1
   - type: Damageable
     damageModifierSet: Wood
     damageContainer: StructuralInorganic
