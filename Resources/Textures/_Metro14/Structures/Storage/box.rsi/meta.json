@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "Metro-14 CLA",
+  "copyright": "Make by loginsirs for Metro-14",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "box"
+    },
+    {
+      "name": "box2"
+    },
+    {
+      "name": "box3"
+    },
+    {
+      "name": "box4"
+    },
+    {
+      "name": "box5"
+    }
+  ]
+}
