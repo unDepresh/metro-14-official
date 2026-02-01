@@ -15,7 +15,7 @@
     maxPopulation: 5 # Максимальная популяция?
     spawnCount: 3 # Количество в одном спавне?
     spawnOffset: 5 # Максимальное растояние спавна от спавнера?
-    spawnOnInit: true # Спавн при инициализации?
+    spawnOnInit: false # Спавн при инициализации?
 
 - type: entity
   parent: MarkerBase
@@ -35,7 +35,7 @@
     maxPopulation: 5 # Максимальная популяция?
     spawnCount: 3 # Количество в одном спавне?
     spawnOffset: 5 # Максимальное растояние спавна от спавнера?
-    spawnOnInit: true # Спавн при инициализации?
+    spawnOnInit: false # Спавн при инициализации?
 
 - type: entity
   parent: MarkerBase
@@ -55,7 +55,7 @@
     maxPopulation: 5 # Максимальная популяция?
     spawnCount: 3 # Количество в одном спавне?
     spawnOffset: 5 # Максимальное растояние спавна от спавнера?
-    spawnOnInit: true # Спавн при инициализации?
+    spawnOnInit: false # Спавн при инициализации?
   
 - type: entity
   parent: MarkerBase
