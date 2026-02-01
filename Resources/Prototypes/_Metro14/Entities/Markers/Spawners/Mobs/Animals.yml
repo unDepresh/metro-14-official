@@ -64,7 +64,6 @@
   suffix: жен паук
   components:
   - type: Physics
-    hard: false
   - type: Fixtures
     fixtures:
       spooky:
