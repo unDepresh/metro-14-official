@@ -1,3 +1,4 @@
+using Content.Server._Metro14.RadioStaticJammer;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Power.EntitySystems;
@@ -13,6 +14,7 @@ public sealed class JammerSystem : SharedJammerSystem
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly RadioJammerSystem _radioJammerSystem = null!;
     [Dependency] private readonly SharedDeviceNetworkJammerSystem _jammer = default!;
 
     public override void Initialize()
@@ -106,6 +108,9 @@ public sealed class JammerSystem : SharedJammerSystem
 
     private void OnRadioSendAttempt(ref RadioSendAttemptEvent args)
     {
+        if (_radioJammerSystem.OnRadioReceiveAttempt(args))
+            return;
+
         if (ShouldCancelSend(args.RadioSource, args.Channel.Frequency))
         {
             args.Cancelled = true;
