@@ -110,7 +110,7 @@
 
 - type: entity
   parent: BaseBoomBoxTape
-  id: M14BaseBoomBoxTapeTheMetroTheme
+  id: BaseBoomBoxTapeTheMetroTheme
   name: Песня сталкеров
   description: Песня для настоящих сталкеров метро.
   components:
@@ -119,7 +119,7 @@
 
 - type: entity
   parent: BaseBoomBoxTape
-  id: M14BaseBoomBoxTapeThePachkaSigaret
+  id: BaseBoomBoxTapeThePachkaSigaret
   name: Пачка сигарет
   description: Классика...
   components:
@@ -128,7 +128,7 @@
 
 - type: entity
   parent: BaseBoomBoxTape
-  id: M14BaseBoomBoxTapeTheBloodGroup
+  id: BaseBoomBoxTapeTheBloodGroup
   name: Группа крови
   description: Классика...
   components:
@@ -146,7 +146,7 @@
 
 - type: entity
   parent: BaseBoomBoxTape
-  id: M14BaseBoomBoxTapeTheVosmiklassnica
+  id: BaseBoomBoxTapeTheVosmiklassnica
   name: восьмиклассница
   description: Для тех, кому не хватает хороших воспоминаний.
   components:
@@ -165,7 +165,7 @@
 - type: entity
   parent: BaseBoomBoxTape
   id: M14BaseBoomBoxTape_1Egor_Letov_-_Pro_durachka
-  name: про дурака...
+  name: про дурака
   description: Ходят слохи, но Егор всё ещё жив!
   components:
     - type: BoomBoxTape
@@ -216,3 +216,4 @@
   components:
     - type: BoomBoxTape
       soundPath: /Audio/_Metro14/BoomBox/7V_krayu_magnoli_-_V_krayu_magnolij_(SkySound.cc).ogg
+      
