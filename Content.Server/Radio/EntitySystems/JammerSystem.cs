@@ -1,4 +1,4 @@
-using Content.Server._Metro14.RadioStaticJammer;
+using Content.Server._Metro14.RadioStaticJammer; // _Metro14 - Подключение Dependency в 18 строке файла
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Power.EntitySystems;
@@ -14,7 +14,7 @@ public sealed class JammerSystem : SharedJammerSystem
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly RadioJammerSystem _radioJammerSystem = null!;
+    [Dependency] private readonly RadioJammerSystem _radioJammerSystem = null!; // _Metro14 - Вызов метода в 112 строке файла
     [Dependency] private readonly SharedDeviceNetworkJammerSystem _jammer = default!;
 
     public override void Initialize()
@@ -108,8 +108,10 @@ public sealed class JammerSystem : SharedJammerSystem
 
     private void OnRadioSendAttempt(ref RadioSendAttemptEvent args)
     {
+        // _Metro14 Из-за ограничений на подписки событий, вызываем наш метод здесь.
         if (_radioJammerSystem.OnRadioReceiveAttempt(args))
             return;
+        // _Metro14 Из-за ограничений на подписки событий, вызываем наш метод здесь.
 
         if (ShouldCancelSend(args.RadioSource, args.Channel.Frequency))
         {
