@@ -191,3 +191,56 @@
     CartridgeLightRifle: 3
   takingItems:
     ShellShotgun: 6
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_Start
+  name: NPC_Trader_Sparta_Start
+  iconId: M14ClothingOuterArmorPlateCarrierBlue
+  description: Начальный набор всех спартанцев, такой можно найти в техах.
+  givingItems:
+    CartridgeLightRifle: 15
+  takingItems:
+    M14ClothingOuterArmorPlateCarrierBlue: 1
+    M14ClothingHeadHelmetSparta1: 1    
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_middle
+  name: NPC_Trader_Sparta_middle
+  iconId: M14ClothingOuterArmorHeavySparta
+  description: Отличный набор, чтоб пойти на войну.
+  givingItems:
+    CartridgeLightRifle: 50
+  takingItems:
+    M14ClothingOuterArmorHeavySparta: 1    
+    M14ClothingHeadHelmetSparta: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_high
+  name: NPC_Trader_Sparta_high
+  iconId: M14ClothingOuterArmorHeavySpartaReconnaissance
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    CartridgeLightRifle: 75
+  takingItems:
+    M14ClothingOuterArmorHeavySpartaReconnaissance: 1    
+    M14ClothingHeadHelmetSparta: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_tail
+  name: NPC_Trader_Sparta_tail
+  iconId: M14BaseMutantpartsTail
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    M14BaseMutantpartsTail: 1
+  takingItems:
+    CartridgeLightRifle: 2
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_Foot
+  name: NPC_Trader_Sparta_Foot
+  iconId: M14BaseMutantpartsFoot
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    M14BaseMutantpartsFoot: 1
+  takingItems:
+    CartridgeLightRifle: 2

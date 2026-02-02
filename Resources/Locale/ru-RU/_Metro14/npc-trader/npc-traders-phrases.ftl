@@ -1,8 +1,15 @@
 npc-trader-no-product = Товара нет! Заглядывай позже!
 npc-trader-no-product-2 = Нету нифига! Позже должно быть...
+npc-trader-no-product-sparta = Слушай, кажется запасы закончились.
+npc-trader-no-product-sparta-2 = Проблемы с поставками от полиса. 
 npc-trader-thank-you = Спасибо за денюжку
 npc-trader-thank-you-2 = Смотрите на этого богача!
 npc-trader-thank-you-3 = Ой, позолотил мне ручку!
+npc-trader-thank-you-sparta = Удачи боец!
+npc-trader-thank-you-sparta-2 = Заходи еще салага, буду рад!
+npc-trader-thank-you-sparta-3 = Ты заходи к сержанту, если что!
 npc-trader-little-money = Недостаточно...
 npc-trader-little-money-2 = Нужно бы побольше оплаты...
 npc-trader-little-money-3 = Нету у тебя нифига! Не задерживай очередь!
+npc-trader-little-money-sparta = Салага, патрон нет, сходи до наших.
+npc-trader-little-money-sparta-2 = Увы, как патроны будут приходи.

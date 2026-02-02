@@ -1,7 +1,13 @@
 - type: entity
   name: паук
   id: M14MobSpider
-  parent: SimpleSpaceMobBase
+  parent:
+  - BaseSimpleMob
+  - MobDamageable
+  - MobPolymorphable
+  - MobBloodstream
+  - MobFlammable
+  - MobCombat
   description: Маленький и быстрый.
   components:
   - type: Insulated
@@ -79,7 +85,7 @@
     animation: WeaponArcBite
     damage:
       groups:
-        Brute: 8
+        Brute: 8      
   - type: DamageStateVisuals
     states:
       Alive:
@@ -90,12 +96,10 @@
         Base: dead
   - type: Puller
   - type: Butcherable
-    butcheringType: Spike
+    butcherDelay: 5
     spawned:
-    - id: FoodMeatCutlet
-      amount: 5
-  - type: TypingIndicator
-    proto: alien
+    - id: M14BaseMutantpartsTail
+      amount: 1
   - type: TemperatureDamage
     heatDamageThreshold: 360
     coldDamageThreshold: -150
@@ -116,7 +120,13 @@
 - type: entity
   name: паук
   id: M14MobWomanSpider
-  parent: SimpleSpaceMobBase
+  parent:
+  - BaseSimpleMob
+  - MobDamageable
+  - MobPolymorphable
+  - MobBloodstream
+  - MobFlammable
+  - MobCombat
   description: Маленькая и быстрая.
   components:
   - type: Insulated
@@ -205,12 +215,9 @@
         Base: dead
   - type: Puller
   - type: Butcherable
-    butcheringType: Spike
     spawned:
-    - id: FoodMeatCutlet
-      amount: 5
-  - type: TypingIndicator
-    proto: alien
+    - id: M14BaseMutantpartsTail
+      amount: 1
   - type: TemperatureDamage
     heatDamageThreshold: 360
     coldDamageThreshold: -150

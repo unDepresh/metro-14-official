@@ -1,0 +1,68 @@
+- type: entity
+  name: хвост паука
+  parent: BaseItem
+  id: M14BaseMutantpartsTail
+  description: мерзкий и противный, зато хорошо стоит.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/mutant_parts.rsi
+    state: tail
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: AtmosExposed
+  - type: TemperatureDamage
+
+- type: entity
+  name: нога носача
+  parent: BaseItem
+  id: M14BaseMutantpartsFoot
+  description: мерзкий и противный, зато хорошо стоит.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/mutant_parts.rsi
+    state: Foot
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2   
+  - type: AtmosExposed
+  - type: TemperatureDamage
+
+- type: entity
+  name: рука чёрного
+  parent: BaseItem
+  id: M14BaseMutantpartsHands
+  description: мерзкий и противный, зато хорошо стоит.
+  components:
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/mutant_parts.rsi
+    state: Hand
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 1
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: AtmosExposed
+  - type: TemperatureDamage
