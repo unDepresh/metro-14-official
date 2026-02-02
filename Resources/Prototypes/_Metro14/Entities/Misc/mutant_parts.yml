@@ -66,5 +66,3 @@
         friction: 0.2
   - type: AtmosExposed
   - type: TemperatureDamage
-  - type: Item  
-    size: 6
