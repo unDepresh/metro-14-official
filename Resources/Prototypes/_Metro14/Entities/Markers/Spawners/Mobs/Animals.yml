@@ -9,9 +9,13 @@
     - sprite: _Metro14/Mobs/nosach.rsi
       state: running
     - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-    - M14MobNosach
+  - type: MutantSpawner
+    mutantId: M14MobNosach # Кого будем спавнить?
+    spawnPeriod: 120 # Время в секундах между пополнением
+    maxPopulation: 5 # Максимальная популяция?
+    spawnCount: 3 # Количество в одном спавне?
+    spawnOffset: 5 # Максимальное растояние спавна от спавнера?
+    spawnOnInit: false # Спавн при инициализации?
 
 - type: entity
   parent: MarkerBase
@@ -25,9 +29,13 @@
     - sprite: _Metro14/Mobs/Spiders/Spider.rsi
       state: running
     - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-    - M14MobSpider
+  - type: MutantSpawner
+    mutantId: M14MobSpider # Кого будем спавнить?
+    spawnPeriod: 120 # Время в секундах между пополнением
+    maxPopulation: 5 # Максимальная популяция?
+    spawnCount: 3 # Количество в одном спавне?
+    spawnOffset: 5 # Максимальное растояние спавна от спавнера?
+    spawnOnInit: false # Спавн при инициализации?
 
 - type: entity
   parent: MarkerBase
@@ -41,7 +49,39 @@
     - sprite: _Metro14/Mobs/Spiders/WomanSpider.rsi
       state: running
     - state: ai
-  - type: ConditionalSpawner
-    prototypes:
-    - M14MobWomanSpider
+  - type: MutantSpawner
+    mutantId: M14MobWomanSpider # Кого будем спавнить?
+    spawnPeriod: 120 # Время в секундах между пополнением
+    maxPopulation: 5 # Максимальная популяция?
+    spawnCount: 3 # Количество в одном спавне?
+    spawnOffset: 5 # Максимальное растояние спавна от спавнера?
+    spawnOnInit: false # Спавн при инициализации?
   
+- type: entity
+  parent: MarkerBase
+  id: SpookySoundMarker
+  name: спавнер пауков
+  suffix: жен паук
+  components:
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      spooky:
+        shape: 
+          !type:PhysShapeCircle
+          radius: 5.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Effects/chronofield.rsi
+      state: chronofield
+  - type: Spooky
+    spookySound: /Audio/_Metro14/spooky-sound.ogg
+    spookyCooldown: 120
+    spookedPlayerBeforeCooldown: 5
+    popupMessage: Ваши грехи тяготят вас
+    fixtureName: spooky  
