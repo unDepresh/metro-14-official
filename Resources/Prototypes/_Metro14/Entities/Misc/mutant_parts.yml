@@ -22,7 +22,7 @@
   - type: TemperatureDamage
 
 - type: entity
-  name: нога носоча
+  name: нога носача
   parent: BaseItem
   id: M14BaseMutantpartsFoot
   description: мерзкий и противный, зато хорошо стоит.

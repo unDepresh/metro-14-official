@@ -233,7 +233,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Sparta_Foot
-  name: Хвост паука
+  name: Нога носача
   description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
   givingItems:
     M14BaseMutantpartsFoot: 1
