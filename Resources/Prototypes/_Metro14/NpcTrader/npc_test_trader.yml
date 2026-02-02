@@ -101,22 +101,21 @@
 - type: entity
   id: M14Makeev_torgovec
   parent: M14CrystalBlueTestGui
-  name: сержант макеев
+  name: Сержант Макеев
   suffix: торговец спарты   
   components:
     - type: NpcTrader
       pathToImage: /Textures/_Metro14/Interface/NpcTrader/testTrader.png
       phrasesNoProduct:
-        - npc-trader-no-product
-        - npc-trader-no-product-2
+        - npc-trader-no-product-sparta
+        - npc-trader-no-product-sparta-2
       phrasesThankYou:
-        - npc-trader-thank-you
-        - npc-trader-thank-you-2
-        - npc-trader-thank-you-3
+        - npc-trader-thank-you-sparta
+        - npc-trader-thank-you-sparta-2
+        - npc-trader-thank-you-sparta-3
       phrasesLittleMoney:
-        - npc-trader-little-money
-        - npc-trader-little-money-2
-        - npc-trader-little-money-3
+        - npc-trader-little-money-sparta
+        - npc-trader-little-money-sparta-2
       catalogs:
         - TraderSparta
     - type: Sprite
