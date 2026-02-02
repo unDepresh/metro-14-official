@@ -191,3 +191,51 @@
     CartridgeLightRifle: 3
   takingItems:
     ShellShotgun: 6
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_Start
+  name: Набор новичка
+  description: Начальный набор всех спартанцев, такой можно найти в техах.
+  givingItems:
+    CartridgeLightRifle: 20
+  takingItems:
+    M14ClothingOuterArmorPlateCarrierBlue: 1
+    M14ClothingHeadHelmetSparta1: 1    
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_middle
+  name: Стандартный набор
+  description: Отличный набор, чтоб пойти на войну.
+  givingItems:
+    CartridgeLightRifle: 50
+  takingItems:
+    M14ClothingOuterArmorHeavySparta: 1    
+    M14ClothingHeadHelmetSparta: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_high
+  name: Разведовательный набор 
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    CartridgeLightRifle: 75
+  takingItems:
+    M14ClothingOuterArmorHeavySpartaReconnaissance: 1    
+    M14ClothingHeadHelmetSparta: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_tail
+  name: Хвост паука
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    M14BaseMutantpartsTail: 1
+  takingItems:
+    CartridgeLightRifle: 2
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Sparta_Foot
+  name: Хвост паука
+  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
+  givingItems:
+    M14BaseMutantpartsFoot: 1
+  takingItems:
+    CartridgeLightRifle: 2
