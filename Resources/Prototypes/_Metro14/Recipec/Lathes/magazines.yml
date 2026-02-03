@@ -3,11 +3,12 @@
   result: MagazineLightRifle
   completetime: 3
   materials:
-    Steel: 1900
-
+    Steel: 800
+    M14Gunpowder: 500
 - type: latheRecipe
   id: M14MagazineLightRifleExtended
   result: M14MagazineLightRifleExtended
   completetime: 4
   materials:
-    Steel: 2200
+    Steel: 1700
+    M14Gunpowder: 500
