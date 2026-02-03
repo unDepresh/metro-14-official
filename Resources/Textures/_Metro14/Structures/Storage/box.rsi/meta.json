@@ -8,19 +8,24 @@
   },
   "states": [
     {
-      "name": "box"
+      "name": "box",
+      "directions": 4
     },
     {
-      "name": "box2"
+      "name": "box2",
+      "directions": 4
     },
     {
-      "name": "box3"
+      "name": "box3",
+      "directions": 4
     },
     {
-      "name": "box4"
+      "name": "box4",
+      "directions": 4
     },
     {
-      "name": "box5"
+      "name": "box5",
+      "directions": 4
     }
   ]
 }
