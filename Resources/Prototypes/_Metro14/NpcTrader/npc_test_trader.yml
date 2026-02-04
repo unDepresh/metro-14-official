@@ -135,17 +135,14 @@
     - type: NpcTrader
       pathToImage: /Textures/_Metro14/Interface/NpcTrader/testTrader.png
       phrasesNoProduct:
-        - npc-trader-no-product-sparta
-        - npc-trader-no-product-sparta-2
+        - npc-trader-no-product-hidra
       phrasesThankYou:
-        - npc-trader-thank-you-sparta
-        - npc-trader-thank-you-sparta-2
-        - npc-trader-thank-you-sparta-3
+        - npc-trader-thank-you-hidra
       phrasesLittleMoney:
-        - npc-trader-little-money-sparta
-        - npc-trader-little-money-sparta-2
+        - npc-trader-little-money-hidra
+        - npc-trader-little-money-hidra-2
       catalogs:
-        - TraderSparta
+        - TraderHidra
     - type: Sprite
       sprite: _Metro14/Structures/NpcTrader.rsi
       state: kirsan
