@@ -1,7 +1,7 @@
 # Empty mags
 - type: entity
   abstract: true
-  parent: BaseItem # BaseSecurityContraband #Metro 14
+  parent: [ BaseItem, BaseSecurityContraband ]
   id: BaseMagazineLightRifle
   name: "magazine (.30 rifle)"
   components:
