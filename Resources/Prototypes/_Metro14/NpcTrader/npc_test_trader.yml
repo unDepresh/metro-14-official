@@ -125,3 +125,28 @@
       radius: 3
       energy: 3
       color: "#1ab1ec"        
+
+- type: entity
+  id: M14Kirsan_torgovec
+  parent: M14CrystalBlueTestGui
+  name: Унтер-офицер Кирсан
+  suffix: торговец гидры
+  components:
+    - type: NpcTrader
+      pathToImage: /Textures/_Metro14/Interface/NpcTrader/testTrader.png
+      phrasesNoProduct:
+        - npc-trader-no-product-hidra
+      phrasesThankYou:
+        - npc-trader-thank-you-hidra
+      phrasesLittleMoney:
+        - npc-trader-little-money-hidra
+        - npc-trader-little-money-hidra-2
+      catalogs:
+        - TraderHidra
+    - type: Sprite
+      sprite: _Metro14/Structures/NpcTrader.rsi
+      state: kirsan
+    - type: PointLight
+      radius: 3
+      energy: 2
+      color: "#db1515"         

@@ -229,7 +229,6 @@
   id: NPC_Trader_Sparta_tail
   name: NPC_Trader_Sparta_tail
   iconId: M14BaseMutantpartsTail
-  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
   givingItems:
     M14BaseMutantpartsTail: 1
   takingItems:
@@ -239,8 +238,47 @@
   id: NPC_Trader_Sparta_Foot
   name: NPC_Trader_Sparta_Foot
   iconId: M14BaseMutantpartsFoot
-  description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
   givingItems:
     M14BaseMutantpartsFoot: 1
   takingItems:
     CartridgeLightRifle: 2
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hidra_tail
+  name: NPC_Trader_Sparta_tail
+  iconId: M14BaseMutantpartsTail
+  givingItems:
+    M14BaseMutantpartsTail: 1
+  takingItems:
+    CartridgeLightRifle: 5
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hidra_Foot
+  name: NPC_Trader_Sparta_Foot
+  iconId: M14BaseMutantpartsFoot
+  givingItems:
+    M14BaseMutantpartsFoot: 1
+  takingItems:
+    CartridgeLightRifle: 5  
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hidra_middle
+  name: NPC_Trader_Sparta_middle
+  iconId: M14ClothingOuterArmorHeavyHydra
+  description: Отличный набор, чтоб пойти на войну.
+  givingItems:
+    CartridgeLightRifle: 50
+  takingItems:
+    M14ClothingOuterArmorHeavyHydra: 1    
+    M14ClothingHeadHelmetHeavyHydra: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hidra_Start
+  name: NPC_Trader_Sparta_Start
+  iconId: ClothingHeadHatGreysoft
+  description: Стандартный бронежелет Гидры c кепкой.
+  givingItems:
+    CartridgeLightRifle: 15
+  takingItems:
+    M14ClothingOuterArmorPlateHidra: 1    
+    ClothingHeadHatGreysoft: 1
