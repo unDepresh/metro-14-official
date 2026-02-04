@@ -271,3 +271,14 @@
   takingItems:
     M14ClothingOuterArmorHeavyHydra: 1    
     M14ClothingHeadHelmetHeavyHydra: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hidra_Start
+  name: NPC_Trader_Sparta_Start
+  iconId: ClothingHeadHatGreysoft
+  description: Стандартный бронежелет Гидры c кепкой.
+  givingItems:
+    CartridgeLightRifle: 15
+  takingItems:
+    M14ClothingOuterArmorPlateHidra: 1    
+    ClothingHeadHatGreysoft: 1

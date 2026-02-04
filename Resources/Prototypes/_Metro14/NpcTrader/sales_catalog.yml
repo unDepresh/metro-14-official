@@ -40,6 +40,7 @@
 - type: npcTraderSalesCatalog # один из возможных каталогов для торговца
   id: TraderHidra
   catalog: # предложения данного каталога
+    NPC_Trader_Hidra_Start: -1
     NPC_Trader_Hidra_middle: 10
     NPC_Trader_Hidra_tail: -1
     NPC_Trader_Hidra_Foot: -1
