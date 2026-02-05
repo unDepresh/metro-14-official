@@ -194,7 +194,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Sparta_Start
-  name: NPC_Trader_Sparta_Start
+  name: NPC_Trader_Base_Start
   iconId: M14ClothingOuterArmorPlateCarrierBlue
   description: Начальный набор всех спартанцев, такой можно найти в техах.
   givingItems:
@@ -205,7 +205,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Sparta_middle
-  name: NPC_Trader_Sparta_middle
+  name: NPC_Trader_Base_middle
   iconId: M14ClothingOuterArmorHeavySparta
   description: Отличный набор, чтоб пойти на войну.
   givingItems:
@@ -216,7 +216,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Sparta_high
-  name: NPC_Trader_Sparta_high
+  name: NPC_Trader_Base_high
   iconId: M14ClothingOuterArmorHeavySpartaReconnaissance
   description: Отличный набор, чтоб пойти на поверхность или зайти в радиоактивную зону.
   givingItems:
@@ -226,8 +226,8 @@
     M14ClothingHeadHelmetSparta: 1
 
 - type: npcTraderItemForCatalog
-  id: NPC_Trader_Sparta_tail
-  name: NPC_Trader_Sparta_tail
+  id: NPC_Trader_Base_tail
+  name: NPC_Trader_Base_tail
   iconId: M14BaseMutantpartsTail
   givingItems:
     M14BaseMutantpartsTail: 1
@@ -235,8 +235,8 @@
     CartridgeLightRifle: 2
 
 - type: npcTraderItemForCatalog
-  id: NPC_Trader_Sparta_Foot
-  name: NPC_Trader_Sparta_Foot
+  id: NPC_Trader_Base_Foot
+  name: NPC_Trader_Base_Foot
   iconId: M14BaseMutantpartsFoot
   givingItems:
     M14BaseMutantpartsFoot: 1
@@ -245,7 +245,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Hidra_tail
-  name: NPC_Trader_Sparta_tail
+  name: NPC_Trader_Base_tail
   iconId: M14BaseMutantpartsTail
   givingItems:
     M14BaseMutantpartsTail: 1
@@ -254,7 +254,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Hidra_Foot
-  name: NPC_Trader_Sparta_Foot
+  name: NPC_Trader_Base_Foot
   iconId: M14BaseMutantpartsFoot
   givingItems:
     M14BaseMutantpartsFoot: 1
@@ -263,7 +263,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Hidra_middle
-  name: NPC_Trader_Sparta_middle
+  name: NPC_Trader_Base_middle
   iconId: M14ClothingOuterArmorHeavyHydra
   description: Отличный набор, чтоб пойти на войну.
   givingItems:
@@ -274,7 +274,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Hidra_Start
-  name: NPC_Trader_Sparta_Start
+  name: NPC_Trader_Base_Start
   iconId: ClothingHeadHatGreysoft
   description: Стандартный бронежилет Гидры c кепкой.
   givingItems:
@@ -285,7 +285,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_red_Start
-  name: NPC_Trader_Sparta_Start
+  name: NPC_Trader_Base_Start
   iconId: M14ClothingOuterArmorPlateStalker
   description: Стандартный бронежилет красной линии c кепкой.
   givingItems:
@@ -296,7 +296,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_red_middle
-  name: NPC_Trader_Sparta_middle
+  name: NPC_Trader_Base_middle
   iconId: M14ClothingOuterArmor6b13
   description: Стандартный бронежилет красны линии c шлемом.
   givingItems:
@@ -307,7 +307,7 @@
 
 - type: npcTraderItemForCatalog
   id: NPC_Trader_Hansa_Start
-  name: NPC_Trader_Sparta_Start
+  name: NPC_Trader_Base_Start
   iconId: ClothingOuterArmorBasicSlim
   description: Стандартный бронежилет c очками.
   givingItems:
