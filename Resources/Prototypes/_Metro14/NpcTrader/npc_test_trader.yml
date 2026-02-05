@@ -155,7 +155,7 @@
 - type: entity
   id: M14Storm_torgovec
   parent: M14CrystalBlueTestGui
-  name: Сержант Шторм
+  name: Сержант Шнурок
   suffix: торговец Красной линии
   components:
     - type: NpcTrader
