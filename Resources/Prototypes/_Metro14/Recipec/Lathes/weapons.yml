@@ -3,8 +3,9 @@
   result: M14WeaponRifleAk74
   completetime: 30
   materials:
-    Steel: 1500
+    Steel: 2500
     Wood: 500
+    M14Gunpowder: 300
 
 - type: latheRecipe
   id: M14WeaponShotgunAshot

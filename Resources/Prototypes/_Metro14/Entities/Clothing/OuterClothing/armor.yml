@@ -185,6 +185,7 @@
   components:
   - type: Sprite
     sprite: _Metro14/Clothing/OuterClothing/Armor/plateCarrierGray.rsi
+    color: "#FFE4E1"
   - type: Clothing
     sprite: _Metro14/Clothing/OuterClothing/Armor/plateCarrierGray.rsi
 
