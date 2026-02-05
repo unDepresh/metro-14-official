@@ -151,7 +151,6 @@
       energy: 2
       color: "#db1515"         
 
-
 - type: entity
   id: M14Storm_torgovec
   parent: M14CrystalBlueTestGui
@@ -179,3 +178,28 @@
       radius: 3
       energy: 2
       color: "#dcdf26"         
+
+- type: entity
+  id: M14Samovar_torgovec
+  parent: M14CrystalBlueTestGui
+  name: Каптерка Самовар
+  suffix: торговец ганзы
+  components:
+    - type: NpcTrader
+      pathToImage: /Textures/_Metro14/Interface/NpcTrader/testTrader.png
+      phrasesNoProduct:
+        - npc-trader-no-product-Hansa
+      phrasesThankYou:
+        - npc-trader-thank-you-Hansa
+        - npc-trader-thank-you-Hansa-2
+      phrasesLittleMoney:
+        - npc-trader-little-money-Hansa
+      catalogs:
+        - TraderHansa
+    - type: Sprite
+      sprite: _Metro14/Structures/NpcTrader.rsi
+      state: samovar
+    - type: PointLight
+      radius: 3
+      energy: 3
+      color: "#dfb426"       

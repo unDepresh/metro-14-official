@@ -276,7 +276,7 @@
   id: NPC_Trader_Hidra_Start
   name: NPC_Trader_Sparta_Start
   iconId: ClothingHeadHatGreysoft
-  description: Стандартный бронежелет Гидры c кепкой.
+  description: Стандартный бронежилет Гидры c кепкой.
   givingItems:
     CartridgeLightRifle: 15
   takingItems:
@@ -287,7 +287,7 @@
   id: NPC_Trader_red_Start
   name: NPC_Trader_Sparta_Start
   iconId: M14ClothingOuterArmorPlateStalker
-  description: Стандартный бронежелет красной линии c кепкой.
+  description: Стандартный бронежилет красной линии c кепкой.
   givingItems:
     CartridgeLightRifle: 15
   takingItems:
@@ -298,9 +298,20 @@
   id: NPC_Trader_red_middle
   name: NPC_Trader_Sparta_middle
   iconId: M14ClothingOuterArmor6b13
-  description: Стандартный бронежелет красны линии c шлемом.
+  description: Стандартный бронежилет красны линии c шлемом.
   givingItems:
     CartridgeLightRifle: 50
   takingItems:
     M14ClothingOuterArmor6b13: 1    
     M14ClothingHeadHelmetHeavyRed: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_Hansa_Start
+  name: NPC_Trader_Sparta_Start
+  iconId: ClothingOuterArmorBasicSlim
+  description: Стандартный бронежилет c очками.
+  givingItems:
+    CartridgeLightRifle: 15
+  takingItems:
+    ClothingOuterArmorBasicSlim: 1    
+    ClothingEyesGlassesMercenary: 1

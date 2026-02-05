@@ -12,6 +12,10 @@
             "directions": 4
         },
         {
+            "name": "samovar",
+            "directions": 4
+        },
+        {
             "name": "storm",
             "directions": 4
         },
