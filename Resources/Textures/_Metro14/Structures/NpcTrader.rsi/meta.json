@@ -12,6 +12,10 @@
             "directions": 4
         },
         {
+            "name": "storm",
+            "directions": 4
+        },
+        {
             "name": "kirsan",
             "directions": 4
         },

@@ -282,3 +282,25 @@
   takingItems:
     M14ClothingOuterArmorPlateHidra: 1    
     ClothingHeadHatGreysoft: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_red_Start
+  name: NPC_Trader_Sparta_Start
+  iconId: M14ClothingOuterArmorPlateStalker
+  description: Стандартный бронежелет красной линии c кепкой.
+  givingItems:
+    CartridgeLightRifle: 15
+  takingItems:
+    M14ClothingOuterArmorPlateStalker: 1    
+    ClothingHeadHatBrownFlatcap: 1
+
+- type: npcTraderItemForCatalog
+  id: NPC_Trader_red_middle
+  name: NPC_Trader_Sparta_middle
+  iconId: M14ClothingOuterArmor6b13
+  description: Стандартный бронежелет красны линии c шлемом.
+  givingItems:
+    CartridgeLightRifle: 50
+  takingItems:
+    M14ClothingOuterArmor6b13: 1    
+    M14ClothingHeadHelmetHeavyRed: 1

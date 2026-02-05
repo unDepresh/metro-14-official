@@ -76,6 +76,20 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
+#Red line
+- type: entity
+  parent: M14ClothingHeadHelmetHeavy
+  id: M14ClothingHeadHelmetHeavyRed
+  name: шлем 
+  description: шлем бойцов красной линии.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Helmets/merc_helmet.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Helmets/merc_helmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
 
 #Rad
 - type: entity

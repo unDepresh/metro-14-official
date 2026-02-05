@@ -150,3 +150,32 @@
       radius: 3
       energy: 2
       color: "#db1515"         
+
+
+- type: entity
+  id: M14Storm_torgovec
+  parent: M14CrystalBlueTestGui
+  name: Сержант Шторм
+  suffix: торговец Красной линии
+  components:
+    - type: NpcTrader
+      pathToImage: /Textures/_Metro14/Interface/NpcTrader/testTrader.png
+      phrasesNoProduct:
+        - npc-trader-no-product-red
+        - npc-trader-no-product-red-2
+      phrasesThankYou:
+        - npc-trader-thank-you-red
+        - npc-trader-thank-you-red-2
+        - npc-trader-thank-you-red-3
+      phrasesLittleMoney:
+        - npc-trader-little-money-red
+        - npc-trader-little-money-red-2
+      catalogs:
+        - TraderRed
+    - type: Sprite
+      sprite: _Metro14/Structures/NpcTrader.rsi
+      state: storm
+    - type: PointLight
+      radius: 3
+      energy: 2
+      color: "#dcdf26"         
