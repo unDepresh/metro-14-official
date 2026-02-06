@@ -1,0 +1,42 @@
+- type: entity
+  parent: SeedBase
+  name: Пакет семян Фунгоидеи люминесценс
+  id: PhotocytosineSeeds
+  components:
+    - type: Seed
+      seedId: Photocytosine
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/chanterelle.rsi
+
+- type: entity
+  parent: SeedBase
+  name: Пакет семян Геофилуса акватика
+  id: AquacylinSeeds
+  components:
+    - type: Seed
+      seedId: Aquacylin
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/chanterelle.rsi
+
+- type: entity
+  parent: SeedBase
+  name: Пакет семян Микрозы кселотермы
+  id: XylotherminSeeds
+  components:
+    - type: Seed
+      seedId: Xylothermin
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/chanterelle.rsi
+
+- type: entity
+  parent: SeedBase
+  name: Пакет семян Фотофиага
+  id: PhotophiagSeeds
+  components:
+    - type: Seed
+      seedId: Photophiag
+    - type: Sprite
+      sprite: Objects/Specific/Hydroponics/chanterelle.rsi
+
+
+

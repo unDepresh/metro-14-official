@@ -1,0 +1,99 @@
+- type: seed
+  id: Photocytosine
+  name: Фунгоидея люминесценс
+  noun: seeds-noun-spores
+  displayName: фунгоидея люминесценс
+  plantRsi: Objects/Specific/Hydroponics/chanterelle.rsi
+  packetPrototype: PhotocytosineSeeds
+  productPrototypes:
+    - M14FoodSpaceshroom
+  lifespan: 35
+  maturation: 10
+  production: 7
+  yield: 5
+  potency: 1
+  growthStages: 3
+  lightTolerance: 6
+  waterConsumption: 0.60
+  nutrientConsumption: 0.50
+  idealHeat: 288
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 25
+      PotencyDivisor: 25
+
+- type: seed
+  id: Aquacylin
+  name: геофилус акватик
+  noun: seeds-noun-spores
+  displayName: геофилус акватик
+  plantRsi: Objects/Specific/Hydroponics/chanterelle.rsi
+  packetPrototype: AquacylinSeeds
+  productPrototypes:
+    - M14FoodSpaceshroom2
+  lifespan: 35
+  maturation: 10
+  production: 7
+  yield: 5
+  potency: 1
+  growthStages: 3
+  lightTolerance: 6
+  waterConsumption: 0.60
+  nutrientConsumption: 0.50
+  idealHeat: 288
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 25
+      PotencyDivisor: 25
+
+- type: seed
+  id: Xylothermin
+  name: микроза кселотерма
+  noun: seeds-noun-spores
+  displayName: микроза кселотерма
+  plantRsi: Objects/Specific/Hydroponics/chanterelle.rsi
+  packetPrototype: XylotherminSeeds
+  productPrototypes:
+    - M14FoodSpaceshroom3
+  lifespan: 35
+  maturation: 10
+  production: 7
+  yield: 5
+  potency: 1
+  growthStages: 3
+  lightTolerance: 6
+  waterConsumption: 0.60
+  nutrientConsumption: 0.50
+  idealHeat: 288
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 25
+      PotencyDivisor: 25
+
+- type: seed
+  id: Photophiag
+  name: фотофиаг
+  noun: seeds-noun-spores
+  displayName: фотофиаг
+  plantRsi: Objects/Specific/Hydroponics/chanterelle.rsi
+  packetPrototype: PhotophiagSeeds
+  productPrototypes:
+    - M14MusroomsPhotophiag
+  lifespan: 35
+  maturation: 10
+  production: 7
+  yield: 5
+  potency: 1
+  growthStages: 3
+  lightTolerance: 6
+  waterConsumption: 0.60
+  nutrientConsumption: 0.50
+  idealHeat: 288
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 25
+      PotencyDivisor: 25

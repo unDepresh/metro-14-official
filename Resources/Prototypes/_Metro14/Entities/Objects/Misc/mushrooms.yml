@@ -93,7 +93,10 @@
   id: M14MusroomsPhotophiag
   description: грибочек
   components:
+  - type: Item
+    heldPrefix: produce
   - type: Produce
+    seedId: Photophiag
   - type: Sprite
     sprite: Objects/Misc/spaceshroom.rsi
     state: object
@@ -136,9 +139,10 @@
   suffix: Structure
   placement:
     mode: PlaceFree
-  description: возможно это поможет вам выжить
+  description: Бриофит пирогенный. Учитывая, что это одно из самых древних растений, то он явно видел некоторое дерьмо.
   components:
     - type: Sprite
+      color: '#FF4500'
       sprite: _Metro14/Objects/Misc/moh.rsi
       state: floor
     - type: Fixtures
@@ -170,7 +174,7 @@
     - type: PointLight
       radius: 3.5
       energy: 1.5
-      color: "#1c8009"
+      color: "#FF4500"
       falloff: 3
       softness: 5
 
@@ -178,10 +182,11 @@
   name: мох
   parent: FoodProduceBase
   id: M14Mohitem
-  description: мох
+  description: Бриофит пирогенный, он же - мох. Учитывая, что это одно из самых древних растений, то он явно видел некоторое дерьмо.
   components:
   - type: Produce
   - type: Sprite
+    color: '#FF4500'
     sprite: _Metro14/Objects/Misc/mohitem.rsi
     state: icon
   - type: FlavorProfile
