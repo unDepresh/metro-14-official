@@ -273,3 +273,30 @@
   components:
   - type: Sprite
     state: stalker
+
+- type: entity
+  parent: M14BasePoster
+  id: M14PosterVDNH
+  name: плакат "ВДНХ"
+  description: Плакат ВДНХ
+  components:
+  - type: Sprite
+    state: vdnh
+
+- type: entity
+  parent: M14BasePoster
+  id: M14PosterTech
+  name: плакат "МЕХ"
+  description: Плакат Техников
+  components:
+  - type: Sprite
+    state: mech
+
+- type: entity
+  parent: M14BasePoster
+  id: M14PosterChervo
+  name: плакат "Черво"
+  description: Плакат культистов. Однажды,они похронили вас в этой части метро.
+  components:
+  - type: Sprite
+    state: chervo
