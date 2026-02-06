@@ -1,0 +1,10 @@
+- type: entity
+  name: Бюст Сталина
+  parent: BaseStructureDynamic
+  id: M14Busts
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Sprite
+    sprite: _Metro14/Objects/Misc/busts.rsi
+    state: stalin_colored
