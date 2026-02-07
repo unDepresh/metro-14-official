@@ -221,7 +221,7 @@
             radius: 0.2
 
 - type: entity
-  name: кислотные гриб
+  name: кислотные грибы
   id: M14SpaceshroomAcid3
   parent: [BaseStructure, M14SpaceshroomAcid]
   components:

@@ -3,7 +3,7 @@
   parent: BaseStructure
   id: M14Mushroom
   suffix: Structure
-  description: грибы постоянно растущие в метро
+  description: грибы, постоянно растущие в метро
   components:
     - type: Sprite
       sprite: Objects/Misc/spaceshroom.rsi
@@ -50,7 +50,7 @@
   name: грибочек
   parent: FoodProduceBase
   id: M14MusroomsPyrocatalysin
-  description: грибочек
+  description: Грибочек.
   components:
   - type: Produce
   - type: Sprite
@@ -91,7 +91,7 @@
   name: грибочек
   parent: FoodProduceBase
   id: M14MusroomsPhotophiag
-  description: грибочек
+  description: Грибочек.
   components:
   - type: Item
     heldPrefix: produce
@@ -182,7 +182,7 @@
   name: мох
   parent: FoodProduceBase
   id: M14Mohitem
-  description: Бриофит пирогенный, он же - мох. Учитывая, что это одно из самых древних растений, то он явно видел некоторое дерьмо.
+  description: Бриофит пирогенный, он же - мох. Учитывая, что это одно из самых древних растений, он явно видел некоторое дерьмо.
   components:
   - type: Produce
   - type: Sprite

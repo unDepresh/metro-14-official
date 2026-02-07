@@ -1,6 +1,6 @@
 - type: entity
   parent: SeedBase
-  name: Пакет семян Фунгоидеи люминесценс
+  name: пакет семян Фунгоидеи люминесценс
   id: PhotocytosineSeeds
   components:
     - type: Seed
@@ -10,7 +10,7 @@
 
 - type: entity
   parent: SeedBase
-  name: Пакет семян Геофилуса акватика
+  name: пакет семян Геофилуса акватика
   id: AquacylinSeeds
   components:
     - type: Seed
@@ -20,7 +20,7 @@
 
 - type: entity
   parent: SeedBase
-  name: Пакет семян Микрозы кселотермы
+  name: пакет семян Микрозы кселотермы
   id: XylotherminSeeds
   components:
     - type: Seed
@@ -30,7 +30,7 @@
 
 - type: entity
   parent: SeedBase
-  name: Пакет семян Фотофиага
+  name: пакет семян Фотофиага
   id: PhotophiagSeeds
   components:
     - type: Seed
